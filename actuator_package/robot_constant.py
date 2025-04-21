@@ -1,5 +1,25 @@
+# ========= Communication Setup ========
+DEVICENAME = '/dev/cu.usbserial-FT9BTHA3'
+BAUDRATE = 115200
+
+# ========= Feedback Switch & Index =========
+FEEDBACK_POSITION_ENABLE = True 
+FEEDBACK_POSITION_NAME = 'position'
+
+FEEDBACK_VELOCITY_ENABLE = True
+FEEDBACK_VELOCITY_NAME = 'velocity'
+
+FEEDBACK_PWM_ENABLE = True
+FEEDBACK_PWM_NAME = 'pwm'
+
+FEEDBACK_TEMPERATURE_ENABLE = False
+FEEDBACK_TEMPERATURE_NAME = 'temperature'
+
+FEEDBACK_CURRENT_ENABLE = True
+FEEDBACK_CURRENT_NAME = 'current'
+
+FEEDBACK_VOLTAGE = False
+FEEDBACK_VOLTAGE_NAME = 'voltage'
 
 
-ID_left_wheel = 0 
-ID_right_wheel = 1 
 
