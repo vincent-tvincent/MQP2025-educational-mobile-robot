@@ -211,10 +211,20 @@ class servo_group():
                 self.feedback_data[name] = datas
         
     def get_feedback(self):
+        
         if FEEDBACK_POSITION_ENABLE:
             self.__update_single_feedback(FEEDBACK_POSITION_NAME, self.position_reader, ADDR_PRESENT_POSITION, SIZE_PRESENT_POSITION)
         if FEEDBACK_VELOCITY_ENABLE: 
             self.__update_single_feedback(FEEDBACK_VELOCITY_NAME, self.velocity_reader, ADDR_PRESENT_VELOCITY, SIZE_PRESENT_VELOCITY) 
+        if FEEDBACK_PWM_ENABLE: 
+            self.__update_single_feedback(FEEDBACK_PWM_NAME, self.velocity_reader, ADDR_PRESENT_PWM, SIZE_PRESENT_PWM)
+        if FEEDBACK_TEMPERATURE_ENABLE:
+            self.__update_single_feedback(FEEDBACK_TEMPERATURE_NAME, self.temperature_reader, ADDR_PRESENT_TEMPERATURE, SIZE_PRESENT_TEMPERATURE)
+        if FEEDBACK_CURRENT_ENABLE:
+            self.__update_single_feedback(FEEDBACK_CURRENT_NAME, self.current_reader, ADDR_PRESENT_CURRENT, SIZE_PRESENT_CURRENT)
+        if FEEDBACK_VOLTAGE_ENABLE:
+            self.__update_single_feedback(FEEDBACK_VOLTAGE_NAME, self.current_reader, ADDR_PRESENT_INPUT_VOLTAGE, SIZE_PRESENT_INPUT_VOLTAGE)
+
         return self.feedback_data
     
                
