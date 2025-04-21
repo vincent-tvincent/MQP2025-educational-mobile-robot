@@ -8,12 +8,18 @@ BAUDRATE = 115200
 portHandler = PortHandler(DEVICENAME)  
 packetHandler = PacketHandler(PROTOCOL_VERSION)
 current_mode = {}
-
+port_open = False
 
 def port_init():
-    portHandler.openPort()
-    portHandler.setBaudRate(BAUDRATE)
+    print('initializing communication')
+    port_open = portHandler.openPort()
+    if port_open:
+        print('port opened, device name: ' + portHandler.getPortName())
+        baudrate_avaliable = portHandler.setBaudRate(BAUDRATE)
+        if baudrate_avaliable != -1:
+            print('baudrate setted, value: ' + str(portHandler.getBaudRate()))
 
+    
 
 def set_torque_enable(id:int):
     packetHandler.write1ByteTxRx(portHandler, id, ADDR_TORQUE_ENABLE, TORQUE_ENABLE)
@@ -70,15 +76,30 @@ def set_goal(id:int, value:int):
     result,error = packetHandler.write4ByteTxRx(portHandler, id, addr_goal, value)
 
 
+def wrap_1_byte(value: int):
+        return [value]
 
 
+def wrap_2_byte(value: int):
+    return [DXL_LOBYTE(value), DXL_HIBYTE(value)]
+
+
+def wrap_4_byte(value: int):
+    return [DXL_LOBYTE(DXL_LOWORD(value)), DXL_HIBYTE(DXL_LOWORD(value)), DXL_LOBYTE(DXL_HIWORD(value)), DXL_HIBYTE(DXL_HIWORD(value))]
+
+def wrap_byte(value: int, size: int):
+    if size == 1: 
+        return wrap_1_byte(value)
+    if size == 2:
+        return wrap_2_byte(value)
+    if size == 4:
+        return wrap_4_byte(value)
 class servo_group():
 
 
     def __init__(self,mode:int, id_list:list[int]):
         self.mode = mode
-        self.id_list = id
-        
+        self.id_list = id_list
         if mode == MODE_POSITION:
             self.addr_goal = ADDR_GOAL_POSITION
             self.size_goal = SIZE_GOAL_POSITION
@@ -92,36 +113,35 @@ class servo_group():
             self.addr_goal = ADDR_GOAL_PWM            
             self.size_goal = SIZE_GOAL_PWM
 
-        self.mode_writer = GroupSyncWrite(portHandler, ADDR_OPERATING_MODE, SIZE_OPERATING_MODE)
-        self.torque_writer = GroupSyncWrite(portHandler, ADDR_TORQUE_ENABLE, SIZE_TORQUE_ENABLE)
-        self.goal_writer = GroupSyncWrite(portHandler, self.addr_goal,self.size_goal)
+        self.mode_writer = GroupSyncWrite(portHandler, packetHandler, ADDR_OPERATING_MODE, SIZE_OPERATING_MODE)
+        self.torque_writer = GroupSyncWrite(portHandler, packetHandler, ADDR_TORQUE_ENABLE, SIZE_TORQUE_ENABLE)
+        self.goal_writer = GroupSyncWrite(portHandler, packetHandler, self.addr_goal,self.size_goal)
 
-        self.mode_reader = GroupSyncRead(portHandler, ADDR_OPERATING_MODE, SIZE_OPERATING_MODE)
-        self.torque_reader = GroupSyncRead(portHandler, ADDR_TORQUE_ENABLE, SIZE_TORQUE_ENABLE)
+        self.mode_reader = GroupSyncRead(portHandler, packetHandler, ADDR_OPERATING_MODE, SIZE_OPERATING_MODE)
+        self.torque_reader = GroupSyncRead(portHandler, packetHandler, ADDR_TORQUE_ENABLE, SIZE_TORQUE_ENABLE)
 
         for id in self.id_list:
-            self.mode_writer.addParam(id, mode)  
-            self.torque_writer.addParam(id, TORQUE_DISABLE)
-            self.goal_writer.addParam(id, 0)
+            self.mode_writer.addParam(id, wrap_1_byte(self.mode))  
+            self.torque_writer.addParam(id, wrap_1_byte(TORQUE_DISABLE))
+            self.goal_writer.addParam(id, wrap_1_byte(0))
 
-        torque_result, torque_error = self.torque_writer.txPacket()
+        torque_result = self.torque_writer.txPacket()
         if torque_result == COMM_SUCCESS:
-            mode_result, mode_error = self.mode_writer.txPacket()  
+            mode_result = self.mode_writer.txPacket()  
             for id in self.id_list:
                 current_mode[id] = mode
 
 
     def set_torque_status(self, status:int):
         for id in self.id_list:
-            self.mode_writer.addParam(id, self.mode)  
-            self.torque_writer.addParam(id, status)
-        torque_result, torque_error = self.torque_writer.txPacket()
+            self.torque_writer.changeParam(id, wrap_1_byte(status))
+        torque_result = self.torque_writer.txPacket()
 
 
     def set_goals(self, values:int):
         for i in range(len(self.id_list)):
-            self.goal_writer.changeParam(self.id_list[id], values[i])
-        goal_result, goal_error = self.goal_writer.txPacket() 
+            self.goal_writer.changeParam(self.id_list[i], wrap_4_byte(values[i]))
+        goal_result = self.goal_writer.txPacket()
 
 
     def set_mode(self, mode:int):
@@ -143,18 +163,28 @@ class servo_group():
             self.mode_writer.changeParam(id,mode)
         
         self.set_torque_status(TORQUE_DISABLE)
-        mode_result, mode_error = self.mode_writer.txPacket()
+        mode_result = self.mode_writer.txPacket()
     
     
+    
+
 
         
         
            
 port_init()
 
-set_torque_enable(0)
-set_torque_enable(1)
-set_mode_velocity(0)
-set_mode_velocity(1)
-set_goal(0, 0)
-set_goal(1, 0)
+# set_torque_enable(0)
+# set_torque_enable(1)
+# set_mode_velocity(0)
+# set_mode_velocity(1)
+# set_goal(0, 0)
+# set_goal(1, 0)
+
+wheel_group = servo_group(MODE_VELOCITY, [0, 1])
+
+wheel_group.set_torque_status(TORQUE_ENABLE)
+wheel_group.set_goals([100,-100])
+wheel_group.set_goals([-100,100])
+time.sleep(1)
+wheel_group.set_goals([0,0])
