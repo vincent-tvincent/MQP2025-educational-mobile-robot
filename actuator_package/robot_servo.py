@@ -2,12 +2,9 @@ from robot_constant import *
 from xl330_constant import *
 from dynamixel_sdk import *
 
-
 portHandler = PortHandler(DEVICENAME)  
 packetHandler = PacketHandler(PROTOCOL_VERSION)
-current_mode = {}
-port_open = False
-
+minimum_blocked_delay = 0.01  # Minimum delay required for two communications
 
 def port_init():
     print('initializing communication')
@@ -23,7 +20,7 @@ def port_close():
     print('closing port')
     port_open = portHandler.closePort()
     if not port_open:
-        print('port closed') 
+        print('port closed')
 
 
 def port_open():
@@ -33,86 +30,36 @@ def port_open():
         print('port opened')
 
 
-def set_torque_enable(id:int):
-    packetHandler.write1ByteTxRx(portHandler, id, ADDR_TORQUE_ENABLE, TORQUE_ENABLE)
+class servo_group():
 
-
-def set_torque_disable(id:int):
-    packetHandler.write1ByteTxRx(portHandler, id, ADDR_TORQUE_ENABLE, TORQUE_DISABLE)
-
-
-def set_torque_status(id:int, status:int):
-    packetHandler.write1ByteTxRx(portHandler, id, ADDR_TORQUE_ENABLE, status)
-
-
-def set_mode(id:int, mode:int):
-    original_torque_status,read_result,read_error=packetHandler.read1ByteTxRx(portHandler, id, ADDR_TORQUE_ENABLE)
-
-    if original_torque_status == TORQUE_ENABLE:
-        set_torque_disable(id)
-
-    write_result,write_error = packetHandler.write1ByteTxRx(portHandler, id, ADDR_OPERATING_MODE, mode)  
-    if write_result == COMM_SUCCESS:
-        current_mode[id] = mode
-
-    if original_torque_status == TORQUE_ENABLE:
-        set_torque_enable(id)
-        
-
-def set_mode_position(id:int):
-    set_mode(id, MODE_POSITION)
-
-
-def set_mode_extended_position(id:int):
-    set_mode(id, MODE_EXTENDED_POSITION)
-
-
-def set_mode_velocity(id:int):
-    set_mode(id, MODE_VELOCITY)
-
-
-def set_mode_pwm(id:int):
-    set_mode(id, MODE_PWM)
-
-
-def set_goal(id:int, value:int):
-    addr_goal = ADDR_GOAL_POSITION
-    if current_mode[id] == MODE_POSITION:
-        addr_goal = ADDR_GOAL_POSITION
-
-    elif current_mode[id] == MODE_VELOCITY:
-        addr_goal = ADDR_GOAL_VELOCITY
-
-    elif current_mode[id] == MODE_PWM:
-        addr_goal = ADDR_GOAL_PWM
-    result,error = packetHandler.write4ByteTxRx(portHandler, id, addr_goal, value)
-
-
-def wrap_1_byte(value: int):
+    def wrap_1_byte(self, value: int) -> list[int]:
         return [value]
 
 
-def wrap_2_byte(value: int):
-    return [DXL_LOBYTE(value), DXL_HIBYTE(value)]
+    def wrap_2_byte(self, value: int) -> list[int]:
+        return [DXL_LOBYTE(value), DXL_HIBYTE(value)]
 
 
-def wrap_4_byte(value: int):
-    return [DXL_LOBYTE(DXL_LOWORD(value)), DXL_HIBYTE(DXL_LOWORD(value)), DXL_LOBYTE(DXL_HIWORD(value)), DXL_HIBYTE(DXL_HIWORD(value))]
+    def wrap_4_byte(self, value: int) -> list[int]:
+        return [DXL_LOBYTE(DXL_LOWORD(value)), DXL_HIBYTE(DXL_LOWORD(value)), DXL_LOBYTE(DXL_HIWORD(value)), DXL_HIBYTE(DXL_HIWORD(value))]
 
-def wrap_byte(value: int, size: int):
-    if size == 1: 
-        return wrap_1_byte(value)
-    if size == 2:
-        return wrap_2_byte(value)
-    if size == 4:
-        return wrap_4_byte(value)
-class servo_group():
+    def wrap_byte(self, value: int, size: int) -> list[int]:
+        match size:
+            case 1:
+                return self.wrap_1_byte(value)
+            case 2:
+                return self.wrap_2_byte(value)
+            case 4:
+                return self.wrap_4_byte(value) 
 
 
     def __init__(self,mode:int, id_list:list[int]):
-        self.mode = mode
+        self.__mode = mode
         self.id_list = id_list
-        self.feedback_data = {}
+        self.__recent_mode = {id: mode for id in id_list}
+        self.__feedback_data = {}
+        self.enable_blocked_delay = True
+
         if mode == MODE_POSITION:
             self.addr_goal = ADDR_GOAL_POSITION
             self.size_goal = SIZE_GOAL_POSITION
@@ -141,9 +88,9 @@ class servo_group():
 
 
         for id in self.id_list:
-            self.mode_writer.addParam(id, wrap_1_byte(self.mode))  
-            self.torque_writer.addParam(id, wrap_1_byte(TORQUE_DISABLE))
-            self.goal_writer.addParam(id, wrap_byte(0,self.size_goal))
+            self.mode_writer.addParam(id, self.wrap_1_byte(self.__mode))  
+            self.torque_writer.addParam(id, self.wrap_1_byte(TORQUE_DISABLE))
+            self.goal_writer.addParam(id, self.wrap_byte(0,self.size_goal))
             
             self.mode_reader.addParam(id)
             self.torque_status_reader.addParam(id)
@@ -158,24 +105,59 @@ class servo_group():
         if torque_result == COMM_SUCCESS:
             mode_result = self.mode_writer.txPacket()  
             for id in self.id_list:
-                current_mode[id] = mode
+                self.__recent_mode[id] = mode
 
+
+    def enable_blocked_delay(self):
+        self.enable_blocked_delay = True
+
+
+    def disable_blocked_delay(self):
+        self.enable_blocked_delay = False
+
+
+    def __apply_blocked_delay(self, second: float):
+        if self.enable_blocked_delay:
+            time.sleep(second)
 
     def set_torque_status(self, status:int):
         for id in self.id_list:
-            self.torque_writer.changeParam(id, wrap_1_byte(status))
+            self.torque_writer.changeParam(id, self.wrap_1_byte(status))
         torque_result = self.torque_writer.txPacket()
-        time.sleep(0.05)
+        self.__apply_blocked_delay(minimum_blocked_delay)
+        return torque_result
 
 
     def set_goals(self, values:int):
         for i in range(len(self.id_list)):
-            self.goal_writer.changeParam(self.id_list[i], wrap_byte(values[i],self.size_goal))
+            self.goal_writer.changeParam(self.id_list[i], self.wrap_byte(values[i],self.size_goal))
         goal_result = self.goal_writer.txPacket()
+        self.__apply_blocked_delay(minimum_blocked_delay)
+        return goal_result
 
+
+    def set_goals_with_feedback(self, values:int):
+        self.set_goals(values)
+        feedback = self.get_feedback()
+        return feedback
+
+
+    def get_mode(self) -> list[int]:
+        read_result = self.mode_reader.fastSyncRead()
+        if read_result == COMM_SUCCESS:
+            modes = []
+            for id in self.id_list:
+                mode = 0
+                if self.mode_reader.isAvailable(id, ADDR_OPERATING_MODE, SIZE_OPERATING_MODE):
+                    mode = self.mode_reader.getData(id, ADDR_OPERATING_MODE, SIZE_OPERATING_MODE)
+                modes.append(mode)
+            return modes
+        else:
+            return None
+        
 
     def set_mode(self, mode:int):
-        self.mode = mode
+        self.__mode = mode
 
         if mode == MODE_POSITION:
             self.addr_goal = ADDR_GOAL_POSITION
@@ -190,15 +172,18 @@ class servo_group():
             self.addr_goal = ADDR_GOAL_PWM            
             self.size_goal = SIZE_GOAL_PWM
 
-        self.goal_writer = GroupSyncWrite(portHandler, packetHandler, self.addr_goal,self.size_goal) 
+        self.goal_writer = GroupSyncWrite(portHandler, packetHandler, self.addr_goal,self.size_goal)
+        self.__apply_blocked_delay(minimum_blocked_delay) 
 
         for id in self.id_list:
-            self.mode_writer.changeParam(id,wrap_1_byte(mode))
-            self.goal_writer.addParam(id, wrap_byte(0, self.size_goal))
+            self.mode_writer.changeParam(id,self.wrap_1_byte(mode))
+            self.goal_writer.addParam(id, self.wrap_byte(0, self.size_goal))
         
         self.set_torque_status(TORQUE_DISABLE)
         mode_result = self.mode_writer.txPacket()
-    
+        return mode_result
+
+
     def __update_single_feedback(self, name: str, reader: GroupSyncRead, address: int, size: int):
             read_result = reader.fastSyncRead()
             if read_result == COMM_SUCCESS:
@@ -208,9 +193,12 @@ class servo_group():
                     if reader.isAvailable(id, address, size):
                         data = reader.getData(id, address, size)
                     datas.append(data)
-                self.feedback_data[name] = datas
-        
-    def get_feedback(self):
+                self.__feedback_data[name] = datas
+            self.__apply_blocked_delay(minimum_blocked_delay)
+            return read_result
+
+
+    def get_feedback(self) -> dict:
         
         if FEEDBACK_POSITION_ENABLE:
             self.__update_single_feedback(FEEDBACK_POSITION_NAME, self.position_reader, ADDR_PRESENT_POSITION, SIZE_PRESENT_POSITION)
@@ -225,6 +213,6 @@ class servo_group():
         if FEEDBACK_VOLTAGE_ENABLE:
             self.__update_single_feedback(FEEDBACK_VOLTAGE_NAME, self.current_reader, ADDR_PRESENT_INPUT_VOLTAGE, SIZE_PRESENT_INPUT_VOLTAGE)
 
-        return self.feedback_data
+        return self.__feedback_data
     
                
