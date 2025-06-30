@@ -1,4 +1,4 @@
-from robot_servo import *
+from servo_group import *
 
 port_init()
 
@@ -28,15 +28,21 @@ wheel_group.set_torque_status(TORQUE_DISABLE)
 wheel_group.set_mode(MODE_VELOCITY)
 wheel_group.set_torque_status(TORQUE_ENABLE)
 #time.sleep(delay)
-
-result1 = gimbal_group.set_goals_with_feedback([2000,2000])
-result2 =wheel_group.set_goals_with_feedback([10, 10, 10, 10])
+#print(gimbal_group.get_feedback())
+result1 = gimbal_group.set_goals([2000,2000])
+result2 = wheel_group.set_goals([10, 10, 10, 10])
 #time.sleep(delay)
-result3 = gimbal_group.set_goals_with_feedback([1000,1000])
-time.sleep(1)
-result4 = gimbal_group.set_goals_with_feedback([2000,2000])
-time.sleep(2)
-result5 = wheel_group.set_goals_with_feedback([0, 0, 0, 0])
+result3 = gimbal_group.set_goals([1000,1000])
+#print(gimbal_group.get_feedback())
+result4 = wheel_group.set_goals([1000, 1000, 1000, 1000])
+time.sleep(0.1)    
+result3 = gimbal_group.set_goals([1000,1000])
+result4 = gimbal_group.set_goals([2000,2000])
+for i in range(200):
+    print(wheel_group.get_feedback())
+    time.sleep(0.01)
+time.sleep(0.1)
+result5 = wheel_group.set_goals([0, 0, 0, 0])
 
 result6 = gimbal_group.get_feedback()
 print(result1)

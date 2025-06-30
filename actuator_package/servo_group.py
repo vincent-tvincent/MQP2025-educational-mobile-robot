@@ -133,13 +133,7 @@ class servo_group():
             self.goal_writer.changeParam(self.id_list[i], self.wrap_byte(values[i],self.size_goal))
         goal_result = self.goal_writer.txPacket()
         self.__apply_blocked_delay(minimum_blocked_delay)
-        return goal_result
-
-
-    def set_goals_with_feedback(self, values:int):
-        self.set_goals(values)
-        feedback = self.get_feedback()
-        return feedback
+        return goal_result 
 
 
     def get_mode(self) -> list[int]:
@@ -194,7 +188,6 @@ class servo_group():
                         data = reader.getData(id, address, size)
                     datas.append(data)
                 self.__feedback_data[name] = datas
-            self.__apply_blocked_delay(minimum_blocked_delay)
             return read_result
 
 
@@ -212,7 +205,7 @@ class servo_group():
             self.__update_single_feedback(FEEDBACK_CURRENT_NAME, self.current_reader, ADDR_PRESENT_CURRENT, SIZE_PRESENT_CURRENT)
         if FEEDBACK_VOLTAGE_ENABLE:
             self.__update_single_feedback(FEEDBACK_VOLTAGE_NAME, self.current_reader, ADDR_PRESENT_INPUT_VOLTAGE, SIZE_PRESENT_INPUT_VOLTAGE)
-
+        # self.__apply_blocked_delay(minimum_blocked_delay)
         return self.__feedback_data
     
                
