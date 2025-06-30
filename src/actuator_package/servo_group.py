@@ -3,7 +3,7 @@ from .xl330_constant import *
 from .dynamixel_sdk import *
 
 portHandler = PortHandler(DEVICENAME)  
-packetHandler = PacketHandler(PROTOCOL_VERSION)
+# packetHandler = PacketHandler(PROTOCOL_VERSION)
 minimum_blocked_delay = 0.01  # Minimum delay required for two communications
 
 def port_init():
@@ -53,7 +53,9 @@ class servo_group():
                 return self.wrap_4_byte(value) 
 
 
-    def __init__(self,mode:int, id_list:list[int]):
+    def __init__(self,mode: int, portHandler: PortHandler, id_list: list[int]):
+        self.portHandler = portHandler
+        self.packetHandler = PacketHandler(PROTOCOL_VERSION)
         self.__mode = mode
         self.id_list = id_list
         self.__recent_mode = {id: mode for id in id_list}
@@ -73,18 +75,18 @@ class servo_group():
             self.addr_goal = ADDR_GOAL_PWM            
             self.size_goal = SIZE_GOAL_PWM
 
-        self.mode_writer = GroupSyncWrite(portHandler, packetHandler, ADDR_OPERATING_MODE, SIZE_OPERATING_MODE)
-        self.torque_writer = GroupSyncWrite(portHandler, packetHandler, ADDR_TORQUE_ENABLE, SIZE_TORQUE_ENABLE)
-        self.goal_writer = GroupSyncWrite(portHandler, packetHandler, self.addr_goal,self.size_goal)
+        self.mode_writer = GroupSyncWrite(self.portHandler, self.packetHandler, ADDR_OPERATING_MODE, SIZE_OPERATING_MODE)
+        self.torque_writer = GroupSyncWrite(self.portHandler, self.packetHandler, ADDR_TORQUE_ENABLE, SIZE_TORQUE_ENABLE)
+        self.goal_writer = GroupSyncWrite(self.portHandler, self.packetHandler, self.addr_goal,self.size_goal)
 
-        self.mode_reader = GroupSyncRead(portHandler, packetHandler, ADDR_OPERATING_MODE, SIZE_OPERATING_MODE)
-        self.torque_status_reader = GroupSyncRead(portHandler, packetHandler, ADDR_TORQUE_ENABLE, SIZE_TORQUE_ENABLE)
-        self.position_reader = GroupSyncRead(portHandler, packetHandler, ADDR_PRESENT_POSITION, SIZE_PRESENT_POSITION)
-        self.velocity_reader = GroupSyncRead(portHandler, packetHandler, ADDR_PRESENT_VELOCITY, SIZE_PRESENT_VELOCITY)
-        self.pwm_reader = GroupSyncRead(portHandler, packetHandler, ADDR_PRESENT_PWM, SIZE_PRESENT_PWM)
-        self.temperature_reader = GroupSyncRead(portHandler, packetHandler, ADDR_PRESENT_TEMPERATURE, SIZE_PRESENT_TEMPERATURE)
-        self.current_reader = GroupSyncRead(portHandler,packetHandler, ADDR_PRESENT_CURRENT, SIZE_PRESENT_CURRENT) 
-        self.voltage_reader = GroupSyncRead(portHandler, packetHandler, ADDR_PRESENT_INPUT_VOLTAGE, SIZE_PRESENT_INPUT_VOLTAGE)
+        self.mode_reader = GroupSyncRead(self.portHandler, self.packetHandler, ADDR_OPERATING_MODE, SIZE_OPERATING_MODE)
+        self.torque_status_reader = GroupSyncRead(self.portHandler, self.packetHandler, ADDR_TORQUE_ENABLE, SIZE_TORQUE_ENABLE)
+        self.position_reader = GroupSyncRead(self.portHandler, self.packetHandler, ADDR_PRESENT_POSITION, SIZE_PRESENT_POSITION)
+        self.velocity_reader = GroupSyncRead(self.portHandler, self.packetHandler, ADDR_PRESENT_VELOCITY, SIZE_PRESENT_VELOCITY)
+        self.pwm_reader = GroupSyncRead(self.portHandler, self.packetHandler, ADDR_PRESENT_PWM, SIZE_PRESENT_PWM)
+        self.temperature_reader = GroupSyncRead(self.portHandler, self.packetHandler, ADDR_PRESENT_TEMPERATURE, SIZE_PRESENT_TEMPERATURE)
+        self.current_reader = GroupSyncRead(self.portHandler, self.packetHandler, ADDR_PRESENT_CURRENT, SIZE_PRESENT_CURRENT) 
+        self.voltage_reader = GroupSyncRead(self.portHandler, self.packetHandler, ADDR_PRESENT_INPUT_VOLTAGE, SIZE_PRESENT_INPUT_VOLTAGE)
 
 
         for id in self.id_list:
@@ -166,7 +168,7 @@ class servo_group():
             self.addr_goal = ADDR_GOAL_PWM            
             self.size_goal = SIZE_GOAL_PWM
 
-        self.goal_writer = GroupSyncWrite(portHandler, packetHandler, self.addr_goal,self.size_goal)
+        self.goal_writer = GroupSyncWrite(self.portHandler, packetHandler, self.addr_goal,self.size_goal)
         self.__apply_blocked_delay(minimum_blocked_delay) 
 
         for id in self.id_list:
