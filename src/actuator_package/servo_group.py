@@ -3,7 +3,6 @@ from .xl330_constant import *
 from .dynamixel_sdk import *
 
 portHandler = PortHandler(DEVICENAME)  
-# packetHandler = PacketHandler(PROTOCOL_VERSION)
 minimum_blocked_delay = 0.01  # Minimum delay required for two communications
 
 def port_init():
@@ -168,7 +167,7 @@ class servo_group():
             self.addr_goal = ADDR_GOAL_PWM            
             self.size_goal = SIZE_GOAL_PWM
 
-        self.goal_writer = GroupSyncWrite(self.portHandler, packetHandler, self.addr_goal,self.size_goal)
+        self.goal_writer = GroupSyncWrite(self.portHandler, self.packetHandler, self.addr_goal,self.size_goal)
         self.__apply_blocked_delay(minimum_blocked_delay) 
 
         for id in self.id_list:
