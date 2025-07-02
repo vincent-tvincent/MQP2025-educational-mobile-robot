@@ -2,7 +2,7 @@ from .robot_constant import *
 from qwiic_icm20948 import *
 import time
 import sys
-
+import numpy
 
 # def runExample():
 
@@ -35,8 +35,10 @@ import sys
 	# 		print("Waiting for data")
 	# 		time.sleep(0.5)
 imu_caliberation_samples = 1000
+imu_lowpass_samples = 10
 imu_caliberation_repeat_times = 5
-gravity = 16384
+imu_gravity = 16384
+
 class imu_icm20948_qwiic():
     def __init__(self): 
         self.imu = QwiicIcm20948()
@@ -45,7 +47,7 @@ class imu_icm20948_qwiic():
             self.imu.begin()
         else:
             raise ConnectionError("imu fail to connect")
-
+        self.imu_generator = self.__create_imu_generator()
 
     def update_imu(self):
         if self.imu.dataReady():
@@ -53,16 +55,40 @@ class imu_icm20948_qwiic():
         return self.imu.dataReady()
 
 
-    def read_imu(self) -> dict:
+    def read_raw_imu(self) -> dict:
         output = {}
         if IMU_ACCELERATION_ENABLE:
-            output[IMU_ACCELERATION_NAME] = [self.imu.axRaw - self.ax_b, self.imu.ayRaw - self.ay_b, self.imu.azRaw - self.az_b]
+            output[IMU_ACCELERATION_NAME] = numpy.array([self.imu.axRaw - self.ax_b, self.imu.ayRaw - self.ay_b, self.imu.azRaw - self.az_b])
         if IMU_GYROSCOPE_ENABLE:
-            output[IMU_GYROSCOPE_NAME] = [self.imu.gxRaw - self.gx_b, self.imu.gyRaw - self.gy_b, self.imu.gzRaw - self.gz_b]
+            output[IMU_GYROSCOPE_NAME] = numpy.array([self.imu.gxRaw - self.gx_b, self.imu.gyRaw - self.gy_b, self.imu.gzRaw - self.gz_b])
         if IMU_MEGNETIC_ENABLE:
-            output[IMU_MEGNETIC_NAME] = [self.imu.axRaw - self.mx_b, self.imu.ayRaw - self.my_b, self.imu.azRaw - self.mz_b]
+            output[IMU_MEGNETIC_NAME] = numpy.array([self.imu.mxRaw - self.mx_b, self.imu.myRaw - self.my_b, self.imu.mzRaw - self.mz_b])
         return output
 
+
+    def __create_imu_generator(self):
+        def imu_generator():
+            while True:
+                output_a = numpy.zeros(3)
+                output_g = numpy.zeros(3)
+                output_m = numpy.zeros(3)
+                output = {IMU_ACCELERATION_NAME: output_a, IMU_GYROSCOPE_NAME: output_g, IMU_MEGNETIC_NAME: output_m}
+                for i in range(imu_lowpass_samples):
+                    while not self.update_imu():
+                        pass        
+                    new_read_value = self.read_raw_imu()
+                    for key in output.keys():
+                        output[key] = output[key] + new_read_value[key]
+                for key in output.keys():
+                        output[key] /= imu_lowpass_samples
+                yield output
+        return imu_generator
+
+
+    def read_imu(self):
+        return self.imu_generator().__next__()
+                   
+        
     def __single_caliberation(self): 
         print("imu caliberating")
         gx, gy, gz, ax, ay, az = 0, 0, 0, 0, 0, 0
@@ -70,10 +96,10 @@ class imu_icm20948_qwiic():
         for i in range(imu_caliberation_samples):
             while not self.update_imu():
                 pass
-            raw_data = self.read_imu()
+            raw_data = self.read_raw_imu()
             ax += raw_data[IMU_ACCELERATION_NAME][0]
             ay += raw_data[IMU_ACCELERATION_NAME][1]
-            az += raw_data[IMU_ACCELERATION_NAME][2] + gravity 
+            az += raw_data[IMU_ACCELERATION_NAME][2] + imu_gravity 
 
             gx += raw_data[IMU_GYROSCOPE_NAME][0]
             gy += raw_data[IMU_GYROSCOPE_NAME][1]
@@ -94,8 +120,9 @@ class imu_icm20948_qwiic():
         self.ax_b += ax
         self.ay_b += ay
         self.az_b += az
-        print("imu caliberationg complete")
+        print("imu caliberation complete")
     
+
     def caliberation(self):
         for i in range(imu_caliberation_repeat_times):
             print("caliberation " + str(i))

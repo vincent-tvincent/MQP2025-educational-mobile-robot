@@ -22,8 +22,20 @@ import math
 # 	imu.update_imu()
 # 	print(imu.read_imu())
 # 	time.sleep(1)
-
+def scan_test():
+  time.sleep(0.5)
+  data = lidar.scan_around()
+  for i in data.keys():
+    if data[i][LIDAR_START_FLAG_NAME]:
+       print(str(i) + " " + str(data[i]))
+       
 lidar = lidar_c1()
+lidar.start_scan()
+for i in range(5):
+  scan_test()
+time.sleep(0.5)
+lidar.stop_scan()
+
 
 
 

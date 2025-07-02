@@ -49,7 +49,8 @@ class servo_group():
             case 2:
                 return self.wrap_2_byte(value)
             case 4:
-                return self.wrap_4_byte(value) 
+                return self.wrap_4_byte(value)
+        raise ValueError("not a byte")
 
 
     def __init__(self,mode: int, portHandler: PortHandler, id_list: list[int]):
@@ -59,7 +60,7 @@ class servo_group():
         self.id_list = id_list
         self.__recent_mode = {id: mode for id in id_list}
         self.__feedback_data = {}
-        self.enable_blocked_delay = True
+        self.blocked_delay: bool = True
 
         if mode == MODE_POSITION:
             self.addr_goal = ADDR_GOAL_POSITION
@@ -110,15 +111,15 @@ class servo_group():
 
 
     def enable_blocked_delay(self):
-        self.enable_blocked_delay = True
+        self.blocked_delay = True
 
 
     def disable_blocked_delay(self):
-        self.enable_blocked_delay = False
+        self.blocked_delay = False
 
 
     def __apply_blocked_delay(self, second: float):
-        if self.enable_blocked_delay:
+        if self.blocked_delay:
             time.sleep(second)
 
     def set_torque_status(self, status:int):
@@ -129,7 +130,7 @@ class servo_group():
         return torque_result
 
 
-    def set_goals(self, values:int):
+    def set_goals(self, values:list[int]):
         for i in range(len(self.id_list)):
             self.goal_writer.changeParam(self.id_list[i], self.wrap_byte(values[i],self.size_goal))
         goal_result = self.goal_writer.txPacket()
@@ -148,7 +149,7 @@ class servo_group():
                 modes.append(mode)
             return modes
         else:
-            return None
+            return []
         
 
     def set_mode(self, mode:int):

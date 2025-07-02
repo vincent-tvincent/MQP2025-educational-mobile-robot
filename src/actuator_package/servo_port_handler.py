@@ -1,6 +1,7 @@
 
 from .dynamixel_sdk import PortHandler
-def port_init(device_name:str, budrate: int = 115200) -> PortHandler:
+from .robot_constant import DEVICENAME
+def port_init(device_name:str = DEVICENAME, budrate: int = 115200) -> PortHandler:
     portHandler = PortHandler(device_name)
     print('initializing communication')
     port_open = portHandler.openPort()
