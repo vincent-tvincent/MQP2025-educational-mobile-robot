@@ -1,6 +1,7 @@
 # from  actuator_package.servo_group import port_init, port_open, port_close
 from actuator_package.robot_constant import *
 from actuator_package.servo_port_handler import *
+from localization_package.lidar_driver import *
 from localization_package.imu_driver import *
 from chassis_drive import chassis_4wdiff
 from gimbal_drive import gimbal_yaw_pitch
@@ -12,15 +13,18 @@ import math
 # port_open(portHandler)
   # Adjust the device name as needed
 
-imu = imu_icm20948_qwiic()
-for i in range(1):
-	print(i)
-	imu.caliberation()
+# imu = imu_icm20948_qwiic()
+# for i in range(1):
+# 	print(i)
+# 	imu.caliberation()
 
-while(True):
-	imu.update_imu()
-	print(imu.read_imu())
-	time.sleep(1)
+# while(True):
+# 	imu.update_imu()
+# 	print(imu.read_imu())
+# 	time.sleep(1)
+
+lidar = lidar_c1()
+
 
 
 # chassis = chassis_4wdiff(portHandler)

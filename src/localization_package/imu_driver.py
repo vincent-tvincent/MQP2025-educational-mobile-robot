@@ -94,7 +94,6 @@ class imu_icm20948_qwiic():
         self.ax_b += ax
         self.ay_b += ay
         self.az_b += az
-        print(self.az_b)
         print("imu caliberationg complete")
     
     def caliberation(self):
