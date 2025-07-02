@@ -13,28 +13,31 @@ import math
 # port_open(portHandler)
   # Adjust the device name as needed
 
-imu = imu_icm20948_qwiic()
-for i in range(1):
-	print(i)
-	imu.caliberation()
+# imu = imu_icm20948_qwiic()
+# for i in range(1):
+# 	print(i)
+# 	imu.caliberation()
 
-while(True):
-	imu.update_imu()
-	print(imu.read_imu())
-	time.sleep(1)
-# def scan_test():
-#   time.sleep(0.5)
-#   data = lidar.scan_around()
-#   for i in data.keys():
-#     if data[i][LIDAR_START_FLAG_NAME]:
-#        print(str(i) + " " + str(data[i]))
+# while(True):
+# 	imu.update_imu()
+# 	print(imu.read_imu())
+# 	time.sleep(1)
+
+def scan_test():
+  time.sleep(0.5)
+  data = lidar.scan_around()
+  for i in data.keys():
+    if data[i][LIDAR_START_FLAG_NAME]:
+       print(str(i) + " " + str(data[i]))
        
-# lidar = lidar_c1()
-# lidar.start_scan()
-# for i in range(5):
-#   scan_test()
-# time.sleep(0.5)
+lidar = lidar_c1()
 # lidar.stop_scan()
+lidar.start_scan()
+
+for i in range(3):
+  scan_test()
+time.sleep(0.5)
+lidar.stop_scan()
 
 
 

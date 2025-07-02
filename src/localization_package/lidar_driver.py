@@ -16,18 +16,27 @@ class lidar_c1():
         self.lidar.stop()
 
 
+    def get_single_scan(self) -> tuple[float, dict]:
+        next_scan = self.lidar_generator().__next__()
+        return self.__process_single_scan(next_scan)
+
+    
+    def __process_single_scan(self, raw: PyRPlidarMeasurement) -> tuple[float, dict]:
+        value = {}
+        if LIDAR_DISTANCE_ENABLE:
+            value[LIDAR_DISTANCE_NAME] = raw.distance
+        if LIDAR_QUALITY_ENABLE: 
+            value[LIDAR_QUALITY_NAME] = raw.quality
+        if LIDAR_START_FLAG_ENABLE:
+            value[LIDAR_START_FLAG_NAME] = raw.start_flag
+        return raw.angle, value
+
+        
     def scan_around(self) -> dict:
         scans = {} 
         for i in range(LIDAR_SAMPLE_PER_CIRCLE):
-            next_scan = self.lidar_generator().__next__()
-            value = {}
-            if LIDAR_DISTANCE_ENABLE:
-                value[LIDAR_DISTANCE_NAME] = next_scan.distance
-            if LIDAR_QUALITY_ENABLE: 
-                value[LIDAR_QUALITY_NAME] = next_scan.quality
-            if LIDAR_START_FLAG_ENABLE:
-                value[LIDAR_START_FLAG_NAME] = next_scan.start_flag
-            scans[next_scan.angle] = value
+            angle, value = self.get_single_scan()
+            scans[angle] = value
         return scans
 
 
