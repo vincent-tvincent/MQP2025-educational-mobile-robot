@@ -35,8 +35,8 @@ import numpy
 	# 		print("Waiting for data")
 	# 		time.sleep(0.5)
 imu_caliberation_samples = 1000
-imu_lowpass_samples = 10
-imu_caliberation_repeat_times = 5
+imu_lowpass_samples = 400
+imu_caliberation_repeat_times = 2
 imu_gravity = 16384
 
 class imu_icm20948_qwiic():
@@ -45,6 +45,7 @@ class imu_icm20948_qwiic():
         self.ax_b, self.ay_b, self.az_b, self.gx_b, self.gy_b, self.gz_b, self.mx_b, self.my_b, self.mz_b = 0,0,0,0,0,0,0,0,0
         if self.imu.connected:
             self.imu.begin()
+            self.imu.getAgmt()
         else:
             raise ConnectionError("imu fail to connect")
         self.imu_generator = self.__create_imu_generator()
@@ -92,7 +93,7 @@ class imu_icm20948_qwiic():
     def __single_caliberation(self): 
         print("imu caliberating")
         gx, gy, gz, ax, ay, az = 0, 0, 0, 0, 0, 0
-        self.update_imu()
+        self.imu.getAgmt()
         for i in range(imu_caliberation_samples):
             while not self.update_imu():
                 pass
