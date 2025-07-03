@@ -5,7 +5,7 @@ package_name = 'actuator_nodes'
 setup(
     name=package_name,
     version='0.0.0',
-    packages=find_packages(exclude=['test']),
+    packages=find_packages(exclude=['test'], include=[package_name, f"{package_name}.*"]),
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -16,7 +16,7 @@ setup(
     maintainer='pipi',
     maintainer_email='vincent.pu@outlook.com',
     description='TODO: Package description',
-    license='TODO: License declaration',
+    license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
