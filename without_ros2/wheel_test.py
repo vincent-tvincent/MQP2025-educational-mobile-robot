@@ -10,13 +10,13 @@ import time
 import math
 import numpy
 
-camera = webcam_ub0240()
+# camera = webcam_ub0240()
 
-success, frame = camera.capture_single_image()
-print(frame.shape)
+# success, frame = camera.capture_single_image()
+# print(frame.shape)
 
-result = camera.capture_mutable_image(10,0.5)
-print(result)
+# result = camera.capture_mutable_image(10,0.5)
+# print(result)
 
 # portHandler = port_init(DEVICENAME, BAUDRATE)
 
@@ -33,22 +33,22 @@ print(result)
 # 	print(imu.read_imu())
 # 	time.sleep(1)
 
-# def scan_test():
-#   time.sleep(0.5)
-#   data = lidar.scan_around()
-#   for i in data.keys():
-#     if data[i][LIDAR_START_FLAG_NAME]:
-#        print(str(i) + " " + str(data[i]))
+def scan_test():
+  time.sleep(0.5)
+  data = lidar.scan_around()
+  for i in data.keys():
+    if data[i][LIDAR_START_FLAG_NAME]:
+       print(str(i) + " " + str(data[i]))
 
        
-# lidar = lidar_c1()
-# # lidar.stop_scan()
-# lidar.start_scan()
-
-# for i in range(3):
-#   scan_test()
-# time.sleep(0.5)
+lidar = lidar_c1()
 # lidar.stop_scan()
+lidar.start_scan()
+
+for i in range(3):
+  scan_test()
+time.sleep(0.5)
+lidar.stop_scan()
 
 
 
