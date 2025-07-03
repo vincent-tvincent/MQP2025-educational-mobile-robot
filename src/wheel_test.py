@@ -3,10 +3,20 @@ from actuator_package.robot_constant import *
 from actuator_package.servo_port_handler import *
 from localization_package.lidar_driver import *
 from localization_package.imu_driver import *
+from computer_vision_package.webcam_driver import *
 from chassis_drive import chassis_4wdiff
 from gimbal_drive import gimbal_yaw_pitch
 import time
 import math
+import numpy
+
+camera = webcam_ub0240()
+
+success, frame = camera.capture_single_image()
+print(frame.shape)
+
+result = camera.capture_mutable_image(10,0.5)
+print(result)
 
 # portHandler = port_init(DEVICENAME, BAUDRATE)
 
@@ -23,21 +33,22 @@ import math
 # 	print(imu.read_imu())
 # 	time.sleep(1)
 
-def scan_test():
-  time.sleep(0.5)
-  data = lidar.scan_around()
-  for i in data.keys():
-    if data[i][LIDAR_START_FLAG_NAME]:
-       print(str(i) + " " + str(data[i]))
-       
-lidar = lidar_c1()
-# lidar.stop_scan()
-lidar.start_scan()
+# def scan_test():
+#   time.sleep(0.5)
+#   data = lidar.scan_around()
+#   for i in data.keys():
+#     if data[i][LIDAR_START_FLAG_NAME]:
+#        print(str(i) + " " + str(data[i]))
 
-for i in range(3):
-  scan_test()
-time.sleep(0.5)
-lidar.stop_scan()
+       
+# lidar = lidar_c1()
+# # lidar.stop_scan()
+# lidar.start_scan()
+
+# for i in range(3):
+#   scan_test()
+# time.sleep(0.5)
+# lidar.stop_scan()
 
 
 
