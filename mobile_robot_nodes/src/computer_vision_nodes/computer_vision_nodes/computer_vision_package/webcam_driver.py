@@ -9,6 +9,8 @@ class webcam_ub0240():
         self.camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
         self.camera.set(cv2.CAP_PROP_FRAME_WIDTH, CAMERA_FRAME_WIDTH)
         self.camera.set(cv2.CAP_PROP_FRAME_HEIGHT, CAMERA_FRAME_HEIGHT)
+        self.frame_height = CAMERA_FRAME_HEIGHT
+        self.frame_width = CAMERA_FRAME_WIDTH
         self.fov = CAMERA_FOV
         self.image_generator = self.__create_image_generator()
     
