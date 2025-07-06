@@ -1,0 +1,15 @@
+[1.974s] Invoking command in '/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/localization_nodes': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/localization_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/localization_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/localization_nodes/build --no-deps symlink_data
+[2.494s] running develop
+[2.780s] running egg_info
+[2.806s] writing localization_nodes.egg-info/PKG-INFO
+[2.808s] writing dependency_links to localization_nodes.egg-info/dependency_links.txt
+[2.808s] writing requirements to localization_nodes.egg-info/requires.txt
+[2.809s] writing top-level names to localization_nodes.egg-info/top_level.txt
+[2.868s] reading manifest file 'localization_nodes.egg-info/SOURCES.txt'
+[2.868s] writing manifest file 'localization_nodes.egg-info/SOURCES.txt'
+[2.899s] running build_ext
+[2.900s] Creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/localization_nodes/lib/python3.12/site-packages/localization-nodes.egg-link (link to .)
+[2.900s] 
+[2.901s] Installed /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/localization_nodes
+[2.901s] running symlink_data
+[3.049s] Invoked command in '/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/localization_nodes' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/localization_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/localization_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/localization_nodes/build --no-deps symlink_data

@@ -1,0 +1,13 @@
+running develop
+running egg_info
+writing localization_nodes.egg-info/PKG-INFO
+writing dependency_links to localization_nodes.egg-info/dependency_links.txt
+writing requirements to localization_nodes.egg-info/requires.txt
+writing top-level names to localization_nodes.egg-info/top_level.txt
+reading manifest file 'localization_nodes.egg-info/SOURCES.txt'
+writing manifest file 'localization_nodes.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/localization_nodes/lib/python3.12/site-packages/localization-nodes.egg-link (link to .)
+
+Installed /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/localization_nodes
+running symlink_data

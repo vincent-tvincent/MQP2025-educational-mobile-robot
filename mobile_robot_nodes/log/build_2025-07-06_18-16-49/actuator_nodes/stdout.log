@@ -1,0 +1,15 @@
+running develop
+running egg_info
+writing actuator_nodes.egg-info/PKG-INFO
+writing dependency_links to actuator_nodes.egg-info/dependency_links.txt
+writing entry points to actuator_nodes.egg-info/entry_points.txt
+writing requirements to actuator_nodes.egg-info/requires.txt
+writing top-level names to actuator_nodes.egg-info/top_level.txt
+reading manifest file 'actuator_nodes.egg-info/SOURCES.txt'
+writing manifest file 'actuator_nodes.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/actuator_nodes/lib/python3.12/site-packages/actuator-nodes.egg-link (link to .)
+Installing actuation_node script to /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/actuator_nodes/lib/actuator_nodes
+
+Installed /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/actuator_nodes
+running symlink_data
