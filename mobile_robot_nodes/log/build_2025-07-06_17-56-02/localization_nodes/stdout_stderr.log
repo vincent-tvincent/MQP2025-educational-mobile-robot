@@ -1,0 +1,20 @@
+running develop
+running egg_info
+creating localization_nodes.egg-info
+writing localization_nodes.egg-info/PKG-INFO
+writing dependency_links to localization_nodes.egg-info/dependency_links.txt
+writing requirements to localization_nodes.egg-info/requires.txt
+writing top-level names to localization_nodes.egg-info/top_level.txt
+writing manifest file 'localization_nodes.egg-info/SOURCES.txt'
+reading manifest file 'localization_nodes.egg-info/SOURCES.txt'
+writing manifest file 'localization_nodes.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/localization_nodes/lib/python3.12/site-packages/localization-nodes.egg-link (link to .)
+
+Installed /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/localization_nodes
+running symlink_data
+creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/localization_nodes/share/ament_index
+creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/localization_nodes/share/ament_index/resource_index
+creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/localization_nodes/share/ament_index/resource_index/packages
+symbolically linking /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/localization_nodes/resource/localization_nodes -> /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/localization_nodes/share/ament_index/resource_index/packages
+symbolically linking /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/localization_nodes/package.xml -> /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/localization_nodes/share/localization_nodes

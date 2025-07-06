@@ -5,28 +5,29 @@ from .dynamixel_sdk import *
 portHandler = PortHandler(DEVICENAME)  
 minimum_blocked_delay = 0.01  # Minimum delay required for two communications
 
-def port_init():
-    print('initializing communication')
-    port_open = portHandler.openPort()
-    if port_open:
-        print('port opened, device name: ' + portHandler.getPortName())
-        baudrate_avaliable = portHandler.setBaudRate(BAUDRATE)
-        if baudrate_avaliable != -1:
-            print('baudrate setted, value: ' + str(portHandler.getBaudRate()))
+# def port_init():
+#     print('initializing communication')
+#     port_open = portHandler.openPort()
+#     if port_open:
+#         print('port opened, device name: ' + portHandler.getPortName())
+#         baudrate_avaliable = portHandler.setBaudRate(BAUDRATE)
+#         if baudrate_avaliable != -1:
+#             print('baudrate setted, value: ' + str(portHandler.getBaudRate()))
+    
 
 
-def port_close():
-    print('closing port')
-    port_open = portHandler.closePort()
-    if not port_open:
-        print('port closed')
+# def port_close():
+#     print('closing port')
+#     port_open = portHandler.closePort()
+#     if not port_open:
+#         print('port closed')
 
 
-def port_open():
-    print('opening port')
-    port_open = portHandler.openPort()
-    if port_open:
-        print('port opened')
+# def port_open():
+#     print('opening port')
+#     port_open = portHandler.openPort()
+#     if port_open:
+#         print('port opened')
 
 
 class servo_group():

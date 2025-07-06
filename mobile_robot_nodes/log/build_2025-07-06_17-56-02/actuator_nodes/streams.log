@@ -1,0 +1,22 @@
+[2.274s] Invoking command in '/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/actuator_nodes': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/actuator_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/actuator_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/actuator_nodes/build --no-deps symlink_data
+[2.768s] running develop
+[3.094s] running egg_info
+[3.094s] creating actuator_nodes.egg-info
+[3.120s] writing actuator_nodes.egg-info/PKG-INFO
+[3.120s] writing dependency_links to actuator_nodes.egg-info/dependency_links.txt
+[3.120s] writing requirements to actuator_nodes.egg-info/requires.txt
+[3.121s] writing top-level names to actuator_nodes.egg-info/top_level.txt
+[3.121s] writing manifest file 'actuator_nodes.egg-info/SOURCES.txt'
+[3.173s] reading manifest file 'actuator_nodes.egg-info/SOURCES.txt'
+[3.174s] writing manifest file 'actuator_nodes.egg-info/SOURCES.txt'
+[3.205s] running build_ext
+[3.205s] Creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/actuator_nodes/lib/python3.12/site-packages/actuator-nodes.egg-link (link to .)
+[3.205s] 
+[3.206s] Installed /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/actuator_nodes
+[3.206s] running symlink_data
+[3.206s] creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/actuator_nodes/share/ament_index
+[3.206s] creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/actuator_nodes/share/ament_index/resource_index
+[3.207s] creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/actuator_nodes/share/ament_index/resource_index/packages
+[3.207s] symbolically linking /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/actuator_nodes/resource/actuator_nodes -> /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/actuator_nodes/share/ament_index/resource_index/packages
+[3.207s] symbolically linking /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/actuator_nodes/package.xml -> /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/actuator_nodes/share/actuator_nodes
+[3.343s] Invoked command in '/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/actuator_nodes' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/actuator_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/actuator_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/actuator_nodes/build --no-deps symlink_data

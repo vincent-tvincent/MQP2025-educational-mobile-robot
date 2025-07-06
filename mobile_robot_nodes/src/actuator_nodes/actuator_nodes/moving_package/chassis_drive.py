@@ -12,7 +12,7 @@ right_rear_wheel_id = 3
 # units: mm
 chassis_width = 118.5
 wheel_thinkness = 12
-wheel_diameter = 56.5
+wheel_diameter = 56
 m288_servo_max_rpm = 123
 m288_speed_unit = 0.229  # rpm per unit 
 left_direction = 1
@@ -26,8 +26,6 @@ speed_unit = m288_speed_unit * wheel_radius * 2 * math.pi / 60  # mm/s per unit
 
 class chassis_4wdiff:
     def __init__(self, portHandler: PortHandler):
-        # port_init()
-        # port_open()
         self.wheel_group = servo_group(MODE_VELOCITY, portHandler, [left_front_wheel_id,left_rear_wheel_id, right_front_wheel_id, right_rear_wheel_id])
         self.direction = [left_direction, left_direction, right_direction, right_direction]  # Direction for each wheel
 
@@ -52,9 +50,8 @@ class chassis_4wdiff:
         left_speed = (speed_matrix[0] - angular_to_linear_velocity) * left_direction
         right_speed = (speed_matrix[0] + angular_to_linear_velocity) * right_direction 
 
-        left_goal = int(left_speed / speed_unit)
-        right_goal = int(right_speed / speed_unit)
-        
+        left_goal = int(left_speed / wheel_radius / speed_unit)
+        right_goal = int(right_speed / wheel_radius / speed_unit)
         return self.wheel_group.set_goals([left_goal, left_goal, right_goal, right_goal]) 
 
 
