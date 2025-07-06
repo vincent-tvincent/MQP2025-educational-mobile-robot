@@ -1,0 +1,2 @@
+[console_scripts]
+gimbal_control = robot_control.gimbal_control:main
