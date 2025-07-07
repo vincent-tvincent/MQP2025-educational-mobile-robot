@@ -14,8 +14,8 @@ from std_msgs.msg import Int16
 
 node_name = 'robot_actuation'
 queue_size = 200
-chassis_publish_interval = 1 / 2
-gimbal_publish_interval = 1 / 2
+chassis_publish_interval = 1 / 1000
+gimbal_publish_interval = 1 / 1000
 
 chassis_goal_topic_name = 'goal_chassis'
 gimbal_goal_topic_name = 'goal_gimbal'
@@ -140,7 +140,7 @@ class actuation_node(Node):
         elif msg.data == 2:
             while result == COMM_PORT_BUSY:
                 result = self.gimbal.gimbal_zeroing()
-            print("here")
+            # print("here")
             time.sleep(0.5)
         self.set_lock = False
 
