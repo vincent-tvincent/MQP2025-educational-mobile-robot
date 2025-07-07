@@ -102,6 +102,7 @@ class actuation_node(Node):
 
 
     def set_chassis_goal(self, msg: Twist):
+        self.get_logger().info(f"receive goal{msg}")
         self.set_lock = True
         result = COMM_PORT_BUSY
         while result == COMM_PORT_BUSY:
@@ -157,8 +158,8 @@ class actuation_node(Node):
                 rf_wheel_velocity = feedback[FEEDBACK_VELOCITY_NAME][2]
                 rr_wheel_velocity = feedback[FEEDBACK_VELOCITY_NAME][3]
                 
-                l_eq_velocity = (lf_wheel_velocity + lr_wheel_velocity) / 2 * speed_unit * wheel_radius
-                r_eq_velocity = (rf_wheel_velocity + rr_wheel_velocity) / 2 * speed_unit * wheel_radius
+                l_eq_velocity = (lf_wheel_velocity + lr_wheel_velocity) / 2 * speed_unit
+                r_eq_velocity = (rf_wheel_velocity + rr_wheel_velocity) / 2 * speed_unit
                 
                 diff_eq_velocity = r_eq_velocity - l_eq_velocity
                 angular_velocity = diff_eq_velocity / rotation_diameter
