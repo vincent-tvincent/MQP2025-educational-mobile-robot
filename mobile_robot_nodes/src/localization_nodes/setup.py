@@ -21,6 +21,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'imu_node=localization_nodes.imu_node:main'
         ],
     },
 )

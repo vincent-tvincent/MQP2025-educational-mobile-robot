@@ -14,8 +14,8 @@ from std_msgs.msg import Int16
 
 node_name = 'robot_actuation'
 queue_size = 200
-chassis_publish_interval = 1 / 1000
-gimbal_publish_interval = 1 / 1000
+chassis_publish_interval = 1 / 500
+gimbal_publish_interval = 1 / 500
 
 chassis_goal_topic_name = 'goal_chassis'
 gimbal_goal_topic_name = 'goal_gimbal'

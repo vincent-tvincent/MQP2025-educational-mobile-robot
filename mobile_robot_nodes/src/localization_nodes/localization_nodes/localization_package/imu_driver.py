@@ -1,9 +1,10 @@
 from .robot_constant import *
 from qwiic_icm20948 import *
+
 import time
 import sys
 import numpy
-
+import math
 # def runExample():
 
 # 	print("\nSparkFun 9DoF ICM-20948 Sensor  Example 1\n")
@@ -35,16 +36,26 @@ import numpy
 	# 		print("Waiting for data")
 	# 		time.sleep(0.5)
 imu_caliberation_samples = 1000
-imu_lowpass_samples = 400
 imu_caliberation_repeat_times = 2
 imu_gravity = 16384
+imu_gyro_one_degree = 131
+imu_acc_lsb_max = imu_gravity * 2
+
+imu_g = 9806.65 # mm/s^2
+imu_acc_unit = imu_g / imu_gravity
+
+imu_gyro_unit_degree = 1 / imu_gyro_one_degree # degree/s 
+imu_gyro_unit_radian = imu_gyro_unit_degree * math.pi / 180
 
 class imu_icm20948_qwiic():
     def __init__(self): 
         self.imu = QwiicIcm20948()
         self.ax_b, self.ay_b, self.az_b, self.gx_b, self.gy_b, self.gz_b, self.mx_b, self.my_b, self.mz_b = 0,0,0,0,0,0,0,0,0
+        self.imu_lowpass_samples = 1
         if self.imu.connected:
             self.imu.begin()
+            self.imu.enableDlpfAccel(True)
+            self.imu.enableDlpfGyro(True)
             self.imu.getAgmt()
         else:
             raise ConnectionError("imu fail to connect")
@@ -74,14 +85,14 @@ class imu_icm20948_qwiic():
                 output_g = numpy.zeros(3)
                 output_m = numpy.zeros(3)
                 output = {IMU_ACCELERATION_NAME: output_a, IMU_GYROSCOPE_NAME: output_g, IMU_MEGNETIC_NAME: output_m}
-                for i in range(imu_lowpass_samples):
+                for i in range(self.imu_lowpass_samples):
                     while not self.update_imu():
                         pass        
                     new_read_value = self.read_raw_imu()
                     for key in output.keys():
-                        output[key] = output[key] + new_read_value[key]
+                        output[key] += new_read_value[key]
                 for key in output.keys():
-                        output[key] /= imu_lowpass_samples
+                        output[key] /= self.imu_lowpass_samples
                 yield output
         return imu_generator
 
@@ -129,7 +140,9 @@ class imu_icm20948_qwiic():
             print("caliberation " + str(i))
             self.__single_caliberation()
 
-         
+
+    def set_lowpass_samples(self, samples: int):
+        self.imu_lowpass_samples = samples 
         
             
 

@@ -2,9 +2,11 @@ package.xml
 setup.cfg
 setup.py
 localization_nodes/__init__.py
+localization_nodes/imu_node.py
 localization_nodes.egg-info/PKG-INFO
 localization_nodes.egg-info/SOURCES.txt
 localization_nodes.egg-info/dependency_links.txt
+localization_nodes.egg-info/entry_points.txt
 localization_nodes.egg-info/requires.txt
 localization_nodes.egg-info/top_level.txt
 localization_nodes.egg-info/zip-safe
