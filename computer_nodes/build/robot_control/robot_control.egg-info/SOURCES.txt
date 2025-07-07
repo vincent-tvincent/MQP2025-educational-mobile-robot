@@ -3,6 +3,7 @@ setup.cfg
 setup.py
 resource/robot_control
 robot_control/__init__.py
+robot_control/chassis_control.py
 robot_control/gimbal_control.py
 robot_control.egg-info/PKG-INFO
 robot_control.egg-info/SOURCES.txt

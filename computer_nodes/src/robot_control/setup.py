@@ -22,7 +22,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'gimbal_control = robot_control.gimbal_control:main'
+            'gimbal_control = robot_control.gimbal_control:main',
+            'chassis_control = robot_control.chassis_control:main'
         ],
     },
 )
