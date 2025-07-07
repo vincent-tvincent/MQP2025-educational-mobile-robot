@@ -1,66 +1,66 @@
 
-
 import rclpy
 from rclpy.node import Node
 
-from geometry_msgs.msg import Vector3
+from geometry_msgs.msg import Twist
 from std_msgs.msg import Int16
 
 import time
 
-node_name = 'gimbal_control'
+node_name = 'chassis_control'
 chassis_goal_topic_name = 'goal_chassis'
-gimbal_goal_topic_name = 'goal_gimbal'
 chassis_commend_topic_name = 'commend_chassis'
-gimbal_commend_topic_name = 'commend_gimbal'
+
 
 gimbal_feedback_euler_topic_name = 'feedback_euler_gimbal'
 
+chassis_goal_interval = 0.02 
 queue_size = 200
 
-class gimbal_control_node(Node): 
+
+class chassis_control_node(Node): 
     def __init__(self):
         super().__init__(node_name)
         
         # init publisher
         self.goal_publisher = self.create_publisher(
-            Vector3,
-            gimbal_goal_topic_name,
+            Twist,
+            chassis_goal_topic_name,
             queue_size
         )
 
         self.commend_publisher = self.create_publisher(
             Int16,
-            gimbal_commend_topic_name,
+            chassis_commend_topic_name,
             queue_size
         )
 
         # init subscriber 
         self.feedback_subscriber = self.create_subscription(
-            Vector3,
+            Twist,
             gimbal_feedback_euler_topic_name,
             self.handle_feedback,
             queue_size 
         )
 
-        self.test_timer = self.create_timer(
-            0.25,
-            self.test
+        self.goal_timer = self.create_timer(
+            chassis_goal_interval,
+            self.send_goal
         )
         self.t = 0.0
 
-    def test(self):
-        self.set_goal([self.t, self.t]) 
+    def send_goal(self):
+        self.set_goal([5.0 + self.t, 0.0]) 
         # self.set_commend(0)
-
-        self.t += 0.1
-                         
+        self.t += 0.5    
+        # while True:
+            # pass       
 
 
     def set_goal(self, goal: list[float]):
-        message = Vector3()
-        message.z = goal[0]
-        message.y = goal[1]
+        message = Twist()
+        message.linear.x = goal[0]
+        message.angular.z = goal[1]
         self.goal_publisher.publish(message) 
 
 
@@ -69,13 +69,13 @@ class gimbal_control_node(Node):
         message.data = commend
         self.commend_publisher.publish(message)
     
-    def handle_feedback(self, msg: Vector3):
-        print(f"recent feedback{msg.x}, {msg.y}, {msg.z}")
+    def handle_feedback(self, msg: Twist):
+        print(f"recent feedback{msg.linear.x}, {msg.angular.z}")
         
 
 def main(args=None):
     rclpy.init(args=args)
-    node = gimbal_control_node()
+    node = chassis_control_node()
     try:  
         rclpy.spin(node)
     except KeyboardInterrupt:

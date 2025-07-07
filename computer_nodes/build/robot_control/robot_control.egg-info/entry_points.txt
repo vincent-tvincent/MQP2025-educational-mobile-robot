@@ -1,2 +1,3 @@
 [console_scripts]
+chassis_control = robot_control.chassis_control:main
 gimbal_control = robot_control.gimbal_control:main
