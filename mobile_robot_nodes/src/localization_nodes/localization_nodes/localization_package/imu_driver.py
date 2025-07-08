@@ -35,7 +35,7 @@ import math
 	# 	else:
 	# 		print("Waiting for data")
 	# 		time.sleep(0.5)
-imu_caliberation_samples = 1000
+imu_caliberation_samples = 2500
 imu_caliberation_repeat_times = 2
 imu_gravity = 16384
 imu_gyro_one_degree = 131
@@ -51,7 +51,7 @@ class imu_icm20948_qwiic():
     def __init__(self): 
         self.imu = QwiicIcm20948()
         self.ax_b, self.ay_b, self.az_b, self.gx_b, self.gy_b, self.gz_b, self.mx_b, self.my_b, self.mz_b = 0,0,0,0,0,0,0,0,0
-        self.imu_lowpass_samples = 1
+        self.imu_lowpass_samples = 10
         if self.imu.connected:
             self.imu.begin()
             self.imu.enableDlpfAccel(True)
@@ -111,7 +111,7 @@ class imu_icm20948_qwiic():
             raw_data = self.read_raw_imu()
             ax += raw_data[IMU_ACCELERATION_NAME][0]
             ay += raw_data[IMU_ACCELERATION_NAME][1]
-            az += raw_data[IMU_ACCELERATION_NAME][2] + imu_gravity 
+            az += raw_data[IMU_ACCELERATION_NAME][2] - imu_gravity
 
             gx += raw_data[IMU_GYROSCOPE_NAME][0]
             gy += raw_data[IMU_GYROSCOPE_NAME][1]
@@ -142,6 +142,8 @@ class imu_icm20948_qwiic():
 
 
     def set_lowpass_samples(self, samples: int):
+        if samples < 1:
+            raise ValueError("must have at least 1 sample")
         self.imu_lowpass_samples = samples 
         
             

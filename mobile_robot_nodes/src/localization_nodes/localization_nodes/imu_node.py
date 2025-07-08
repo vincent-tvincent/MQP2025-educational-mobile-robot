@@ -9,7 +9,7 @@ from std_msgs.msg import Int32
 node_name = 'robot_imu'
 imu_feedback_publish_topic_name =  'feedback_imu'
 imu_lowpass_samples_topic_name = 'set_lowpass_samples_imu'
-imu_publish_interval = 1 / 500
+imu_publish_interval = 1 / 200
 queue_size = 200
 
 class imu_node(Node):
@@ -18,7 +18,7 @@ class imu_node(Node):
         self.frame_id = 0
         self.imu = imu_icm20948_qwiic()
         self.imu.caliberation()
-
+        self.imu.set_lowpass_samples(int(1125 * imu_publish_interval))
         self.imu_subscriber = self.create_subscription(
             Int32,
             imu_lowpass_samples_topic_name,
@@ -45,19 +45,20 @@ class imu_node(Node):
         message = Imu()
         
         for key in data.keys():
+            # x and y swapped for align with the direction of ros2 system 
             if key == IMU_ACCELERATION_NAME:
-                message.linear_acceleration.x = data[IMU_ACCELERATION_NAME][0] * imu_acc_unit
-                message.linear_acceleration.y = data[IMU_ACCELERATION_NAME][1] * imu_acc_unit
-                message.linear_acceleration.z = data[IMU_ACCELERATION_NAME][2] * imu_acc_unit
+                message.linear_acceleration.x = data[IMU_ACCELERATION_NAME][1] * imu_acc_unit
+                message.linear_acceleration.y = data[IMU_ACCELERATION_NAME][0] * imu_acc_unit
+                message.linear_acceleration.z = - data[IMU_ACCELERATION_NAME][2] * imu_acc_unit
             elif key == IMU_GYROSCOPE_NAME:
-                message.angular_velocity.x = data[IMU_GYROSCOPE_NAME][0] * imu_gyro_unit_radian
-                message.angular_velocity.y = data[IMU_GYROSCOPE_NAME][1] * imu_gyro_unit_radian
+                message.angular_velocity.x = data[IMU_GYROSCOPE_NAME][1] * imu_gyro_unit_radian
+                message.angular_velocity.y = data[IMU_GYROSCOPE_NAME][0] * imu_gyro_unit_radian
                 message.angular_velocity.z = data[IMU_GYROSCOPE_NAME][2] * imu_gyro_unit_radian 
                 
         message.header.frame_id = str(self.frame_id)
         message.header.stamp = self.get_clock().now().to_msg()
         self.frame_id += 1
-        self.get_logger().info(f'{message.header.frame_id} , {message.angular_velocity.y}')
+        # self.get_logger().info(f'{message.header.frame_id} , {message.angular_velocity.y}')
         self.imu_publisher.publish(message)
 
 
