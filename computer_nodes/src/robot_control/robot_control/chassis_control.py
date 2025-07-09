@@ -12,9 +12,8 @@ chassis_goal_topic_name = 'goal_chassis'
 chassis_commend_topic_name = 'commend_chassis'
 
 
-gimbal_feedback_euler_topic_name = 'feedback_euler_gimbal'
-
-chassis_goal_interval = 0.02 
+chassis_feedback_euler_topic_name = 'feedback_twist_chassis'
+ 
 queue_size = 200
 
 
@@ -38,7 +37,7 @@ class chassis_control_node(Node):
         # init subscriber 
         self.feedback_subscriber = self.create_subscription(
             Twist,
-            gimbal_feedback_euler_topic_name,
+            chassis_feedback_euler_topic_name,
             self.handle_feedback,
             queue_size 
         )
@@ -50,7 +49,7 @@ class chassis_control_node(Node):
         self.t = 0.0
 
     def send_goal(self):
-        self.set_goal([5.0 + self.t, 0.0]) 
+        self.set_goal([0.0, 0.0]) 
         # self.set_commend(0)
         self.t += 0.5    
         # while True:
