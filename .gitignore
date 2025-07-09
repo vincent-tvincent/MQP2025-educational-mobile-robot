@@ -1,7 +1,27 @@
-# Ignore build artifacts
-/build/
-/install/
-/**/CMakeFiles/
-/**/*.o
+
+# Ignore ROS2 colcon build and install directories
+**/build/
+**/install/
+**/log/
+
+# Ignore CMake-generated files
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/Makefile
+
+# Ignore compiled Python files
+**/__pycache__/
+**/*.pyc
+
+# Ignore shared libraries and object files
 **/*.so
+**/*.o
+**/*.a
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.swp
+*.swo
 
