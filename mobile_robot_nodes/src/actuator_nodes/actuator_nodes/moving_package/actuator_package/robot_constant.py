@@ -1,5 +1,6 @@
 # ========= Communication Setup ========
 DEVICENAME = '/dev/ttyUSB0'  # Serial port for communication
+# DEVICENAME = '/dev/ttyUSB1'  # Serial port for communication
 BAUDRATE = 115200
 
 # ========= Feedback Switch & Index =========

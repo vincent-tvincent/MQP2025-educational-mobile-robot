@@ -29,4 +29,5 @@ actuator_nodes/moving_package/actuator_package/dynamixel_sdk/port_handler.py
 actuator_nodes/moving_package/actuator_package/dynamixel_sdk/protocol1_packet_handler.py
 actuator_nodes/moving_package/actuator_package/dynamixel_sdk/protocol2_packet_handler.py
 actuator_nodes/moving_package/actuator_package/dynamixel_sdk/robotis_def.py
+launch/launch_robot.py
 resource/actuator_nodes

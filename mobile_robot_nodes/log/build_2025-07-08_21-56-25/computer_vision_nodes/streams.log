@@ -1,0 +1,15 @@
+[2.452s] Invoking command in '/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/computer_vision_nodes': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/computer_vision_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/computer_vision_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/computer_vision_nodes/build --no-deps symlink_data
+[2.947s] running develop
+[3.229s] running egg_info
+[3.256s] writing computer_vision_nodes.egg-info/PKG-INFO
+[3.256s] writing dependency_links to computer_vision_nodes.egg-info/dependency_links.txt
+[3.257s] writing requirements to computer_vision_nodes.egg-info/requires.txt
+[3.257s] writing top-level names to computer_vision_nodes.egg-info/top_level.txt
+[3.312s] reading manifest file 'computer_vision_nodes.egg-info/SOURCES.txt'
+[3.314s] writing manifest file 'computer_vision_nodes.egg-info/SOURCES.txt'
+[3.342s] running build_ext
+[3.342s] Creating /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/computer_vision_nodes/lib/python3.12/site-packages/computer-vision-nodes.egg-link (link to .)
+[3.345s] 
+[3.346s] Installed /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/computer_vision_nodes
+[3.346s] running symlink_data
+[3.507s] Invoked command in '/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/computer_vision_nodes' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/computer_vision_nodes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/install/computer_vision_nodes/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/pipi/ros2_projects/workspaces/mobile_robot/mobile_robot_nodes/build/computer_vision_nodes/build --no-deps symlink_data

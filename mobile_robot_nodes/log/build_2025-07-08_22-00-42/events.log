@@ -1,0 +1,18 @@
+[0.000000] (-) TimerEvent: {}
+[0.000244] (actuator_nodes) JobQueued: {'identifier': 'actuator_nodes', 'dependencies': OrderedDict()}
+[0.000441] (computer_vision_nodes) JobQueued: {'identifier': 'computer_vision_nodes', 'dependencies': OrderedDict()}
+[0.000730] (localization_nodes) JobQueued: {'identifier': 'localization_nodes', 'dependencies': OrderedDict()}
+[0.000755] (actuator_nodes) JobStarted: {'identifier': 'actuator_nodes'}
+[0.011408] (computer_vision_nodes) JobStarted: {'identifier': 'computer_vision_nodes'}
+[0.018884] (localization_nodes) JobStarted: {'identifier': 'localization_nodes'}
+[0.099696] (-) TimerEvent: {}
+[0.200024] (-) TimerEvent: {}
+[0.300368] (-) TimerEvent: {}
+[0.346659] (actuator_nodes) StderrLine: {'line': b'Traceback (most recent call last):\n  File "/usr/lib/python3/dist-packages/colcon_core/executor/__init__.py", line 91, in __call__\n    rc = await self.task(*args, **kwargs)\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/colcon_core/task/__init__.py", line 93, in __call__\n    return await task_method(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/colcon_ros/task/ament_python/build.py", line 54, in build\n    data_files = get_data_files_mapping(\n                 ^^^^^^^^^^^^^^^^^^^^^^^\n  File "/usr/lib/python3/dist-packages/colcon_core/task/python/__init__.py", line 46, in get_data_files_mapping\n    assert not os.path.isabs(data_file)\n               ^^^^^^^^^^^^^^^^^^^^^^^^\n  File "<frozen posixpath>", line 62, in isabs\nTypeError: expected str, bytes or os.PathLike object, not list\n'}
+[0.347717] (actuator_nodes) JobEnded: {'identifier': 'actuator_nodes', 'rc': 1}
+[0.400478] (-) TimerEvent: {}
+[0.500782] (-) TimerEvent: {}
+[0.601112] (-) TimerEvent: {}
+[0.678236] (computer_vision_nodes) JobEnded: {'identifier': 'computer_vision_nodes', 'rc': 'SIGINT'}
+[0.678875] (localization_nodes) JobEnded: {'identifier': 'localization_nodes', 'rc': 'SIGINT'}
+[0.688910] (-) EventReactorShutdown: {}

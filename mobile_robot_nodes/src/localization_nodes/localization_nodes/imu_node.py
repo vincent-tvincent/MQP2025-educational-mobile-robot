@@ -55,7 +55,7 @@ class imu_node(Node):
                 message.angular_velocity.y = data[IMU_GYROSCOPE_NAME][0] * imu_gyro_unit_radian
                 message.angular_velocity.z = data[IMU_GYROSCOPE_NAME][2] * imu_gyro_unit_radian 
                 
-        message.header.frame_id = str(self.frame_id)
+        message.header.frame_id = 'robot'
         message.header.stamp = self.get_clock().now().to_msg()
         self.frame_id += 1
         # self.get_logger().info(f'{message.header.frame_id} , {message.angular_velocity.y}')

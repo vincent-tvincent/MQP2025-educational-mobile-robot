@@ -54,6 +54,8 @@ class chassis_4wdiff:
         right_goal = int(right_speed / speed_unit)
         return self.wheel_group.set_goals([left_goal, left_goal, right_goal, right_goal]) 
 
+    def caliberation():
+        pass
 
     def read_feedback_4wdiff(self) -> dict:
         servo_data = self.wheel_group.get_feedback()
