@@ -1,0 +1,555 @@
+[0.248s] Invoking command in '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/src/robot_localization -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization
+[0.339s] -- The C compiler identification is GNU 13.3.0
+[0.413s] -- The CXX compiler identification is GNU 13.3.0
+[0.441s] -- Detecting C compiler ABI info
+[0.592s] -- Detecting C compiler ABI info - done
+[0.600s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.601s] -- Detecting C compile features
+[0.601s] -- Detecting C compile features - done
+[0.615s] -- Detecting CXX compiler ABI info
+[0.763s] -- Detecting CXX compiler ABI info - done
+[0.770s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.770s] -- Detecting CXX compile features
+[0.770s] -- Detecting CXX compile features - done
+[0.771s] -- robot_localization: You did not request a specific build type: selecting 'RelWithDebInfo'.
+[0.774s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.990s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.119s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[1.165s] -- Found angles: 1.16.0 (/opt/ros/jazzy/share/angles/cmake)
+[1.176s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0")  
+[1.179s] -- Found builtin_interfaces: 2.0.2 (/opt/ros/jazzy/share/builtin_interfaces/cmake)
+[1.218s] -- Found rosidl_generator_c: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[1.234s] -- Found rosidl_generator_cpp: 4.6.5 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[1.255s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.280s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.308s] -- Found diagnostic_msgs: 5.3.6 (/opt/ros/jazzy/share/diagnostic_msgs/cmake)
+[1.368s] -- Found diagnostic_updater: 4.2.4 (/opt/ros/jazzy/share/diagnostic_updater/cmake)
+[1.424s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[1.428s] -- Found rmw_fastrtps_cpp: 8.4.2 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.537s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[1.568s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[1.603s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.722s] -- Found geographic_msgs: 1.0.6 (/opt/ros/jazzy/share/geographic_msgs/cmake)
+[1.811s] -- Found message_filters: 4.11.6 (/opt/ros/jazzy/share/message_filters/cmake)
+[1.818s] -- Found nav_msgs: 5.3.6 (/opt/ros/jazzy/share/nav_msgs/cmake)
+[1.849s] -- Found rosidl_default_generators: 1.6.0 (/opt/ros/jazzy/share/rosidl_default_generators/cmake)
+[1.863s] -- Found rosidl_adapter: 4.6.5 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[1.868s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[1.892s] -- Found std_srvs: 5.3.6 (/opt/ros/jazzy/share/std_srvs/cmake)
+[1.911s] -- Found tf2: 0.36.11 (/opt/ros/jazzy/share/tf2/cmake)
+[1.916s] -- Found tf2_eigen: 0.36.11 (/opt/ros/jazzy/share/tf2_eigen/cmake)
+[2.061s] -- Found tf2_geometry_msgs: 0.36.11 (/opt/ros/jazzy/share/tf2_geometry_msgs/cmake)
+[2.071s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[2.073s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[2.074s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[2.078s] -- Found yaml_cpp_vendor: 9.0.1 (/opt/ros/jazzy/share/yaml_cpp_vendor/cmake)
+[2.078s] -- Setting yaml-cpp_DIR to: '/opt/ros/jazzy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/share/cmake/yaml-cpp'
+[2.085s] -- Found GeographicLib: /usr/lib/x86_64-linux-gnu  
+[2.975s] -- Found ament_cmake_cppcheck: 0.17.2 (/opt/ros/jazzy/share/ament_cmake_cppcheck/cmake)
+[2.976s] -- Found ament_cmake_cpplint: 0.17.2 (/opt/ros/jazzy/share/ament_cmake_cpplint/cmake)
+[2.978s] -- Found ament_cmake_uncrustify: 0.17.2 (/opt/ros/jazzy/share/ament_cmake_uncrustify/cmake)
+[2.981s] -- Found ament_cmake_ros: 0.12.0 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[4.066s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[4.515s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[4.529s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[4.723s] -- Found PythonExtra: /usr/bin/python3  
+[5.363s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[5.468s] -- Found ament_cmake_flake8: 0.17.2 (/opt/ros/jazzy/share/ament_cmake_flake8/cmake)
+[5.471s] -- Found ament_cmake_pep257: 0.17.2 (/opt/ros/jazzy/share/ament_cmake_pep257/cmake)
+[5.478s] -- Found ament_cmake_lint_cmake: 0.17.2 (/opt/ros/jazzy/share/ament_cmake_lint_cmake/cmake)
+[5.481s] -- Found launch_testing_ament_cmake: 3.4.4 (/opt/ros/jazzy/share/launch_testing_ament_cmake/cmake)
+[5.484s] -- Found gtest sources under '/opt/ros/jazzy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[5.491s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[5.616s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[5.617s] -- Found Threads: TRUE  
+[5.649s] -- Configuring done (5.4s)
+[5.836s] -- Generating done (0.1s)
+[5.892s] -- Build files have been written to: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization
+[5.972s] Invoked command in '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/src/robot_localization -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization
+[5.974s] Invoking command in '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization -- -j20 -l20
+[6.073s] [  2%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[6.073s] [  2%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[6.076s] [  3%] [34m[1mGenerating type hashes for ROS interfaces[0m
+[6.086s] [  3%] Built target ament_cmake_python_symlink_robot_localization
+[6.329s] running egg_info
+[6.329s] creating robot_localization.egg-info
+[6.344s] writing robot_localization.egg-info/PKG-INFO
+[6.345s] writing dependency_links to robot_localization.egg-info/dependency_links.txt
+[6.345s] writing top-level names to robot_localization.egg-info/top_level.txt
+[6.345s] writing manifest file 'robot_localization.egg-info/SOURCES.txt'
+[6.407s] reading manifest file 'robot_localization.egg-info/SOURCES.txt'
+[6.407s] writing manifest file 'robot_localization.egg-info/SOURCES.txt'
+[6.438s] [  3%] Built target robot_localization__rosidl_generator_type_description
+[6.457s] [  3%] [34m[1mGenerating C code for ROS interfaces[0m
+[6.474s] [  4%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[6.515s] [  4%] Built target ament_cmake_python_build_robot_localization_egg
+[7.256s] [  4%] Built target robot_localization__cpp
+[7.359s] [  5%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/set_datum__description.c.o[0m
+[7.359s] [  5%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/set_pose__type_support.c.o[0m
+[7.359s] [  6%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/toggle_filter_processing__description.c.o[0m
+[7.359s] [  8%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/from_ll__functions.c.o[0m
+[7.359s] [  8%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/get_state__description.c.o[0m
+[7.359s] [  7%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/set_pose__functions.c.o[0m
+[7.359s] [  8%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/set_utm_zone__type_support.c.o[0m
+[7.359s] [  9%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/set_pose__description.c.o[0m
+[7.359s] [ 10%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/from_ll__type_support.c.o[0m
+[7.360s] [ 11%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/set_datum__type_support.c.o[0m
+[7.360s] [ 12%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/get_state__functions.c.o[0m
+[7.360s] [ 14%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/from_ll__description.c.o[0m
+[7.360s] [ 14%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/get_state__type_support.c.o[0m
+[7.360s] [ 15%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/set_utm_zone__description.c.o[0m
+[7.360s] [ 16%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/set_utm_zone__functions.c.o[0m
+[7.362s] [ 16%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/set_datum__functions.c.o[0m
+[7.364s] [ 17%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/toggle_filter_processing__functions.c.o[0m
+[7.371s] [ 18%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/toggle_filter_processing__type_support.c.o[0m
+[7.410s] [ 18%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[7.482s] [ 19%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/to_ll__type_support.c.o[0m
+[7.482s] [ 20%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/to_ll__functions.c.o[0m
+[7.483s] [ 20%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_c.dir/rosidl_generator_c/robot_localization/srv/detail/to_ll__description.c.o[0m
+[7.511s] [ 20%] Built target gtest_main
+[7.752s] [ 21%] [32m[1mLinking C shared library librobot_localization__rosidl_generator_c.so[0m
+[7.822s] [ 21%] Built target robot_localization__rosidl_generator_c
+[7.838s] [ 25%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[7.838s] [ 25%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[7.838s] [ 25%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[7.838s] [ 25%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[7.839s] [ 25%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[7.839s] [ 26%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[8.316s] [ 26%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_localization/srv/from_ll__type_support.cpp.o[0m
+[8.316s] [ 28%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_localization/srv/set_datum__type_support.cpp.o[0m
+[8.316s] [ 29%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_localization/srv/from_ll__type_support.cpp.o[0m
+[8.316s] [ 29%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_localization/srv/toggle_filter_processing__type_support.cpp.o[0m
+[8.317s] [ 29%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_localization/srv/toggle_filter_processing__type_support.cpp.o[0m
+[8.317s] [ 30%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_localization/srv/set_pose__type_support.cpp.o[0m
+[8.317s] [ 31%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_localization/srv/set_utm_zone__type_support.cpp.o[0m
+[8.317s] [ 32%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_localization/srv/set_utm_zone__type_support.cpp.o[0m
+[8.317s] [ 32%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_localization/srv/get_state__type_support.cpp.o[0m
+[8.317s] [ 33%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_localization/srv/set_pose__type_support.cpp.o[0m
+[8.317s] [ 34%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_localization/srv/set_datum__type_support.cpp.o[0m
+[8.317s] [ 34%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_localization/srv/get_state__type_support.cpp.o[0m
+[8.323s] [ 35%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_c.dir/rosidl_typesupport_c/robot_localization/srv/to_ll__type_support.cpp.o[0m
+[8.325s] [ 36%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/robot_localization/srv/to_ll__type_support.cpp.o[0m
+[8.466s] [ 37%] [32m[1mLinking CXX shared library librobot_localization__rosidl_typesupport_c.so[0m
+[8.529s] [ 38%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_localization/srv/detail/from_ll__type_support.cpp.o[0m
+[8.530s] [ 39%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_localization/srv/detail/get_state__type_support.cpp.o[0m
+[8.530s] [ 40%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_localization/srv/detail/set_pose__type_support.cpp.o[0m
+[8.530s] [ 41%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_localization/srv/detail/set_utm_zone__type_support.cpp.o[0m
+[8.533s] [ 41%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_localization/srv/detail/set_datum__type_support.cpp.o[0m
+[8.533s] [ 42%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_localization/srv/detail/to_ll__type_support.cpp.o[0m
+[8.533s] [ 42%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/robot_localization/srv/detail/toggle_filter_processing__type_support.cpp.o[0m
+[8.565s] [ 42%] Built target robot_localization__rosidl_typesupport_c
+[8.914s] [ 43%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_localization/srv/detail/from_ll__type_support.c.o[0m
+[8.923s] [ 44%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_localization/srv/detail/get_state__type_support.c.o[0m
+[8.935s] [ 45%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_localization/srv/detail/set_datum__type_support.c.o[0m
+[9.114s] [ 45%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_localization/srv/detail/set_pose__type_support.c.o[0m
+[9.166s] [ 46%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_localization/srv/detail/set_utm_zone__type_support.c.o[0m
+[9.222s] [ 47%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_localization/srv/detail/toggle_filter_processing__type_support.c.o[0m
+[9.235s] [ 48%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/robot_localization/srv/detail/to_ll__type_support.c.o[0m
+[9.326s] [ 49%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_localization/srv/detail/dds_fastrtps/from_ll__type_support.cpp.o[0m
+[9.329s] [ 49%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_localization/srv/detail/dds_fastrtps/get_state__type_support.cpp.o[0m
+[9.337s] [ 50%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_localization/srv/detail/dds_fastrtps/set_datum__type_support.cpp.o[0m
+[9.342s] [ 51%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_localization/srv/detail/dds_fastrtps/set_pose__type_support.cpp.o[0m
+[9.343s] [ 51%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_localization/srv/detail/dds_fastrtps/set_utm_zone__type_support.cpp.o[0m
+[9.386s] [ 53%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_localization/srv/detail/dds_fastrtps/toggle_filter_processing__type_support.cpp.o[0m
+[9.387s] [ 53%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/robot_localization/srv/detail/dds_fastrtps/to_ll__type_support.cpp.o[0m
+[9.427s] [ 54%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_localization/srv/detail/from_ll__type_support_c.cpp.o[0m
+[9.428s] [ 55%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_localization/srv/detail/get_state__type_support_c.cpp.o[0m
+[9.437s] [ 55%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_localization/srv/detail/set_datum__type_support_c.cpp.o[0m
+[9.466s] [ 55%] [32m[1mLinking C shared library librobot_localization__rosidl_typesupport_introspection_c.so[0m
+[9.505s] [ 55%] [32m[1mLinking CXX shared library librobot_localization__rosidl_typesupport_cpp.so[0m
+[9.602s] [ 55%] Built target robot_localization__rosidl_typesupport_introspection_c
+[9.619s] [ 56%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_localization/srv/detail/set_pose__type_support_c.cpp.o[0m
+[9.649s] [ 57%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_localization/srv/detail/set_utm_zone__type_support_c.cpp.o[0m
+[9.695s] [ 58%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_localization/srv/detail/toggle_filter_processing__type_support_c.cpp.o[0m
+[9.796s] [ 58%] [32mBuilding CXX object CMakeFiles/robot_localization__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/robot_localization/srv/detail/to_ll__type_support_c.cpp.o[0m
+[9.810s] [ 58%] Built target robot_localization__rosidl_typesupport_cpp
+[9.908s] [ 59%] [32mBuilding CXX object CMakeFiles/rl_lib.dir/src/ekf.cpp.o[0m
+[9.925s] [ 59%] [32mBuilding CXX object CMakeFiles/rl_lib.dir/src/ukf.cpp.o[0m
+[9.928s] [ 60%] [32mBuilding CXX object CMakeFiles/rl_lib.dir/src/filter_base.cpp.o[0m
+[9.934s] [ 61%] [32mBuilding CXX object CMakeFiles/rl_lib.dir/src/filter_utilities.cpp.o[0m
+[10.031s] [ 62%] [32m[1mLinking CXX shared library librobot_localization__rosidl_typesupport_introspection_cpp.so[0m
+[10.591s] [ 62%] Built target robot_localization__rosidl_typesupport_introspection_cpp
+[10.628s] [ 63%] [32mBuilding CXX object CMakeFiles/rl_lib.dir/src/navsat_transform.cpp.o[0m
+[10.956s] [ 63%] [32mBuilding CXX object CMakeFiles/rl_lib.dir/src/robot_localization_estimator.cpp.o[0m
+[11.123s] [ 64%] [32mBuilding CXX object CMakeFiles/rl_lib.dir/src/ros_filter.cpp.o[0m
+[11.151s] [ 65%] [32mBuilding CXX object CMakeFiles/rl_lib.dir/src/ros_filter_utilities.cpp.o[0m
+[11.153s] [ 65%] [32mBuilding CXX object CMakeFiles/rl_lib.dir/src/ros_robot_localization_listener.cpp.o[0m
+[11.374s] [ 66%] [32m[1mLinking CXX shared library librobot_localization__rosidl_typesupport_fastrtps_c.so[0m
+[11.629s] [ 67%] [32m[1mLinking CXX shared library librobot_localization__rosidl_typesupport_fastrtps_cpp.so[0m
+[11.669s] [ 67%] Built target robot_localization__rosidl_typesupport_fastrtps_c
+[11.897s] [ 67%] Built target robot_localization__rosidl_typesupport_fastrtps_cpp
+[11.951s] [ 67%] Built target robot_localization
+[12.008s] [ 68%] [34m[1mGenerating Python code for ROS interfaces[0m
+[13.686s] [ 68%] Built target robot_localization__py
+[13.725s] [ 69%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_py.dir/rosidl_generator_py/robot_localization/srv/_from_ll_s.c.o[0m
+[13.725s] [ 70%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_py.dir/rosidl_generator_py/robot_localization/srv/_set_datum_s.c.o[0m
+[13.725s] [ 70%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_py.dir/rosidl_generator_py/robot_localization/srv/_set_utm_zone_s.c.o[0m
+[13.725s] [ 72%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_py.dir/rosidl_generator_py/robot_localization/srv/_get_state_s.c.o[0m
+[13.725s] [ 72%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_py.dir/rosidl_generator_py/robot_localization/srv/_toggle_filter_processing_s.c.o[0m
+[13.726s] [ 72%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_py.dir/rosidl_generator_py/robot_localization/srv/_set_pose_s.c.o[0m
+[13.727s] [ 73%] [32mBuilding C object CMakeFiles/robot_localization__rosidl_generator_py.dir/rosidl_generator_py/robot_localization/srv/_to_ll_s.c.o[0m
+[14.181s] [ 73%] [32m[1mLinking C shared library librobot_localization__rosidl_generator_py.so[0m
+[14.280s] [ 73%] Built target robot_localization__rosidl_generator_py
+[14.327s] [ 75%] [32mBuilding C object CMakeFiles/robot_localization_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/robot_localization/_robot_localization_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[14.328s] [ 75%] [32mBuilding C object CMakeFiles/robot_localization_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/robot_localization/_robot_localization_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[14.337s] [ 76%] [32mBuilding C object CMakeFiles/robot_localization_s__rosidl_typesupport_c.dir/rosidl_generator_py/robot_localization/_robot_localization_s.ep.rosidl_typesupport_c.c.o[0m
+[14.943s] [ 77%] [32m[1mLinking C shared module rosidl_generator_py/robot_localization/robot_localization_s__rosidl_typesupport_introspection_c.so[0m
+[14.962s] [ 77%] [32m[1mLinking C shared module rosidl_generator_py/robot_localization/robot_localization_s__rosidl_typesupport_fastrtps_c.so[0m
+[15.003s] [ 77%] Built target robot_localization_s__rosidl_typesupport_introspection_c
+[15.010s] [ 78%] [32m[1mLinking C shared module rosidl_generator_py/robot_localization/robot_localization_s__rosidl_typesupport_c.so[0m
+[15.036s] [ 78%] Built target robot_localization_s__rosidl_typesupport_fastrtps_c
+[15.077s] [ 78%] Built target robot_localization_s__rosidl_typesupport_c
+[19.319s] [01m[K/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/src/robot_localization/src/ros_robot_localization_listener.cpp:[m[K In constructor ‘[01m[Krobot_localization::RosRobotLocalizationListener::[01;32m[KRosRobotLocalizationListener[m[K(rclcpp::Node::SharedPtr, rclcpp::SubscriptionOptions)[m[K’:
+[19.319s] [01m[K/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/src/robot_localization/src/ros_robot_localization_listener.cpp:70:31:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Koptions[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[19.319s]    70 |   [01;35m[Krclcpp::SubscriptionOptions options[m[K)
+[19.319s]       |   [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~[m[K
+[25.395s] [ 79%] [32m[1mLinking CXX static library libgtest.a[0m
+[25.546s] [ 79%] Built target gtest
+[114.421s] [ 80%] [32m[1mLinking CXX shared library librl_lib.so[0m
+[116.989s] [ 80%] Built target rl_lib
+[117.020s] [ 85%] [32mBuilding CXX object CMakeFiles/test_ros_robot_localization_listener.dir/test/test_ros_robot_localization_listener.cpp.o[0m
+[117.021s] [ 85%] [32mBuilding CXX object CMakeFiles/test_ukf.dir/test/test_ukf.cpp.o[0m
+[117.021s] [ 85%] [32mBuilding CXX object CMakeFiles/test_navsat_conversions.dir/test/test_navsat_conversions.cpp.o[0m
+[117.021s] [ 85%] [32mBuilding CXX object CMakeFiles/test_robot_localization_estimator.dir/test/test_robot_localization_estimator.cpp.o[0m
+[117.023s] [ 86%] [32mBuilding CXX object CMakeFiles/robot_localization_listener_node.dir/src/robot_localization_listener_node.cpp.o[0m
+[117.024s] [ 85%] [32mBuilding CXX object CMakeFiles/test_ekf.dir/test/test_ekf.cpp.o[0m
+[117.024s] [ 87%] [32mBuilding CXX object CMakeFiles/filter_base-test.dir/test/test_filter_base.cpp.o[0m
+[117.024s] [ 82%] [32mBuilding CXX object CMakeFiles/ekf_node.dir/src/ekf_node.cpp.o[0m
+[117.024s] [ 85%] [32mBuilding CXX object CMakeFiles/ukf_node.dir/src/ukf_node.cpp.o[0m
+[117.025s] [ 88%] [32mBuilding CXX object CMakeFiles/navsat_transform_node.dir/src/navsat_transform_node.cpp.o[0m
+[117.026s] [ 87%] [32mBuilding CXX object CMakeFiles/test_ros_robot_localization_listener_publisher.dir/test/test_ros_robot_localization_listener_publisher.cpp.o[0m
+[119.541s] [ 89%] [32m[1mLinking CXX executable test_navsat_conversions[0m
+[120.157s] [ 89%] Built target test_navsat_conversions
+[123.109s] [ 89%] [32m[1mLinking CXX executable filter_base-test[0m
+[123.743s] [ 89%] Built target filter_base-test
+[127.261s] [ 90%] [32m[1mLinking CXX executable navsat_transform_node[0m
+[127.500s] [ 91%] [32m[1mLinking CXX executable ekf_node[0m
+[127.812s] [ 91%] Built target navsat_transform_node
+[127.941s] [ 92%] [32m[1mLinking CXX executable ukf_node[0m
+[128.077s] [ 92%] Built target ekf_node
+[128.128s] [ 92%] [32mBuilding CXX object CMakeFiles/test_filter_base_diagnostics_timestamps.dir/test/test_filter_base_diagnostics_timestamps.cpp.o[0m
+[128.131s] [ 93%] [32mBuilding CXX object CMakeFiles/test_ekf_node_interfaces.dir/test/test_se_node_interfaces.cpp.o[0m
+[128.452s] [ 93%] Built target ukf_node
+[128.508s] [ 93%] [32mBuilding CXX object CMakeFiles/test_ukf_node_interfaces.dir/test/test_se_node_interfaces.cpp.o[0m
+[128.782s] [ 94%] [32m[1mLinking CXX executable test_robot_localization_estimator[0m
+[129.407s] [ 94%] Built target test_robot_localization_estimator
+[129.593s] [ 95%] [32m[1mLinking CXX executable test_ros_robot_localization_listener[0m
+[130.211s] [ 95%] Built target test_ros_robot_localization_listener
+[130.341s] [ 95%] [32m[1mLinking CXX executable robot_localization_listener_node[0m
+[130.829s] [ 95%] Built target robot_localization_listener_node
+[130.943s] [ 95%] [32m[1mLinking CXX executable test_ekf[0m
+[131.444s] [ 96%] [32m[1mLinking CXX executable test_ukf[0m
+[131.543s] [ 96%] Built target test_ekf
+[132.032s] [ 96%] Built target test_ukf
+[135.322s] [ 97%] [32m[1mLinking CXX executable test_ros_robot_localization_listener_publisher[0m
+[135.666s] [ 97%] Built target test_ros_robot_localization_listener_publisher
+[161.756s] [ 98%] [32m[1mLinking CXX executable test_ukf_node_interfaces[0m
+[161.767s] [ 99%] [32m[1mLinking CXX executable test_ekf_node_interfaces[0m
+[161.786s] [100%] [32m[1mLinking CXX executable test_filter_base_diagnostics_timestamps[0m
+[162.411s] [100%] Built target test_ukf_node_interfaces
+[162.457s] [100%] Built target test_ekf_node_interfaces
+[162.477s] [100%] Built target test_filter_base_diagnostics_timestamps
+[162.496s] Invoked command in '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization -- -j20 -l20
+[162.513s] Invoking command in '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization
+[162.527s] -- Install configuration: "RelWithDebInfo"
+[162.528s] -- Execute custom install script
+[162.528s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/ament_index/resource_index/rosidl_interfaces/robot_localization
+[162.544s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/FromLL.json
+[162.562s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/GetState.json
+[162.577s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/SetDatum.json
+[162.589s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/SetPose.json
+[162.602s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/SetUTMZone.json
+[162.618s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/ToggleFilterProcessing.json
+[162.631s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/ToLL.json
+[162.653s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/msg/rosidl_generator_c__visibility_control.h
+[162.665s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/from_ll__functions.h
+[162.676s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/from_ll__struct.h
+[162.687s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/from_ll__type_support.h
+[162.701s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/get_state__functions.h
+[162.714s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/get_state__struct.h
+[162.731s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/get_state__type_support.h
+[162.742s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_datum__functions.h
+[162.757s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_datum__struct.h
+[162.772s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_datum__type_support.h
+[162.784s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_pose__functions.h
+[162.794s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_pose__struct.h
+[162.809s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_pose__type_support.h
+[162.823s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_utm_zone__functions.h
+[162.836s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_utm_zone__struct.h
+[162.847s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_utm_zone__type_support.h
+[162.861s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/to_ll__functions.h
+[162.874s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/to_ll__struct.h
+[162.887s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/to_ll__type_support.h
+[162.900s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/toggle_filter_processing__functions.h
+[162.915s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/toggle_filter_processing__struct.h
+[162.930s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/toggle_filter_processing__type_support.h
+[162.944s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/from_ll.h
+[162.956s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/get_state.h
+[162.969s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/set_datum.h
+[162.986s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/set_pose.h
+[163.000s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/set_utm_zone.h
+[163.015s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/to_ll.h
+[163.028s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/toggle_filter_processing.h
+[163.040s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/environment/library_path.sh
+[163.056s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/environment/library_path.dsv
+[163.072s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[163.086s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/from_ll__rosidl_typesupport_fastrtps_c.h
+[163.102s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/get_state__rosidl_typesupport_fastrtps_c.h
+[163.116s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_datum__rosidl_typesupport_fastrtps_c.h
+[163.130s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_pose__rosidl_typesupport_fastrtps_c.h
+[163.144s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_utm_zone__rosidl_typesupport_fastrtps_c.h
+[163.160s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/to_ll__rosidl_typesupport_fastrtps_c.h
+[163.177s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/toggle_filter_processing__rosidl_typesupport_fastrtps_c.h
+[163.192s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/msg/rosidl_generator_cpp__visibility_control.hpp
+[163.205s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/from_ll__builder.hpp
+[163.220s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/from_ll__struct.hpp
+[163.235s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/from_ll__traits.hpp
+[163.249s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/from_ll__type_support.hpp
+[163.265s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/get_state__builder.hpp
+[163.282s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/get_state__struct.hpp
+[163.298s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/get_state__traits.hpp
+[163.312s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/get_state__type_support.hpp
+[163.327s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_datum__builder.hpp
+[163.344s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_datum__struct.hpp
+[163.360s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_datum__traits.hpp
+[163.373s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_datum__type_support.hpp
+[163.387s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_pose__builder.hpp
+[163.401s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_pose__struct.hpp
+[163.415s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_pose__traits.hpp
+[163.430s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_pose__type_support.hpp
+[163.445s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_utm_zone__builder.hpp
+[163.459s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_utm_zone__struct.hpp
+[163.473s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_utm_zone__traits.hpp
+[163.487s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_utm_zone__type_support.hpp
+[163.501s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/to_ll__builder.hpp
+[163.515s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/to_ll__struct.hpp
+[163.531s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/to_ll__traits.hpp
+[163.544s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/to_ll__type_support.hpp
+[163.560s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/toggle_filter_processing__builder.hpp
+[163.573s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/toggle_filter_processing__struct.hpp
+[163.587s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/toggle_filter_processing__traits.hpp
+[163.600s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/toggle_filter_processing__type_support.hpp
+[163.612s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/from_ll.hpp
+[163.626s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/get_state.hpp
+[163.640s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/set_datum.hpp
+[163.652s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/set_pose.hpp
+[163.666s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/set_utm_zone.hpp
+[163.682s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/to_ll.hpp
+[163.698s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/toggle_filter_processing.hpp
+[163.711s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[163.725s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/from_ll__rosidl_typesupport_fastrtps_cpp.hpp
+[163.740s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/get_state__rosidl_typesupport_fastrtps_cpp.hpp
+[163.757s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_datum__rosidl_typesupport_fastrtps_cpp.hpp
+[163.771s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_pose__rosidl_typesupport_fastrtps_cpp.hpp
+[163.784s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_utm_zone__rosidl_typesupport_fastrtps_cpp.hpp
+[163.796s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/to_ll__rosidl_typesupport_fastrtps_cpp.hpp
+[163.811s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/toggle_filter_processing__rosidl_typesupport_fastrtps_cpp.hpp
+[163.826s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[163.840s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/from_ll__rosidl_typesupport_introspection_c.h
+[163.853s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/get_state__rosidl_typesupport_introspection_c.h
+[163.867s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_datum__rosidl_typesupport_introspection_c.h
+[163.881s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_pose__rosidl_typesupport_introspection_c.h
+[163.894s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_utm_zone__rosidl_typesupport_introspection_c.h
+[163.909s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/to_ll__rosidl_typesupport_introspection_c.h
+[163.925s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/toggle_filter_processing__rosidl_typesupport_introspection_c.h
+[163.939s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/from_ll__rosidl_typesupport_introspection_cpp.hpp
+[163.955s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/get_state__rosidl_typesupport_introspection_cpp.hpp
+[163.969s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_datum__rosidl_typesupport_introspection_cpp.hpp
+[163.981s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_pose__rosidl_typesupport_introspection_cpp.hpp
+[163.993s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/set_utm_zone__rosidl_typesupport_introspection_cpp.hpp
+[164.006s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/to_ll__rosidl_typesupport_introspection_cpp.hpp
+[164.020s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/srv/detail/toggle_filter_processing__rosidl_typesupport_introspection_cpp.hpp
+[164.035s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/environment/pythonpath.sh
+[164.050s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/environment/pythonpath.dsv
+[164.064s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization-3.9.3-py3.12.egg-info/PKG-INFO
+[164.079s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization-3.9.3-py3.12.egg-info/SOURCES.txt
+[164.093s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization-3.9.3-py3.12.egg-info/dependency_links.txt
+[164.107s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization-3.9.3-py3.12.egg-info/top_level.txt
+[164.121s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/__init__.py
+[164.135s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/_robot_localization_s.ep.rosidl_typesupport_c.c
+[164.150s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/_robot_localization_s.ep.rosidl_typesupport_fastrtps_c.c
+[164.163s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/_robot_localization_s.ep.rosidl_typesupport_introspection_c.c
+[164.175s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/robot_localization_s__rosidl_typesupport_c.so
+[164.190s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/robot_localization_s__rosidl_typesupport_fastrtps_c.so
+[164.203s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/robot_localization_s__rosidl_typesupport_introspection_c.so
+[164.216s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/__init__.py
+[164.229s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_from_ll.py
+[164.239s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_from_ll_s.c
+[164.255s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_get_state.py
+[164.267s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_get_state_s.c
+[164.280s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_set_datum.py
+[164.295s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_set_datum_s.c
+[164.311s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_set_pose.py
+[164.326s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_set_pose_s.c
+[164.341s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_set_utm_zone.py
+[164.354s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_set_utm_zone_s.c
+[164.367s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_to_ll.py
+[164.381s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_to_ll_s.c
+[164.394s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_toggle_filter_processing.py
+[164.410s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_toggle_filter_processing_s.c
+[164.428s] -- Up-to-date symlink: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/robot_localization_s__rosidl_typesupport_fastrtps_c.so
+[164.428s] -- Up-to-date symlink: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/robot_localization_s__rosidl_typesupport_introspection_c.so
+[164.428s] -- Up-to-date symlink: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/robot_localization_s__rosidl_typesupport_c.so
+[164.428s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/FromLL.idl
+[164.440s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/GetState.idl
+[164.454s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/SetDatum.idl
+[164.471s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/SetPose.idl
+[164.486s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/SetUTMZone.idl
+[164.499s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/ToggleFilterProcessing.idl
+[164.514s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/ToLL.idl
+[164.529s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/FromLL.srv
+[164.542s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/GetState.srv
+[164.555s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/SetDatum.srv
+[164.567s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/SetPose.srv
+[164.582s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/SetUTMZone.srv
+[164.595s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/ToggleFilterProcessing.srv
+[164.607s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/srv/ToLL.srv
+[164.620s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/filter_base-test
+[164.633s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/test_filter_base_diagnostics_timestamps
+[164.646s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/test_ekf
+[164.658s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/test_ekf_node_interfaces
+[164.673s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/test_ukf
+[164.689s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/test_ukf_node_interfaces
+[164.704s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/test_robot_localization_estimator
+[164.717s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/test_navsat_conversions
+[164.732s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/test_ros_robot_localization_listener
+[164.748s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/test_ros_robot_localization_listener_publisher
+[164.762s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/navsat_transform_node
+[164.776s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/ekf_node
+[164.789s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/ukf_node
+[164.803s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/robot_localization/robot_localization_listener_node
+[164.819s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/ament_index/resource_index/package_run_dependencies/robot_localization
+[164.830s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/ament_index/resource_index/parent_prefix_path/robot_localization
+[164.844s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/environment/ament_prefix_path.sh
+[164.858s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/environment/ament_prefix_path.dsv
+[164.871s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/environment/path.sh
+[164.887s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/environment/path.dsv
+[164.899s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/local_setup.bash
+[164.915s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/local_setup.sh
+[164.928s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/local_setup.zsh
+[164.940s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/local_setup.dsv
+[164.953s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/package.dsv
+[164.968s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/ament_index/resource_index/packages/robot_localization
+[164.984s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/rosidl_cmake-extras.cmake
+[164.999s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/ament_cmake_export_dependencies-extras.cmake
+[165.011s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/ament_cmake_export_include_directories-extras.cmake
+[165.023s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/ament_cmake_export_libraries-extras.cmake
+[165.039s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/ament_cmake_export_targets-extras.cmake
+[165.055s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[165.071s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[165.085s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localizationConfig.cmake
+[165.099s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localizationConfig-version.cmake
+[165.111s] -- Symlinking: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/package.xml
+[165.126s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_generator_c.so
+[165.126s] -- Set non-toolchain portion of runtime path of "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_generator_c.so" to ""
+[165.126s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_fastrtps_c.so
+[165.127s] -- Set non-toolchain portion of runtime path of "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_fastrtps_c.so" to ""
+[165.127s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_fastrtps_cpp.so
+[165.131s] -- Set non-toolchain portion of runtime path of "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_fastrtps_cpp.so" to ""
+[165.131s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_introspection_c.so
+[165.132s] -- Set non-toolchain portion of runtime path of "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_introspection_c.so" to ""
+[165.132s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_c.so
+[165.132s] -- Set non-toolchain portion of runtime path of "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_c.so" to ""
+[165.132s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_introspection_cpp.so
+[165.133s] -- Set non-toolchain portion of runtime path of "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_introspection_cpp.so" to ""
+[165.133s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_cpp.so
+[165.134s] -- Set non-toolchain portion of runtime path of "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_typesupport_cpp.so" to ""
+[165.200s] Listing '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization'...
+[165.200s] Compiling '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/__init__.py'...
+[165.200s] Listing '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv'...
+[165.200s] Compiling '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/__init__.py'...
+[165.200s] Compiling '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_from_ll.py'...
+[165.200s] Compiling '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_get_state.py'...
+[165.200s] Compiling '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_set_datum.py'...
+[165.200s] Compiling '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_set_pose.py'...
+[165.200s] Compiling '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_set_utm_zone.py'...
+[165.200s] Compiling '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_to_ll.py'...
+[165.201s] Compiling '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/python3.12/site-packages/robot_localization/srv/_toggle_filter_processing.py'...
+[165.211s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_generator_py.so
+[165.211s] -- Set non-toolchain portion of runtime path of "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librobot_localization__rosidl_generator_py.so" to ""
+[165.211s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test
+[165.211s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ros_robot_localization_listener.cpp
+[165.212s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ekf.cpp
+[165.212s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ukf_localization_node_bag3.yaml
+[165.212s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test2.bag
+[165.212s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ekf_localization_node_bag1.yaml
+[165.212s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_se_node_interfaces.cpp
+[165.212s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ukf_localization_node_bag2.launch.py
+[165.212s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ros_robot_localization_listener_publisher.cpp
+[165.212s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ekf_localization_node_bag3.yaml
+[165.212s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_filter_base_diagnostics_timestamps.yaml
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_robot_localization_estimator.launch.py
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_se_node_interfaces.launch.py
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ukf_localization_node_bag2.yaml
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ros_robot_localization_listener.yaml
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ros_robot_localization_listener.launch.py
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_localization_node_bag_pose_tester.cpp
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ekf_localization_node_bag1.launch.py
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ukf_localization_node_bag1.yaml
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ukf_localization_node_bag2.sh
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_robot_localization_estimator.cpp
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_filter_base.cpp
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_filter_base_diagnostics_timestamps.launch.py
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ekf_localization_node_bag1.sh
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ukf_localization_node_bag1.launch.py
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ekf_localization_node_bag2.launch.py
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ukf_localization_node_bag3.sh
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ekf_localization_node_bag3.launch.py
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ekf_localization_node_bag2.yaml
+[165.213s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ukf_localization_node_bag1.sh
+[165.214s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ekf_localization_node_bag3.sh
+[165.214s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test3.bag
+[165.237s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ekf_localization_node_bag2.sh
+[165.238s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_filter_base_diagnostics_timestamps.cpp
+[165.238s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_se_node_interfaces.yaml
+[165.239s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_navsat_conversions.cpp
+[165.239s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test1.bag
+[165.239s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ukf_localization_node_bag3.launch.py
+[165.239s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/test/test_ukf.cpp
+[165.239s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librl_lib.so
+[165.337s] -- Set non-toolchain portion of runtime path of "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/lib/librl_lib.so" to ""
+[165.337s] -- Up-to-date: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization
+[165.337s] -- Up-to-date: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization
+[165.337s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/ekf.hpp
+[165.337s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/robot_localization_estimator.hpp
+[165.337s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/ukf.hpp
+[165.337s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/ros_robot_localization_listener.hpp
+[165.337s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/ros_filter.hpp
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/filter_state.hpp
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/measurement.hpp
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/filter_utilities.hpp
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/filter_common.hpp
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/ros_filter_types.hpp
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/ros_filter_utilities.hpp
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/navsat_transform.hpp
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/include/robot_localization/robot_localization/filter_base.hpp
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/params
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/params/ekf.yaml
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/params/ukf.yaml
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/params/navsat_transform.yaml
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/params/dual_ekf_navsat_example.yaml
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/launch
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/launch/navsat_transform.launch.py
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/launch/ekf.launch.py
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/launch/dual_ekf_navsat_example.launch.py
+[165.338s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/launch/ukf.launch.py
+[165.339s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/export_robot_localization__rosidl_generator_cExport.cmake
+[165.339s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/export_robot_localization__rosidl_generator_cExport-relwithdebinfo.cmake
+[165.339s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/export_robot_localization__rosidl_typesupport_fastrtps_cExport.cmake
+[165.339s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/export_robot_localization__rosidl_typesupport_fastrtps_cExport-relwithdebinfo.cmake
+[165.339s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/export_robot_localization__rosidl_generator_cppExport.cmake
+[165.339s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/export_robot_localization__rosidl_typesupport_fastrtps_cppExport.cmake
+[165.339s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/export_robot_localization__rosidl_typesupport_fastrtps_cppExport-relwithdebinfo.cmake
+[165.339s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localization__rosidl_typesupport_introspection_cExport.cmake
+[165.339s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localization__rosidl_typesupport_introspection_cExport-relwithdebinfo.cmake
+[165.340s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localization__rosidl_typesupport_cExport.cmake
+[165.340s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localization__rosidl_typesupport_cExport-relwithdebinfo.cmake
+[165.340s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localization__rosidl_typesupport_introspection_cppExport.cmake
+[165.340s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localization__rosidl_typesupport_introspection_cppExport-relwithdebinfo.cmake
+[165.340s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localization__rosidl_typesupport_cppExport.cmake
+[165.340s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localization__rosidl_typesupport_cppExport-relwithdebinfo.cmake
+[165.340s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/export_robot_localization__rosidl_generator_pyExport.cmake
+[165.340s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/export_robot_localization__rosidl_generator_pyExport-relwithdebinfo.cmake
+[165.340s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localizationExport.cmake
+[165.340s] -- Installing: /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/install/robot_localization/share/robot_localization/cmake/robot_localizationExport-relwithdebinfo.cmake
+[165.345s] Invoked command in '/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization

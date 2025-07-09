@@ -1,0 +1,1 @@
+/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization/rosidl_typesupport_fastrtps_cpp/robot_localization/srv/detail/get_state__rosidl_typesupport_fastrtps_cpp.hpp

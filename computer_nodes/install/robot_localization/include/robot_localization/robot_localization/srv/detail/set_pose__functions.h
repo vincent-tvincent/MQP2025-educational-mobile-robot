@@ -1,0 +1,1 @@
+/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization/rosidl_generator_c/robot_localization/srv/detail/set_pose__functions.h

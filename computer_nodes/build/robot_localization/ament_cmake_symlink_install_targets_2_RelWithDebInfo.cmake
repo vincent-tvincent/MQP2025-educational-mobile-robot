@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization/rosidl_generator_py/robot_localization/robot_localization_s__rosidl_typesupport_c.so" "TARGETS" "robot_localization_s__rosidl_typesupport_c" "DESTINATION" "lib/python3.12/site-packages/robot_localization")

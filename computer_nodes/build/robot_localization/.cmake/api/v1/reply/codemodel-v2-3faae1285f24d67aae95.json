@@ -1,0 +1,425 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-RelWithDebInfo-e11294171af4f9ca93f5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						6,
+						7,
+						8,
+						9,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						28,
+						29,
+						30,
+						31,
+						32,
+						33,
+						34,
+						35
+					]
+				},
+				{
+					"build" : "robot_localization__py",
+					"jsonFile" : "directory-robot_localization__py-RelWithDebInfo-e3adad9c40cb40f3602c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization/robot_localization__py",
+					"targetIndexes" : 
+					[
+						10
+					]
+				},
+				{
+					"build" : "gtest",
+					"jsonFile" : "directory-gtest-RelWithDebInfo-0908a8c91ddba5d6c989.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "/opt/ros/jazzy/src/gtest_vendor",
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "robot_localization",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25,
+						26,
+						27,
+						28,
+						29,
+						30,
+						31,
+						32,
+						33,
+						34,
+						35
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "gtest",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_robot_localization_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_robot_localization_egg-RelWithDebInfo-0a72046e230ad97011e6.json",
+					"name" : "ament_cmake_python_build_robot_localization_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_symlink_robot_localization::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_symlink_robot_localization-RelWithDebInfo-4bd828c42914e2f370fd.json",
+					"name" : "ament_cmake_python_symlink_robot_localization",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ekf_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ekf_node-RelWithDebInfo-7280592a95798651b86d.json",
+					"name" : "ekf_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "filter_base-test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-filter_base-test-RelWithDebInfo-8fca81abbc47c2a642a7.json",
+					"name" : "filter_base-test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "gtest::@0af4add9fe94340e763e",
+					"jsonFile" : "target-gtest-RelWithDebInfo-f13ccb2bc852a5c1f7f8.json",
+					"name" : "gtest",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "gtest_main::@0af4add9fe94340e763e",
+					"jsonFile" : "target-gtest_main-RelWithDebInfo-3c3990ae8855df0139e3.json",
+					"name" : "gtest_main",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "navsat_transform_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-navsat_transform_node-RelWithDebInfo-476af6d8ca922cfc3b11.json",
+					"name" : "navsat_transform_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rl_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rl_lib-RelWithDebInfo-5b47218ee50b85df1e09.json",
+					"name" : "rl_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization-RelWithDebInfo-13335794836fbf8a580d.json",
+					"name" : "robot_localization",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization__cpp-RelWithDebInfo-72f7199adcac84d93eda.json",
+					"name" : "robot_localization__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "robot_localization__py::@b5b9bbc93c0cff8434ff",
+					"jsonFile" : "target-robot_localization__py-RelWithDebInfo-ca5464fea8e46c3ece81.json",
+					"name" : "robot_localization__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization__rosidl_generator_c-RelWithDebInfo-81e82c7503799d25d00f.json",
+					"name" : "robot_localization__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization__rosidl_generator_py-RelWithDebInfo-e716e909f854cddfddc1.json",
+					"name" : "robot_localization__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization__rosidl_generator_type_description::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization__rosidl_generator_type_description-RelWithDebInfo-dd7bfb4957cdbd064142.json",
+					"name" : "robot_localization__rosidl_generator_type_description",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization__rosidl_typesupport_c-RelWithDebInfo-af5850c482b2e96c411a.json",
+					"name" : "robot_localization__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization__rosidl_typesupport_cpp-RelWithDebInfo-9effb0ed6d98746536aa.json",
+					"name" : "robot_localization__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization__rosidl_typesupport_fastrtps_c-RelWithDebInfo-94b23065c829c7a991da.json",
+					"name" : "robot_localization__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization__rosidl_typesupport_fastrtps_cpp-RelWithDebInfo-c810d39df072d6117719.json",
+					"name" : "robot_localization__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization__rosidl_typesupport_introspection_c-RelWithDebInfo-7827eec8b3d4f9efd2c9.json",
+					"name" : "robot_localization__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization__rosidl_typesupport_introspection_cpp-RelWithDebInfo-6c7374e8fef72aaba626.json",
+					"name" : "robot_localization__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization_listener_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization_listener_node-RelWithDebInfo-b5f8f001df1aca35c502.json",
+					"name" : "robot_localization_listener_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization_s__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization_s__rosidl_typesupport_c-RelWithDebInfo-09f70ed175878a1b361f.json",
+					"name" : "robot_localization_s__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization_s__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization_s__rosidl_typesupport_fastrtps_c-RelWithDebInfo-2b4bf0d83c77eabb4590.json",
+					"name" : "robot_localization_s__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization_s__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization_s__rosidl_typesupport_introspection_c-RelWithDebInfo-4404504d0b76fb56a49e.json",
+					"name" : "robot_localization_s__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "robot_localization_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-robot_localization_uninstall-RelWithDebInfo-1c88b234afb264826bb3.json",
+					"name" : "robot_localization_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_ekf::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_ekf-RelWithDebInfo-bb92e2ae1233f811850c.json",
+					"name" : "test_ekf",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_ekf_node_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_ekf_node_interfaces-RelWithDebInfo-e00bea256700bdca6ebc.json",
+					"name" : "test_ekf_node_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_filter_base_diagnostics_timestamps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_filter_base_diagnostics_timestamps-RelWithDebInfo-9ad4d28d618aefcb3ad1.json",
+					"name" : "test_filter_base_diagnostics_timestamps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_navsat_conversions::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_navsat_conversions-RelWithDebInfo-af5da4e31bb9ee43e3ef.json",
+					"name" : "test_navsat_conversions",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_robot_localization_estimator::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_robot_localization_estimator-RelWithDebInfo-819e6d3673ea14cbab5e.json",
+					"name" : "test_robot_localization_estimator",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_ros_robot_localization_listener::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_ros_robot_localization_listener-RelWithDebInfo-fa4047e4c516db2f7cf3.json",
+					"name" : "test_ros_robot_localization_listener",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_ros_robot_localization_listener_publisher::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_ros_robot_localization_listener_publisher-RelWithDebInfo-e79c24610db8e24ff4d1.json",
+					"name" : "test_ros_robot_localization_listener_publisher",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_ukf::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_ukf-RelWithDebInfo-91afd3985e95ecd531f9.json",
+					"name" : "test_ukf",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_ukf_node_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_ukf_node_interfaces-RelWithDebInfo-1e895bc3320430419c3e.json",
+					"name" : "test_ukf_node_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ukf_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ukf_node-RelWithDebInfo-1a952db8b666e876ec3a.json",
+					"name" : "ukf_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-RelWithDebInfo-7161dca65f6c3dcfa188.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/build/robot_localization",
+		"source" : "/home/bluelobster/ros2_projects/workspaces/MQP2025-educational-mobile-robot/computer_nodes/src/robot_localization"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

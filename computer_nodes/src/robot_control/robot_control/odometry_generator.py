@@ -1,0 +1,246 @@
+
+import rclpy
+from rclpy.node import Node
+
+from sensor_msgs.msg import Imu
+from geometry_msgs.msg import Twist, TwistStamped, Quaternion, Vector3
+
+from nav_msgs.msg import Odometry
+
+import numpy
+import tf_transformations
+
+node_name = 'odometry_generator'
+
+twist_in_topic = 'odom_in_twist'
+imu_in_topic = 'odom_in_imu'
+odom_out_topic = 'odom_output'
+euler_fused_topic = 'fused_euler'
+
+odometry_generating_interval = 1 / 200
+
+acc_angle_trust_x = 0.1
+acc_angle_trust_y = 0.1
+imu_odom_angle_trust = 0.5
+imu_odom_linear_trust = 0.5
+
+queue_size = 200
+
+class odometry_generator(Node):
+    def __init__(self):
+        super().__init__(node_name)
+
+        self.odom_gyro = numpy.zeros(6) #odom able to culculate from gyro
+        self.odom_acc = numpy.zeros(6) #odom able to culuculate from acc
+        self.odom_twist = numpy.zeros(6) #odom able to calculate from twist
+
+        '''
+        recent implementation only consider 2d movement, future work may can consider 3d movement
+        like mapping rope climbing 
+        '''
+
+        # fusing imu 
+        self.acc_trust = numpy.array([1, 1, 1, acc_angle_trust_x, acc_angle_trust_y, 0])
+        self.gyro_trust = 1 - self.acc_trust
+
+        # fusing twist and encoder roll and pitch is disabled here for now 
+        self.imu_trust = numpy.array([0, 0, 0, 0, 0, imu_odom_angle_trust])
+        self.twist_trust = numpy.ones(6) - self.imu_trust
+
+        # if the robot is not driving or driving slow, do not let encoder envolve 
+        self.imu_trust_idle = numpy.array([0, 0, 0, 0, 0, 1])
+        self.twist_trust_idle = numpy.ones(6) - self.imu_trust
+       
+        self.imu_dt: float = 0.0
+        self.twist_dt: float = 0.0
+
+        self.imu_previous_t: float = 0.0
+        self.twist_previous_t: float = 0.0
+
+        self.recent_imu  = Imu()
+        self.recent_twist = TwistStamped()
+
+        self.imu_subscriber = self.create_subscription(
+           Imu,
+           imu_in_topic,
+           self.update_imu,
+           queue_size 
+        ) 
+
+        self.chassis_subscriber = self.create_subscription(
+           TwistStamped,
+           twist_in_topic,
+           self.update_twist,
+           queue_size 
+        )
+
+        self.odom_publisher = self.create_publisher(
+           Odometry,
+           odom_out_topic,
+           queue_size  
+        )
+
+        self.fused_euler_publisher = self.create_publisher(
+           Vector3,
+           euler_fused_topic,
+           queue_size  
+        )
+
+        self.odom_timer = self.create_timer(
+           odometry_generating_interval,
+           self.generate_odometry
+        ) 
+
+   
+    def rotation_matrix(axis: str, angle: float) -> numpy.ndarray: 
+        c, s = numpy.cos(angle), numpy.sin(angle)
+        if axis == 'x':
+            return numpy.array([[1, 0, 0],
+                                [0, c, -s],
+                                [0, s, c]])
+        elif axis == 'y':
+            return numpy.array([[c, 0, s],
+                                [0, 1, 0],
+                                [-s, 0, c]])
+        elif axis == 'z':
+            return numpy.array([[c, -s, 0],
+                                [s, c, 0],
+                                [0, 0, 1]])
+        else:
+            raise ValueError("Axis must be 'x', 'y', or 'z'")
+ 
+
+    def __imu_to_numpy(self, msg: Imu):
+        output = numpy.zeros(6)
+        output[0] = msg.linear_acceleration.x
+        output[1] = msg.linear_acceleration.y
+        output[2] = msg.linear_acceleration.z
+        output[3] = msg.angular_velocity.x
+        output[4] = msg.angular_velocity.y
+        output[5] = msg.angular_velocity.z
+        return output
+    
+    
+    def __twist_to_numpy(self, msg: TwistStamped):
+        output = numpy.zeros(6)
+        output[0] = msg.twist.linear.x
+        output[1] = msg.twist.linear.y
+        output[2] = msg.twist.linear.z
+        output[3] = msg.twist.angular.x
+        output[4] = msg.twist.angular.y
+        output[5] = msg.twist.angular.z
+        return output
+    
+
+    def stamp_to_sec(self, sec: int, nanosec: int) -> float:
+        return float(sec) + float(nanosec) / 1e9    
+
+    # generate imu frame transformation 
+    def update_imu(self, msg: Imu):
+        # print("get imu")
+        self.recent_imu = msg
+
+        imu_t = self.stamp_to_sec(msg.header.stamp.sec, msg.header.stamp.nanosec)
+        self.imu_dt = imu_t - self.imu_previous_t
+        self.imu_previous_t = imu_t
+
+        # print(self.imu_dt)
+        
+        new_data = self.__imu_to_numpy(msg)
+        ax,ay,az = new_data[0],new_data[1],new_data[2]
+
+        
+        self.odom_gyro[3:6] += new_data[3:6] * self.imu_dt # around x y z angular
+        # print(self.odom_gyro[3:6])
+        # print(d[0])
+        
+        
+        self.odom_acc[3] = numpy.arctan2(ay, -az) # around x
+        self.odom_acc[4] = numpy.arctan2(ax, numpy.sqrt(ay**2 + az**2))  # around y
+        self.odom_acc[3:5] = numpy.trunc(self.odom_acc[3:4] * 100) / 100
+
+        # print(self.odom_acc[3:6])
+        #now already get position like this:
+        # from acc: 
+        # _ _ _ roll pitch _
+        # from gyro: 
+        # _ _ _ roll pitch yaw 
+
+    # generate a twist frame transformation without rotation from base frame
+    def update_twist(self, msg: TwistStamped):
+        # print("get twist")
+        self.recent_twist = msg
+        
+        # print(self.odom_gyro) 
+        
+        twist_t = self.stamp_to_sec(msg.header.stamp.sec, msg.header.stamp.nanosec)
+        self.twist_dt = twist_t - self.twist_previous_t
+        self.twist_previous_t = twist_t 
+
+        new_data = self.__twist_to_numpy(msg)
+        print(new_data)
+        # print('___') 
+
+        theta_z = self.odom_twist[5]
+
+        transform = [numpy.cos(theta_z), numpy.sin(theta_z), 1, 1, 1, 1]
+
+        self.odom_twist += new_data * transform * self.twist_dt
+        # print(self.odom_twist)
+
+    def __get_imu_fusion(self):
+        return  numpy.trunc((self.odom_acc * self.acc_trust + self.odom_gyro * self.gyro_trust) * 100) / 100
+    
+
+    def __get_odom_fusion(self, imu_fused):
+        if self.recent_twist.twist.angular.z < 0.1:
+            self.odom_twist[5] = imu_fused[5]
+        output = imu_fused * self.imu_trust + self.odom_twist * self.twist_trust 
+
+        return numpy.trunc(output * 10000) / 10000
+
+
+    def generate_odometry(self):
+        message = Odometry()
+        
+        imu_fused = self.__get_imu_fusion() 
+        # print(self.odom_twist)
+        odom_fused = self.__get_odom_fusion(imu_fused) 
+
+        print(odom_fused)
+
+        message.pose.pose.position.x = odom_fused[0]
+        message.pose.pose.position.y = odom_fused[1]
+        message.pose.pose.position.z = odom_fused[2]
+
+        q = tf_transformations.quaternion_from_euler(*odom_fused[3:6])
+        message.pose.pose.orientation.x = q[0]
+        message.pose.pose.orientation.y = q[1]
+        message.pose.pose.orientation.z = q[2]
+        message.pose.pose.orientation.w = q[3]
+
+        time_stamp = self.get_clock().now().to_msg()
+        message.header.stamp = time_stamp
+        message.header.frame_id = 'base_link'
+
+        self.odom_publisher.publish(message)
+
+        euler_message = Vector3()
+        euler_message.x = imu_fused[3]
+        euler_message.y = imu_fused[4]
+        euler_message.z = imu_fused[5]
+        self.fused_euler_publisher.publish(euler_message)
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = odometry_generator()
+    try:  
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        node.get_logger().info("shouting down")
+    finally:
+        node.destroy_node() 
+
+if __name__ == '__main__':
+    main()

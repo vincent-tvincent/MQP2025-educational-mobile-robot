@@ -13,6 +13,11 @@ node_name = "imu_processing"
 imu_feedback_publish_topic_name =  'feedback_imu'
 imu_lowpass_samples_topic_name = 'set_lowpass_samples_imu'
 imu_test_plot_topic_name = 'test_plot_imu'
+
+odometry_generator_topic_name = 'odom_in_imu'
+
+imu_frame_id = 'imu_link'
+
 queue_size = 200
 
 imu_g = 9806.65 # mm/s^2
@@ -23,6 +28,7 @@ class imu_processing_node(Node):
     def __init__(self):
         super().__init__(node_name)
 
+        #prepare for higher order filtering implementation 
         self.imu_data_buffer = deque()
         self.caliberated = False
         self.bias = numpy.zeros(6)
@@ -44,6 +50,12 @@ class imu_processing_node(Node):
             Imu,
             imu_test_plot_topic_name,
             queue_size 
+        )
+
+        self.odom_publisher = self.create_publisher(
+            Imu,
+            odometry_generator_topic_name,
+            queue_size
         )
 
          
@@ -69,24 +81,26 @@ class imu_processing_node(Node):
         message.angular_velocity.z = value[5]
         return message
 
-    def handle_imu_data(self, msg: Imu):
-        # if len(self.imu_data_buffer) == data_buffer_size and not self.caliberated:
-        #     self.caliberated = True
-        #     for data in self.imu_data_buffer:
-        #         data[2] += imu_g
-        #         self.bias += data
-        #     self.bias /= data_buffer_size 
-            # print(self.bias)
+
+    def __imu_enqueue(self, msg: Imu):
         if len(self.imu_data_buffer) >= data_buffer_size:
             self.imu_data_buffer.popleft()  
         recent_data =  self.__message_to_numpy(msg)
         if len(self.imu_data_buffer) > 1:  
             previous_data = self.imu_data_buffer[len(self.imu_data_buffer) - 1]  
             recent_data[0:3] = previous_data[0:3] * (1 - lpf_alpha) + recent_data[0:3] * lpf_alpha 
-        self.imu_data_buffer.append(recent_data) 
-        self.test_publisher.publish(self.__numpy_to_message(self.imu_data_buffer[len(self.imu_data_buffer) - 1]))
-    
-            
+            recent_data[3:6] = numpy.trunc(recent_data[3:6] * 100) / 100
+            # print(recent_data[0:3])
+        self.imu_data_buffer.append(recent_data)
+
+    def handle_imu_data(self, msg: Imu):
+        self.__imu_enqueue(msg) 
+        to_localization = self.__numpy_to_message(self.imu_data_buffer[len(self.imu_data_buffer) - 1])
+        to_localization.header = msg.header
+        to_localization.header.frame_id = imu_frame_id
+        
+        self.odom_publisher.publish(to_localization)
+          
 
     def set_lowpass_samples(self, samples: int):
         message = Int32()

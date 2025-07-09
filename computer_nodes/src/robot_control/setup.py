@@ -12,6 +12,7 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        ('share/' + package_name + '/launch', ['launch/launch_control.py'])
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -25,7 +26,8 @@ setup(
             'gimbal_control = robot_control.gimbal_control:main',
             'chassis_control = robot_control.chassis_control:main',
             'imu_processing = robot_control.imu_processing:main',
-            'imu_test_plot = robot_control.imu_test_plot:main'
+            'imu_test_plot = robot_control.imu_test_plot:main',
+            'odometry_generator = robot_control.odometry_generator:main'
         ],
     },
 )
