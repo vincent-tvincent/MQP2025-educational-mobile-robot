@@ -13,6 +13,7 @@ chassis_goal_topic_name = 'goal_chassis'
 gimbal_goal_topic_name = 'goal_gimbal'
 chassis_commend_topic_name = 'commend_chassis'
 gimbal_commend_topic_name = 'commend_gimbal'
+controller_topic = 'robot_controller'
 
 gimbal_feedback_euler_topic_name = 'feedback_euler_gimbal'
 
@@ -68,7 +69,8 @@ class gimbal_control_node(Node):
         message = Int16()
         message.data = commend
         self.commend_publisher.publish(message)
-    
+
+
     def handle_feedback(self, msg: Vector3):
         pass
         # print(f"recent feedback{msg.x}, {msg.y}, {msg.z}")

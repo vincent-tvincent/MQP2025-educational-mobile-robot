@@ -11,10 +11,10 @@ node_name = 'chassis_control'
 chassis_goal_topic_name = 'goal_chassis'
 chassis_commend_topic_name = 'commend_chassis'
 chassis_feedback_euler_topic_name = 'feedback_twist_chassis'
-
 odometry_generator_topic_name = 'odom_in_twist'
+controller_topic = 'robot_controller'
 
-chassis_goal_interval = 1 / 400
+chassis_goal_interval = 1 / 200
 
 chassis_frame_id = 'base_link'
 
@@ -65,7 +65,7 @@ class chassis_control_node(Node):
 
 
     def send_goal(self): 
-        self.set_goal([-0.0,  0.0])       
+        self.set_goal([0.0,  0.0])       
 
 
     def set_goal(self, goal: list[float]):

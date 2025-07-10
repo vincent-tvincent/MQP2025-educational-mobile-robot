@@ -136,8 +136,9 @@ class odometry_generator(Node):
         
         self.odom_acc[3] = numpy.arctan2(ay, -az) # around x
         self.odom_acc[4] = numpy.arctan2(ax, numpy.sqrt(ay**2 + az**2))  # around y
-        self.odom_acc[3:5] = numpy.trunc(self.odom_acc[3:4] * 1000) / 1000
+        self.odom_acc[3:5] = numpy.trunc(self.odom_acc[3:5] * 1000) / 1000
 
+        
         # print(self.odom_acc[3:6])
         #now already get position like this:
         # from acc: 
@@ -149,7 +150,12 @@ class odometry_generator(Node):
     def update_twist(self, msg: TwistStamped):
         # print("get twist")
         self.recent_twist = msg
-        
+        if self.enable_3d:
+            imu_fused = self.__get_imu_fusion()
+            rx = Rotation.from_euler('x', imu_fused[3])
+            ry = Rotation.from_euler('y', imu_fused[4])
+            rz = Rotation.from_euler('z', imu_fused[5])            
+ 
         # print(self.odom_gyro) 
         twist_t = self.stamp_to_sec(msg.header.stamp.sec, msg.header.stamp.nanosec)
         if self.first_call_twist_update:
@@ -157,11 +163,7 @@ class odometry_generator(Node):
             self.first_call_twist_update = False 
         self.twist_dt = twist_t - self.twist_previous_t
         self.twist_previous_t = twist_t 
-        # print(self.twist_dt)
-        new_data = self.__twist_to_numpy(msg)
-        # print(new_data)
-        # print('___') 
-
+        new_data = self.__twist_to_numpy(msg) 
 
         v = new_data[0]
         omiga = new_data[5]
@@ -172,6 +174,8 @@ class odometry_generator(Node):
         vx = numpy.cos(self.odom_twist[5]) * v
         vy = numpy.sin(self.odom_twist[5]) * v 
         linear_displacement = numpy.array([vx * self.twist_dt, vy * self.twist_dt, 0, 0, 0, 0])
+        if self.enable_3d:
+            linear_displacement[0:3] = rx.apply(ry.apply(rz.apply(linear_displacement[0:3])))
         self.odom_twist += linear_displacement
         # print(new_data)
         # print(self.odom_twist[0:3])
@@ -184,16 +188,16 @@ class odometry_generator(Node):
     def __get_odom_fusion(self, imu_fused): 
         output = numpy.zeros(6)
         twist_frame = self.odom_twist[0:3]
-        if self.enable_3d:
-            rx = Rotation.from_euler('x', imu_fused[3])
-            ry = Rotation.from_euler('y', imu_fused[4])
-            rz = Rotation.from_euler('z', imu_fused[5])
-            world_frame = rz.apply(ry.apply(rx.apply(twist_frame)))
+        # if self.enable_3d:
+        #     rx = Rotation.from_euler('x', imu_fused[3])
+        #     ry = Rotation.from_euler('y', imu_fused[4])
+        #     rz = Rotation.from_euler('z', imu_fused[5])
+        #     world_frame = rz.apply(ry.apply(rx.apply(twist_frame)))
             
-            # print(world_frame) 
-            output[0:3] = world_frame
-        else:
-            output[0:3] = twist_frame
+        #     # print(world_frame) 
+        #     output[0:3] = world_frame
+        # else:
+        output[0:3] = twist_frame
         output[3:6] = imu_fused[3:6] 
         return numpy.trunc(output * 1000) / 1000
 
