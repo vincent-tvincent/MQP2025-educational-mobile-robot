@@ -15,6 +15,7 @@ robot_control/chassis_control.py
 robot_control/gimbal_control.py
 robot_control/imu_processing.py
 robot_control/imu_test_plot.py
+robot_control/joystick_input.py
 robot_control/odometry_generator.py
 robot_control.egg-info/PKG-INFO
 robot_control.egg-info/SOURCES.txt

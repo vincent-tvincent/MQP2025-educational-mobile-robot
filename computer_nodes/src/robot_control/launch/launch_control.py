@@ -28,6 +28,12 @@ def generate_launch_description():
             output='screen'
         ),
         Node(
+            package='robot_control',
+            executable='joystick_input',
+            name='joystick_input',
+            output='screen'
+        ),
+        Node(
             package='tf2_ros',
             executable='static_transform_publisher',
             name='static_transform_publisher',

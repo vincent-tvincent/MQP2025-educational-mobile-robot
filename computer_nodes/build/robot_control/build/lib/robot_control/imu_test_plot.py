@@ -25,7 +25,7 @@ class IMULivePlot(Node):
         self.win.resize(800, 500)
         self.plot = self.win.addPlot(title="Linear Acceleration (mm/s²)")
         self.plot.addLegend()
-        self.plot.setYRange(-10000, 10000)
+        self.plot.setYRange(-10, 10)
         self.plot.setLabel('bottom', 'Samples (most recent on right)')
 
         self.curve_x = self.plot.plot(pen=pg.mkPen('r', width=2), name='accel X')
@@ -39,9 +39,9 @@ class IMULivePlot(Node):
 
     def imu_callback(self, msg: Imu):
         # with self.lock:
-        self.ax_buf.append(msg.linear_acceleration.x)
-        self.ay_buf.append(msg.linear_acceleration.y)
-        self.az_buf.append(msg.linear_acceleration.z)
+        self.ax_buf.append(msg.angular_velocity.x)
+        self.ay_buf.append(msg.angular_velocity.y)
+        self.az_buf.append(msg.angular_velocity.z)
 
     def update_plot(self):
         with self.lock:

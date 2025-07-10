@@ -89,6 +89,8 @@ class imu_processing_node(Node):
         if len(self.imu_data_buffer) > 1:  
             previous_data = self.imu_data_buffer[len(self.imu_data_buffer) - 1]  
             recent_data[0:3] = previous_data[0:3] * (1 - lpf_alpha) + recent_data[0:3] * lpf_alpha 
+            recent_data[3:6] = numpy.trunc(recent_data[3:6] * 100) / 100
+            # print(recent_data[0:3])
         self.imu_data_buffer.append(recent_data)
 
     def handle_imu_data(self, msg: Imu):
@@ -96,7 +98,7 @@ class imu_processing_node(Node):
         to_localization = self.__numpy_to_message(self.imu_data_buffer[len(self.imu_data_buffer) - 1])
         to_localization.header = msg.header
         to_localization.header.frame_id = imu_frame_id
-
+        
         self.odom_publisher.publish(to_localization)
           
 

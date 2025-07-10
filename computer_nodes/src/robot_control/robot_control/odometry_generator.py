@@ -150,11 +150,8 @@ class odometry_generator(Node):
     def update_twist(self, msg: TwistStamped):
         # print("get twist")
         self.recent_twist = msg
-        if self.enable_3d:
-            imu_fused = self.__get_imu_fusion()
-            rx = Rotation.from_euler('x', imu_fused[3])
-            ry = Rotation.from_euler('y', imu_fused[4])
-            rz = Rotation.from_euler('z', imu_fused[5])            
+        imu_fused = self.__get_imu_fusion()
+                        
  
         # print(self.odom_gyro) 
         twist_t = self.stamp_to_sec(msg.header.stamp.sec, msg.header.stamp.nanosec)
@@ -164,18 +161,28 @@ class odometry_generator(Node):
         self.twist_dt = twist_t - self.twist_previous_t
         self.twist_previous_t = twist_t 
         new_data = self.__twist_to_numpy(msg) 
-
+        # print(new_data[0:3])
         v = new_data[0]
         omiga = new_data[5]
 
         self.odom_twist[5] += numpy.trunc(omiga * self.twist_dt * 100) / 100
         # print(self.odom_twist[5])
         # 
-        vx = numpy.cos(self.odom_twist[5]) * v
-        vy = numpy.sin(self.odom_twist[5]) * v 
-        linear_displacement = numpy.array([vx * self.twist_dt, vy * self.twist_dt, 0, 0, 0, 0])
+        # vx = numpy.cos(self.odom_twist[5]) * v
+        # vy = numpy.sin(self.odom_twist[5]) * v   
+        # linear_displacement = numpy.array([vx * self.twist_dt, vy * self.twist_dt, 0, 0, 0, 0])
+        
+        linear_displacement = numpy.zeros(6)
         if self.enable_3d:
+            linear_displacement[0] = v * self.twist_dt
+            rx = Rotation.from_euler('x', imu_fused[3])
+            ry = Rotation.from_euler('y', imu_fused[4])
+            rz = Rotation.from_euler('z', imu_fused[5])
             linear_displacement[0:3] = rx.apply(ry.apply(rz.apply(linear_displacement[0:3])))
+        else:
+            vx = numpy.cos(self.odom_twist[5]) * v
+            vy = numpy.sin(self.odom_twist[5]) * v   
+            linear_displacement = numpy.array([vx * self.twist_dt, vy * self.twist_dt, 0, 0, 0, 0])
         self.odom_twist += linear_displacement
         # print(new_data)
         # print(self.odom_twist[0:3])

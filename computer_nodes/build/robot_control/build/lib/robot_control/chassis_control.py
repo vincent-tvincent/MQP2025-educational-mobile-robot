@@ -2,7 +2,7 @@
 import rclpy
 from rclpy.node import Node
 
-from geometry_msgs.msg import Twist, TwistWithCovarianceStamped
+from geometry_msgs.msg import Twist, TwistStamped
 from std_msgs.msg import Int16
 
 import time
@@ -11,10 +11,10 @@ node_name = 'chassis_control'
 chassis_goal_topic_name = 'goal_chassis'
 chassis_commend_topic_name = 'commend_chassis'
 chassis_feedback_euler_topic_name = 'feedback_twist_chassis'
-
 odometry_generator_topic_name = 'odom_in_twist'
+controller_topic = 'robot_controller'
 
-chassis_goal_interval = 1 / 200 
+chassis_goal_interval = 1 / 200
 
 chassis_frame_id = 'base_link'
 
@@ -40,17 +40,17 @@ class chassis_control_node(Node):
 
         # init subscriber 
         self.feedback_subscriber = self.create_subscription(
-            Twist,
+            TwistStamped,
             chassis_feedback_euler_topic_name,
             self.handle_feedback,
             queue_size 
         )
 
-        self.localization_publisher = self.create_publisher(
-            Twist,
-            localization_topic_name,
-            queue_size
-        )
+        # self.localization_publisher = self.create_publisher(
+        #     Twist,
+        #     localization_topic_name,
+        #     queue_size
+        # )
  
         self.goal_timer = self.create_timer(
             chassis_goal_interval,
@@ -58,14 +58,14 @@ class chassis_control_node(Node):
         )
         
         self.odom_publisher = self.create_publisher(
-            TwistWithCovarianceStamped,
+            TwistStamped,
             odometry_generator_topic_name,
             queue_size 
         )
 
 
     def send_goal(self): 
-        pass       
+        self.set_goal([0.0,  0.0])       
 
 
     def set_goal(self, goal: list[float]):
@@ -81,18 +81,18 @@ class chassis_control_node(Node):
         self.commend_publisher.publish(message)
 
 
-    def __add_stamp(self, msg: Twist):
-        out = TwistWithCovarianceStamped()
-        out.header.stamp = self.get_clock().now().to_msg()
-        out.header.frame_id = chassis_frame_id
-        out.twist.twist = msg
-        out.twist.covariance = [0.1]*36  # set realistic covariance values
-        self.pub.publish(out)
+    # def __add_stamp(self, msg: Twist):
+    #     out = TwistWithCovarianceStamped()
+    #     out.header.stamp = self.get_clock().now().to_msg()
+    #     out.header.frame_id = chassis_frame_id
+    #     out.twist.twist = msg
+    #     out.twist.covariance = [0.1]*36  # set realistic covariance values
+    #     return out
 
 
-    def handle_feedback(self, msg: Twist):
+    def handle_feedback(self, msg: TwistStamped):
         # print(f"recent feedback{msg.linear.x}, {msg.angular.z}")
-        self.odom_publisher.publish(self.__add_stamp(msg))
+        self.odom_publisher.publish(msg)
         
          
         
