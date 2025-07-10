@@ -8,6 +8,8 @@ from geometry_msgs.msg import Twist, TwistStamped, Quaternion, Vector3
 from nav_msgs.msg import Odometry
 
 import numpy
+from scipy.spatial.transform import Rotation
+import math
 import tf_transformations
 
 node_name = 'odometry_generator'
@@ -21,8 +23,6 @@ odometry_generating_interval = 1 / 200
 
 acc_angle_trust_x = 0.1
 acc_angle_trust_y = 0.1
-imu_odom_angle_trust = 0.5
-imu_odom_linear_trust = 0.5
 
 queue_size = 200
 
@@ -33,7 +33,7 @@ class odometry_generator(Node):
         self.odom_gyro = numpy.zeros(6) #odom able to culculate from gyro
         self.odom_acc = numpy.zeros(6) #odom able to culuculate from acc
         self.odom_twist = numpy.zeros(6) #odom able to calculate from twist
-
+        self.enable_3d = True
         '''
         recent implementation only consider 2d movement, future work may can consider 3d movement
         like mapping rope climbing 
@@ -43,17 +43,10 @@ class odometry_generator(Node):
         self.acc_trust = numpy.array([1, 1, 1, acc_angle_trust_x, acc_angle_trust_y, 0])
         self.gyro_trust = 1 - self.acc_trust
 
-        # fusing twist and encoder roll and pitch is disabled here for now 
-        self.imu_trust = numpy.array([0, 0, 0, 0, 0, imu_odom_angle_trust])
-        self.twist_trust = numpy.ones(6) - self.imu_trust
-
-        # if the robot is not driving or driving slow, do not let encoder envolve 
-        self.imu_trust_idle = numpy.array([0, 0, 0, 0, 0, 1])
-        self.twist_trust_idle = numpy.ones(6) - self.imu_trust
-       
         self.imu_dt: float = 0.0
         self.twist_dt: float = 0.0
-
+        self.first_call_imu_update = True
+        self.first_call_twist_update = True
         self.imu_previous_t: float = 0.0
         self.twist_previous_t: float = 0.0
 
@@ -91,25 +84,6 @@ class odometry_generator(Node):
            self.generate_odometry
         ) 
 
-   
-    def rotation_matrix(axis: str, angle: float) -> numpy.ndarray: 
-        c, s = numpy.cos(angle), numpy.sin(angle)
-        if axis == 'x':
-            return numpy.array([[1, 0, 0],
-                                [0, c, -s],
-                                [0, s, c]])
-        elif axis == 'y':
-            return numpy.array([[c, 0, s],
-                                [0, 1, 0],
-                                [-s, 0, c]])
-        elif axis == 'z':
-            return numpy.array([[c, -s, 0],
-                                [s, c, 0],
-                                [0, 0, 1]])
-        else:
-            raise ValueError("Axis must be 'x', 'y', or 'z'")
- 
-
     def __imu_to_numpy(self, msg: Imu):
         output = numpy.zeros(6)
         output[0] = msg.linear_acceleration.x
@@ -139,8 +113,10 @@ class odometry_generator(Node):
     def update_imu(self, msg: Imu):
         # print("get imu")
         self.recent_imu = msg
-
         imu_t = self.stamp_to_sec(msg.header.stamp.sec, msg.header.stamp.nanosec)
+        if self.first_call_imu_update:
+            self.imu_previous_t = imu_t 
+            self.first_call_imu_update = False
         self.imu_dt = imu_t - self.imu_previous_t
         self.imu_previous_t = imu_t
 
@@ -157,7 +133,7 @@ class odometry_generator(Node):
         
         self.odom_acc[3] = numpy.arctan2(ay, -az) # around x
         self.odom_acc[4] = numpy.arctan2(ax, numpy.sqrt(ay**2 + az**2))  # around y
-        self.odom_acc[3:5] = numpy.trunc(self.odom_acc[3:4] * 100) / 100
+        self.odom_acc[3:5] = numpy.trunc(self.odom_acc[3:4] * 1000) / 1000
 
         # print(self.odom_acc[3:6])
         #now already get position like this:
@@ -172,32 +148,51 @@ class odometry_generator(Node):
         self.recent_twist = msg
         
         # print(self.odom_gyro) 
-        
         twist_t = self.stamp_to_sec(msg.header.stamp.sec, msg.header.stamp.nanosec)
+        if self.first_call_twist_update:
+            self.twist_previous_t = twist_t
+            self.first_call_twist_update = False 
         self.twist_dt = twist_t - self.twist_previous_t
         self.twist_previous_t = twist_t 
-
+        # print(self.twist_dt)
         new_data = self.__twist_to_numpy(msg)
-        print(new_data)
+        # print(new_data)
         # print('___') 
 
-        theta_z = self.odom_twist[5]
 
-        transform = [numpy.cos(theta_z), numpy.sin(theta_z), 1, 1, 1, 1]
+        v = new_data[0]
+        omiga = new_data[5]
 
-        self.odom_twist += new_data * transform * self.twist_dt
-        # print(self.odom_twist)
+        self.odom_twist[5] += numpy.trunc(omiga * self.twist_dt * 100) / 100
+        # print(self.odom_twist[5])
+        # 
+        vx = numpy.cos(self.odom_twist[5]) * v
+        vy = numpy.sin(self.odom_twist[5]) * v 
+        linear_displacement = numpy.array([vx * self.twist_dt, vy * self.twist_dt, 0, 0, 0, 0])
+        self.odom_twist += linear_displacement
+        # print(new_data)
+        # print(self.odom_twist[0:3])
+        # print("===")
 
     def __get_imu_fusion(self):
         return  numpy.trunc((self.odom_acc * self.acc_trust + self.odom_gyro * self.gyro_trust) * 100) / 100
     
 
-    def __get_odom_fusion(self, imu_fused):
-        if self.recent_twist.twist.angular.z < 0.1:
-            self.odom_twist[5] = imu_fused[5]
-        output = imu_fused * self.imu_trust + self.odom_twist * self.twist_trust 
-
-        return numpy.trunc(output * 10000) / 10000
+    def __get_odom_fusion(self, imu_fused): 
+        output = numpy.zeros(6)
+        twist_frame = self.odom_twist[0:3]
+        if self.enable_3d:
+            rx = Rotation.from_euler('x', imu_fused[3])
+            ry = Rotation.from_euler('y', imu_fused[4])
+            rz = Rotation.from_euler('z', imu_fused[5])
+            world_frame = rz.apply(ry.apply(rx.apply(twist_frame)))
+            
+            print(world_frame) 
+            output[0:3] = world_frame
+        else:
+            output[0:3] = twist_frame
+        output[3:6] = imu_fused[3:6] 
+        return numpy.trunc(output * 1000) / 1000
 
 
     def generate_odometry(self):
@@ -205,8 +200,8 @@ class odometry_generator(Node):
         
         imu_fused = self.__get_imu_fusion() 
         # print(self.odom_twist)
-        odom_fused = self.__get_odom_fusion(imu_fused) 
 
+        odom_fused = self.__get_odom_fusion(imu_fused) 
         print(odom_fused)
 
         message.pose.pose.position.x = odom_fused[0]
