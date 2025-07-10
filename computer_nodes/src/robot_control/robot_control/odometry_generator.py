@@ -14,6 +14,9 @@ import tf_transformations
 
 node_name = 'odometry_generator'
 
+frame_id = 'odom'
+child_frame_id = 'base_link'
+
 twist_in_topic = 'odom_in_twist'
 imu_in_topic = 'odom_in_imu'
 odom_out_topic = 'odom_output'
@@ -187,7 +190,7 @@ class odometry_generator(Node):
             rz = Rotation.from_euler('z', imu_fused[5])
             world_frame = rz.apply(ry.apply(rx.apply(twist_frame)))
             
-            print(world_frame) 
+            # print(world_frame) 
             output[0:3] = world_frame
         else:
             output[0:3] = twist_frame
@@ -202,7 +205,7 @@ class odometry_generator(Node):
         # print(self.odom_twist)
 
         odom_fused = self.__get_odom_fusion(imu_fused) 
-        print(odom_fused)
+        # print(odom_fused)
 
         message.pose.pose.position.x = odom_fused[0]
         message.pose.pose.position.y = odom_fused[1]
@@ -214,9 +217,12 @@ class odometry_generator(Node):
         message.pose.pose.orientation.z = q[2]
         message.pose.pose.orientation.w = q[3]
 
+        message.twist.twist = self.recent_twist.twist
+
         time_stamp = self.get_clock().now().to_msg()
         message.header.stamp = time_stamp
-        message.header.frame_id = 'base_link'
+        message.header.frame_id = frame_id
+        message.child_frame_id = child_frame_id
 
         self.odom_publisher.publish(message)
 
@@ -225,6 +231,8 @@ class odometry_generator(Node):
         euler_message.y = imu_fused[4]
         euler_message.z = imu_fused[5]
         self.fused_euler_publisher.publish(euler_message)
+
+        # self.get_logger().info(f'published odometry: {message}')
 
 
 def main(args=None):
