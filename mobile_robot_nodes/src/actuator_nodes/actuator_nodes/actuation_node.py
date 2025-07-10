@@ -13,7 +13,7 @@ from std_msgs.msg import Int16
 
 
 node_name = 'robot_actuation'
-queue_size = 200
+queue_size = 400
 chassis_publish_interval = 1 / 200
 gimbal_publish_interval = 1 / 200
 
@@ -25,9 +25,7 @@ gimbal_commend_topic_name = 'commend_gimbal'
 chassis_feedback_twist_topic_name = 'feedback_twist_chassis'
 gimbal_feedback_euler_topic_name = 'feedback_euler_gimbal'
 
-
-servo_read_noise = 0.9 # mm/s
-
+servo_environment_noise = 1
 class actuation_node(Node):
     def __init__(self):
         super().__init__(node_name) 
@@ -108,19 +106,18 @@ class actuation_node(Node):
         self.set_lock = True
         result = COMM_PORT_BUSY
         while result == COMM_PORT_BUSY:
-            if msg.linear.x >= 1 and msg.angular.z >= 0.01:
                 result = self.chassis.set_speed_4wdiff([msg.linear.x, msg.angular.z])
         self.set_lock = False
 
 
     def set_gimbal_goal(self, msg: Vector3):
-        self.set_lock = True
+        # self.set_lock = True
         result = COMM_PORT_BUSY
         # print("get gimbal goal")
         while result == COMM_PORT_BUSY:
             result = self.gimbal.set_gimbal_position([msg.z, msg.y])
         # print("gimbal goal setted")
-        self.set_lock = False
+        # self.set_lock = False
 
 
     def set_chassis_commend(self, msg: Int16):
@@ -163,13 +160,13 @@ class actuation_node(Node):
                 
                 
                 l_eq_velocity = ((lf_wheel_velocity + lr_wheel_velocity) / 2 * speed_unit
-                  if abs((lf_wheel_velocity + lr_wheel_velocity) / 2 * speed_unit) >= servo_read_noise
+                  if abs((lf_wheel_velocity + lr_wheel_velocity) / 2 * speed_unit) >= servo_environment_noise
                   else 0.0)
                 r_eq_velocity = ((rf_wheel_velocity + rr_wheel_velocity) / 2 * speed_unit
-                  if abs((rf_wheel_velocity + rr_wheel_velocity) / 2 * speed_unit) >= servo_read_noise
+                  if abs((rf_wheel_velocity + rr_wheel_velocity) / 2 * speed_unit) >= servo_environment_noise
                   else 0.0)
 
-                print(l_eq_velocity)
+                # print(l_eq_velocity)
              
                 diff_eq_velocity = r_eq_velocity - l_eq_velocity
                 angular_velocity = diff_eq_velocity / rotation_diameter
