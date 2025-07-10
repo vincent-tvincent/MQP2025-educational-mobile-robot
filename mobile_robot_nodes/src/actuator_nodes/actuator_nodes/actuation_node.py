@@ -14,8 +14,10 @@ from std_msgs.msg import Int16
 
 node_name = 'robot_actuation'
 queue_size = 400
-chassis_publish_interval = 1 / 200
-gimbal_publish_interval = 1 / 200
+actuation_queue_size = 10
+gimbal_queue_size = 10
+chassis_publish_interval = 1 / 400
+gimbal_publish_interval = 1 / 400
 
 chassis_goal_topic_name = 'goal_chassis'
 gimbal_goal_topic_name = 'goal_gimbal'
@@ -53,14 +55,14 @@ class actuation_node(Node):
             Twist,
             chassis_goal_topic_name,
             self.set_chassis_goal,
-            queue_size
+            actuation_queue_size
         ) 
 
         self.gimbal_goal_subscription = self.create_subscription(
            Vector3,
             gimbal_goal_topic_name,
             self.set_gimbal_goal,
-            queue_size
+            gimbal_queue_size
         )
 
         self.chassis_commend_subscription = self.create_subscription(
@@ -103,11 +105,11 @@ class actuation_node(Node):
 
     def set_chassis_goal(self, msg: Twist):
         # self.get_logger().info(f"receive goal{msg.angular.z}")
-        self.set_lock = True
+        # self.set_lock = True
         result = COMM_PORT_BUSY
-        while result == COMM_PORT_BUSY:
-                result = self.chassis.set_speed_4wdiff([msg.linear.x, msg.angular.z])
-        self.set_lock = False
+        # while result == COMM_PORT_BUSY:
+        result = self.chassis.set_speed_4wdiff([msg.linear.x, msg.angular.z])
+        # self.set_lock = False
 
 
     def set_gimbal_goal(self, msg: Vector3):
@@ -128,7 +130,7 @@ class actuation_node(Node):
 
 
     def set_gimbal_commend(self, msg: Int16):
-        self.set_lock = True
+        # self.set_lock = True
         result = COMM_PORT_BUSY
         if msg.data == 0:
             while result == COMM_PORT_BUSY:
@@ -143,7 +145,7 @@ class actuation_node(Node):
                 result = self.gimbal.gimbal_zeroing()
             # print("here")
             time.sleep(0.5)
-        self.set_lock = False
+        # self.set_lock = False
 
     
     def publish_chassis_feedback(self):
