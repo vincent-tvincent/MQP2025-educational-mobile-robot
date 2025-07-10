@@ -102,7 +102,7 @@ class actuation_node(Node):
 
 
     def set_chassis_goal(self, msg: Twist):
-        self.get_logger().info(f"receive goal{msg}")
+        # self.get_logger().info(f"receive goal{msg.angular.z}")
         self.set_lock = True
         result = COMM_PORT_BUSY
         while result == COMM_PORT_BUSY:
@@ -170,7 +170,7 @@ class actuation_node(Node):
              
                 diff_eq_velocity = r_eq_velocity - l_eq_velocity
                 angular_velocity = diff_eq_velocity / rotation_diameter
-                linear_velocity = min(l_eq_velocity, r_eq_velocity)
+                linear_velocity = (r_eq_velocity + l_eq_velocity) / 2
 
                 message.twist.angular.z = angular_velocity
                 message.twist.linear.x = linear_velocity
