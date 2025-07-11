@@ -9,7 +9,7 @@ from std_msgs.msg import Int32
 node_name = 'robot_imu'
 imu_feedback_publish_topic_name =  'feedback_imu'
 imu_lowpass_samples_topic_name = 'set_lowpass_samples_imu'
-imu_publish_interval = 1 / 400
+imu_publish_interval = 1 / 1000
 queue_size = 50
 
 class imu_node(Node):
@@ -48,11 +48,11 @@ class imu_node(Node):
             # x and y swapped for align with the direction of ros2 system 
             if key == IMU_ACCELERATION_NAME:
                 message.linear_acceleration.x = data[IMU_ACCELERATION_NAME][1] * imu_acc_unit
-                message.linear_acceleration.y = data[IMU_ACCELERATION_NAME][0] * imu_acc_unit
+                message.linear_acceleration.y = - data[IMU_ACCELERATION_NAME][0] * imu_acc_unit
                 message.linear_acceleration.z = - data[IMU_ACCELERATION_NAME][2] * imu_acc_unit
             elif key == IMU_GYROSCOPE_NAME:
                 message.angular_velocity.x = data[IMU_GYROSCOPE_NAME][1] * imu_gyro_unit_radian
-                message.angular_velocity.y = data[IMU_GYROSCOPE_NAME][0] * imu_gyro_unit_radian
+                message.angular_velocity.y = - data[IMU_GYROSCOPE_NAME][0] * imu_gyro_unit_radian
                 message.angular_velocity.z = data[IMU_GYROSCOPE_NAME][2] * imu_gyro_unit_radian 
                 
         message.header.frame_id = 'robot'
