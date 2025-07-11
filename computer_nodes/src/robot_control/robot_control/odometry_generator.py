@@ -24,9 +24,13 @@ euler_fused_topic = 'fused_euler'
 
 odometry_generating_interval = 1 / 200
 
-acc_angle_trust_x = 0.1
-acc_angle_trust_y = 0.1
+acc_angle_trust_x = 0.02
+acc_angle_trust_y = 0.02
 
+yaw_gyro_trust = 0.5
+yaw_encoder_trust = 1 - yaw_gyro_trust
+# yaw_fusion_min_velocity = 5
+# yaw_fusion_min_angular_velocity = numpy.pi / 8
 queue_size = 200
 
 class odometry_generator(Node):
@@ -184,6 +188,7 @@ class odometry_generator(Node):
             vy = numpy.sin(self.odom_twist[5]) * v   
             linear_displacement = numpy.array([vx * self.twist_dt, vy * self.twist_dt, 0, 0, 0, 0])
         self.odom_twist += linear_displacement
+        self.odom_twist[5] %= 2 * numpy.pi
         # print(new_data)
         # print(self.odom_twist[0:3])
         # print("===")
@@ -194,18 +199,11 @@ class odometry_generator(Node):
 
     def __get_odom_fusion(self, imu_fused): 
         output = numpy.zeros(6)
-        twist_frame = self.odom_twist[0:3]
-        # if self.enable_3d:
-        #     rx = Rotation.from_euler('x', imu_fused[3])
-        #     ry = Rotation.from_euler('y', imu_fused[4])
-        #     rz = Rotation.from_euler('z', imu_fused[5])
-        #     world_frame = rz.apply(ry.apply(rx.apply(twist_frame)))
-            
-        #     # print(world_frame) 
-        #     output[0:3] = world_frame
-        # else:
+        twist_frame = self.odom_twist[0:3] 
         output[0:3] = twist_frame
         output[3:6] = imu_fused[3:6] 
+        # if self.enable_3d and (self.recent_twist.twist.linear.x > yaw_fusion_min_velocity or self.recent_twist.twist.angular.z > yaw_fusion_min_angular_velocity):
+        #     output[5] = output[5] * yaw_gyro_trust + self.odom_twist[5] * yaw_encoder_trust
         return numpy.trunc(output * 1000) / 1000
 
 
