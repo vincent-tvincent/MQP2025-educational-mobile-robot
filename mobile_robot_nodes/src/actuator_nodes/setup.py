@@ -23,6 +23,7 @@ setup(
     entry_points={
         'console_scripts': [
             'actuation_node = actuator_nodes.actuation_node:main'
+            
         ],
     },
 )

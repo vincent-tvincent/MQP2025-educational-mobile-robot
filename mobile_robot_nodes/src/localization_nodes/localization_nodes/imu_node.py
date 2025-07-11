@@ -9,8 +9,8 @@ from std_msgs.msg import Int32
 node_name = 'robot_imu'
 imu_feedback_publish_topic_name =  'feedback_imu'
 imu_lowpass_samples_topic_name = 'set_lowpass_samples_imu'
-imu_publish_interval = 1 / 200
-queue_size = 200
+imu_publish_interval = 1 / 400
+queue_size = 50
 
 class imu_node(Node):
     def __init__(self):

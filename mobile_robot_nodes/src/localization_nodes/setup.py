@@ -21,7 +21,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'imu_node=localization_nodes.imu_node:main'
+            'imu_node=localization_nodes.imu_node:main',
+            'lidar_node=localization_nodes.lidar_node:main' 
         ],
     },
 )
