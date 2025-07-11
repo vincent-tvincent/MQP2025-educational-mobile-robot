@@ -6,3 +6,4 @@ imu_test_plot = robot_control.imu_test_plot:main
 joystick_input = robot_control.joystick_input:main
 lidar_processing = robot_control.lidar_processing:main
 odometry_generator = robot_control.odometry_generator:main
+robot_map = robot_control.robot_map:main

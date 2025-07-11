@@ -45,23 +45,23 @@ def generate_launch_description():
             name='static_transform_publisher_chassis',
             arguments=[
                 '0', '0', '0',      # x y z translation
-                '3.141592654', '0', '0',     #roll pitch yaw 
+                '0', '0', '0',     #yaw pitch roll
                 'odom',             # parent frame
                 'base_link'         # child frame
             ],
-            output='screen',
+            output='screen'
         ),
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
             name='static_transform_publisher_lidar',
             arguments=[
-                '0.015', '0', '0.2',      # x y z translation
-                '0', '0', '0',        #roll pitch yaw
+                '0', '0', '0',      # x y z translation
+                '0', '0', '0',        #yaw pitch roll
                 'base_link',             # parent frame
                 'robot_lidar'         # child frame
             ],
-            output='screen',
+            output='screen'
         ),
         Node(
             package='rviz2',

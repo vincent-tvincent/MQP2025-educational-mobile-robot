@@ -18,15 +18,15 @@ controller_topic_name = 'robot_controller'
 gimbal_manual_controller_topic_name = 'gimbal_manual_controller'
 
 
-chassis_goal_interval = 1 / 1000
+chassis_goal_interval = 1 / 400
 
 
 chassis_frame_id = 'base_link'
 
 queue_size = 200
 
-robot_linear_speed_limit = 400
-robot_angular_speed_limit = math.pi * 2
+robot_linear_speed_limit = 200
+robot_angular_speed_limit = math.pi / 2
 
 class chassis_control_node(Node): 
     def __init__(self):
@@ -83,6 +83,8 @@ class chassis_control_node(Node):
 
 
     def handle_control(self, msg: Joy):
+        ls = msg.buttons[0]
+        rs = msg.buttons[1]
         ljb = msg.buttons[2]
         rjb = msg.buttons[3]
 

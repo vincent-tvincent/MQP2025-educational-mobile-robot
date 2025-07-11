@@ -22,10 +22,10 @@ imu_in_topic = 'odom_in_imu'
 odom_out_topic = 'odom_output'
 euler_fused_topic = 'fused_euler'
 
-odometry_generating_interval = 1 / 1000
+odometry_generating_interval = 1 / 400
 
-acc_angle_trust_x = 0.02
-acc_angle_trust_y = 0.02
+acc_angle_trust_x = 0.005
+acc_angle_trust_y = 0.005
 
 yaw_gyro_trust = 0.5
 yaw_encoder_trust = 1 - yaw_gyro_trust
@@ -40,11 +40,7 @@ class odometry_generator(Node):
         self.odom_gyro = numpy.zeros(6) #odom able to culculate from gyro
         self.odom_acc = numpy.zeros(6) #odom able to culuculate from acc
         self.odom_twist = numpy.zeros(6) #odom able to calculate from twist
-        self.enable_3d = True
-        '''
-        recent implementation only consider 2d movement, future work may can consider 3d movement
-        like mapping rope climbing 
-        '''
+        self.enable_3d = True 
 
         # fusing imu 
         self.acc_trust = numpy.array([1, 1, 1, acc_angle_trust_x, acc_angle_trust_y, 0])

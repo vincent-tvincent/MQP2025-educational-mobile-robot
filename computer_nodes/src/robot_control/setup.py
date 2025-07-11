@@ -29,7 +29,8 @@ setup(
             'lidar_processing = robot_control.lidar_processing:main',
             'imu_test_plot = robot_control.imu_test_plot:main',
             'odometry_generator = robot_control.odometry_generator:main',
-            'joystick_input = robot_control.joystick_input:main'
+            'joystick_input = robot_control.joystick_input:main',
+            'robot_map = robot_control.robot_map:main'
         ],
     },
 )

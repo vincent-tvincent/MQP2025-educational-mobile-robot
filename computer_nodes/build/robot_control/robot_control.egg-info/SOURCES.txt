@@ -18,6 +18,7 @@ robot_control/imu_test_plot.py
 robot_control/joystick_input.py
 robot_control/lidar_processing.py
 robot_control/odometry_generator.py
+robot_control/robot_map.py
 robot_control.egg-info/PKG-INFO
 robot_control.egg-info/SOURCES.txt
 robot_control.egg-info/dependency_links.txt
