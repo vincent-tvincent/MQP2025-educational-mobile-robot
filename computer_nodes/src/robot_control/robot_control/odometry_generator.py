@@ -22,7 +22,7 @@ imu_in_topic = 'odom_in_imu'
 odom_out_topic = 'odom_output'
 euler_fused_topic = 'fused_euler'
 
-odometry_generating_interval = 1 / 200
+odometry_generating_interval = 1 / 1000
 
 acc_angle_trust_x = 0.02
 acc_angle_trust_y = 0.02
@@ -138,9 +138,9 @@ class odometry_generator(Node):
         # print(d[0])
         
         
-        self.odom_acc[3] = numpy.arctan2(ay, -az) # around x
-        self.odom_acc[4] = numpy.arctan2(ax, numpy.sqrt(ay**2 + az**2))  # around y
-        self.odom_acc[3:5] = numpy.trunc(self.odom_acc[3:5] * 1000) / 1000
+        self.odom_acc[3] = numpy.arctan2(ay, az) # around x
+        self.odom_acc[4] = numpy.arctan2(-ax, numpy.sqrt(ay**2 + az**2))  # around y
+        self.odom_acc[3:5] = numpy.trunc(self.odom_acc[3:5] * 1000.0) / 1000.0
 
         
         # print(self.odom_acc[3:6])
@@ -169,7 +169,7 @@ class odometry_generator(Node):
         v = new_data[0]
         omiga = new_data[5]
 
-        self.odom_twist[5] += numpy.trunc(omiga * self.twist_dt * 100) / 100
+        self.odom_twist[5] += numpy.trunc(omiga * self.twist_dt * 100.0) / 100.0
         # print(self.odom_twist[5])
         # 
         # vx = numpy.cos(self.odom_twist[5]) * v
@@ -194,7 +194,7 @@ class odometry_generator(Node):
         # print("===")
 
     def __get_imu_fusion(self):
-        return  numpy.trunc((self.odom_acc * self.acc_trust + self.odom_gyro * self.gyro_trust) * 100) / 100
+        return  numpy.trunc((self.odom_acc * self.acc_trust + self.odom_gyro * self.gyro_trust) * 100.0) / 100.0
     
 
     def __get_odom_fusion(self, imu_fused): 
@@ -204,7 +204,7 @@ class odometry_generator(Node):
         output[3:6] = imu_fused[3:6] 
         # if self.enable_3d and (self.recent_twist.twist.linear.x > yaw_fusion_min_velocity or self.recent_twist.twist.angular.z > yaw_fusion_min_angular_velocity):
         #     output[5] = output[5] * yaw_gyro_trust + self.odom_twist[5] * yaw_encoder_trust
-        return numpy.trunc(output * 1000) / 1000
+        return numpy.trunc(output * 1000.0) / 1000.0
 
 
     def generate_odometry(self):
@@ -216,9 +216,10 @@ class odometry_generator(Node):
         odom_fused = self.__get_odom_fusion(imu_fused) 
         # print(odom_fused)
 
-        message.pose.pose.position.x = odom_fused[0]
-        message.pose.pose.position.y = odom_fused[1]
-        message.pose.pose.position.z = odom_fused[2]
+        message.pose.pose.position.x = odom_fused[0] / 1000.0
+        message.pose.pose.position.y = odom_fused[1] / 1000.0
+        message.pose.pose.position.z = odom_fused[2] / 1000.0
+        # print(odom_fused[0:2])
 
         q = tf_transformations.quaternion_from_euler(*odom_fused[3:6])
         message.pose.pose.orientation.x = q[0]
@@ -252,7 +253,8 @@ def main(args=None):
     except KeyboardInterrupt:
         node.get_logger().info("shouting down")
     finally:
-        node.destroy_node() 
+        node.destroy_node()
+        rclpy.shutdown() 
 
 if __name__ == '__main__':
     main()

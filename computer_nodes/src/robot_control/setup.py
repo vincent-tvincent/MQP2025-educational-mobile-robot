@@ -26,6 +26,7 @@ setup(
             'gimbal_control = robot_control.gimbal_control:main',
             'chassis_control = robot_control.chassis_control:main',
             'imu_processing = robot_control.imu_processing:main',
+            'lidar_processing = robot_control.lidar_processing:main',
             'imu_test_plot = robot_control.imu_test_plot:main',
             'odometry_generator = robot_control.odometry_generator:main',
             'joystick_input = robot_control.joystick_input:main'

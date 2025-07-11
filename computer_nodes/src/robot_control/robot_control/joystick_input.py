@@ -213,7 +213,8 @@ def main(args=None):
         node.get_logger().info("shouting down")
         node.close_joystick()
     finally:
-        node.destroy_node() 
+        node.destroy_node()
+        rclpy.shutdown() 
 
 
 if __name__ == '__main__':

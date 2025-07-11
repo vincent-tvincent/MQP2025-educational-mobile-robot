@@ -118,7 +118,7 @@ def main(args=None):
         node.get_logger().info("shouting down")
     finally:
         node.destroy_node() 
-
+        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()

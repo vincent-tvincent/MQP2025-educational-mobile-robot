@@ -18,7 +18,7 @@ controller_topic_name = 'robot_controller'
 gimbal_manual_controller_topic_name = 'gimbal_manual_controller'
 
 
-chassis_goal_interval = 1 / 400
+chassis_goal_interval = 1 / 1000
 
 
 chassis_frame_id = 'base_link'
@@ -161,12 +161,9 @@ class chassis_control_node(Node):
 
     def handle_feedback(self, msg: TwistStamped):
         # print(f"recent feedback{msg.linear.x}, {msg.angular.z}")
-        self.odom_publisher.publish(msg)
-        
+        self.odom_publisher.publish(msg) 
          
         
-        
-
 def main(args=None):
     rclpy.init(args=args)
     node = chassis_control_node()
@@ -175,7 +172,8 @@ def main(args=None):
     except KeyboardInterrupt:
         node.get_logger().info("shouting down")
     finally:
-        node.destroy_node() 
+        node.destroy_node()
+        rclpy.shutdown() 
 
 
 if __name__ == '__main__':
