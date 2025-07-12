@@ -131,8 +131,8 @@ class chassis_control_node(Node):
             linear_velocity = float(robot_linear_speed_limit) * velocity_control
 
         angular_velocity = -1 * float(robot_angular_speed_limit) * direction_control
-        if linear_velocity != 0:
-            angular_velocity *= linear_velocity / abs(linear_velocity)
+        # if linear_velocity != 0:
+        #     angular_velocity *= linear_velocity / abs(linear_velocity)
         self.next_goal = [linear_velocity, angular_velocity]
 
 

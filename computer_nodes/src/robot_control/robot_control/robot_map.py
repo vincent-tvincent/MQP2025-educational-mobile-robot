@@ -1,33 +1,58 @@
 import rclpy
 from rclpy.node import Node
+
 from nav_msgs.msg import OccupancyGrid, Odometry
 from sensor_msgs.msg import PointCloud2
 from sensor_msgs_py import point_cloud2
 from std_msgs.msg import Header
+
 import numpy
+from collections import deque
 
 node_name = 'robot_map'
 map_frame_id = 'map'
 map_topic_name = 'robot_2d_map'
 odom_topic_name = 'odom_output'
 point_cloud_topic_name = 'processed_pointcloud'
-map_publish_interval = 1 / 20
+map_publish_interval = 1 / 10
 queue_size = 200
 
 # m
 map_size = 10
 resolution = 0.01
-intensity_sensitivity = 5
 
 # m/s 
-angular_speed_limit = 0
+angular_speed_limit = 0.1
 
+map_queue_size = 10
+
+map_cleaning_interval = 1 / 5
+
+intensity_sensitivity = 500
+intensity_max = 1000
+
+cleaning_threshold = 900
+
+
+cleaning_factor_1 = 0.9
+cleaning_factor_2 = 0.1
 map_count = int(map_size / resolution)
 class robot_map(Node):
     def __init__(self):
         super().__init__(node_name)
+        
+        self.grid_count = map_count
+        self.resolution = resolution  
+        self.origin = int(self.grid_count / 2)
 
+        self.generating_output = False
+        
+        self.occupancy_grid = OccupancyGrid()
         self.recent_odom = Odometry() 
+
+        # Initialize the map
+        map_data = numpy.zeros((self.grid_count, self.grid_count))
+        self.sum_map = map_data
 
         self.odom_subscribtion = self.create_subscription(
             Odometry,
@@ -51,44 +76,69 @@ class robot_map(Node):
         )
 
         # Timer to publish the map at a regular interval
-        self.timer = self.create_timer(
+        self.map_publish_timer = self.create_timer(
             map_publish_interval, 
             self.publish_map
         )
 
-        # Create a simple 10x10 grid map (for demonstration purposes)
-        self.grid_count = map_count
-        self.resolution = resolution  # 10 cm per cell
-        self.origin = int(self.grid_count / 2)
-        
-        # Initialize the map
-        self.map_data = numpy.zeros((self.grid_count, self.grid_count), dtype=int)  # Free map
-        # self.map_data[3:6, 3:6] = 100  # Add an obstacle in the middle
-        
-        # Create the OccupancyGrid message
-        self.occupancy_grid = OccupancyGrid()
+        self.cleaner_timer = self.create_timer(
+            map_cleaning_interval,
+            self.clean_map
+        )
 
-        self.map_data[self.origin, self.origin] = 100
 
     def handle_odom(self, msg: Odometry):
         self.recent_odom = msg
 
+
     def draw_map(self, msg: PointCloud2):
-        if self.recent_odom.twist.twist.angular.z <= angular_speed_limit: 
+        if self.recent_odom.twist.twist.angular.z <= angular_speed_limit:
+            next_map  = numpy.zeros((map_count, map_count)) 
+
             # Get the 3D points from the PointCloud2 message
             points = list(point_cloud2.read_points(msg, field_names=['x','y','z', 'intensity'], skip_nans=True))
             # Loop over all points
             for point in points:
                 x, y, z, v= point
                 # Convert from world coordinates to grid coordinates
-                if -map_count < x < map_count and -map_count < y < map_count:
+                if -map_count / 2 < x < map_count / 2 and -map_count / 2 < y < map_count / 2:
                     grid_x = int(x / resolution) + self.origin 
                     grid_y = int(y / resolution) + self.origin
-                    # print(v)
-                    # print(grid_x, grid_y) 
-                    self.map_data[grid_y, grid_x] = min(int(100 * v) * intensity_sensitivity, 100)  # 100 = Occupied cell 
+                    next_map[grid_y, grid_x] = min(int(100 * v) * intensity_sensitivity, 100)  # 100 = Occupied cell 
+            
+            # print(numpy.sum(self.sum_map[self.origin - 10:self.origin + 10, self.origin - 10:self.origin + 10]))
+            self.sum_map += next_map
+            self.sum_map[self.sum_map < 0] = 0
+            self.sum_map[self.sum_map > 1000] = 1000
+
+            # self.sum_map[self.sum_map > 10000] = 10000
+
+            # print(numpy.sum(self.sum_map[self.origin - 10:self.origin + 10, self.origin - 10:self.origin + 10]))
+
+            # print('-----')
+
+
+    def clean_map(self):
+        differences = self.sum_map - cleaning_threshold
+        factor_2 = differences[self.sum_map < cleaning_threshold] / intensity_max  * cleaning_factor_2
+        cleaning_factor = cleaning_factor_1 + factor_2
+        cleaning_factor[cleaning_factor < 0] = 0
+        self.sum_map[self.sum_map < cleaning_threshold] *= cleaning_factor
+
+
+    def __generate_output_map(self)-> numpy.ndarray: 
+        # print(self.sum_map.max())
+        output_map = numpy.zeros((self.grid_count, self.grid_count))
+
+        max_value = self.sum_map.max()
+        if max_value > 0:
+            output_map = self.sum_map / max_value * 100
+        return output_map.astype(int)
+
 
     def publish_map(self):
+        output_map = self.__generate_output_map() 
+
         # Set the header for the map
         self.occupancy_grid.header = Header()
         self.occupancy_grid.header.stamp = self.get_clock().now().to_msg()
@@ -106,7 +156,7 @@ class robot_map(Node):
         self.occupancy_grid.info.origin.orientation.w = 1.0
 
         # Flatten the 2D array into a 1D array for the OccupancyGrid message
-        self.occupancy_grid.data = self.map_data.flatten().tolist()
+        self.occupancy_grid.data = output_map.flatten().tolist()
 
         # Publish the map
         self.map_publisher.publish(self.occupancy_grid)
