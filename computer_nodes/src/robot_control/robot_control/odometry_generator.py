@@ -22,7 +22,7 @@ imu_in_topic = 'odom_in_imu'
 odom_out_topic = 'odom_output'
 euler_fused_topic = 'fused_euler'
 
-odometry_generating_interval = 1 / 400
+odometry_generating_interval = 1 / 200
 
 acc_angle_trust_x = 0.005
 acc_angle_trust_y = 0.005
