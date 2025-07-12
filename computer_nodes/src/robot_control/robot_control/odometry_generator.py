@@ -224,6 +224,9 @@ class odometry_generator(Node):
         message.pose.pose.orientation.w = q[3]
 
         message.twist.twist = self.recent_twist.twist
+        message.twist.twist.linear.x /= 1000.0
+        message.twist.twist.linear.y /= 1000.0
+        message.twist.twist.linear.z /= 1000.0
 
         time_stamp = self.get_clock().now().to_msg()
         message.header.stamp = time_stamp

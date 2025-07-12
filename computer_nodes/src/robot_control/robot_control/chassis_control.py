@@ -26,7 +26,7 @@ chassis_frame_id = 'base_link'
 queue_size = 200
 
 robot_linear_speed_limit = 200
-robot_angular_speed_limit = math.pi / 2
+robot_angular_speed_limit = math.pi * 2
 
 class chassis_control_node(Node): 
     def __init__(self):
@@ -117,6 +117,7 @@ class chassis_control_node(Node):
             gimbal_pitch_control = ly
             gimbal_yaw_control = lx
             velocity_control = lt - rt
+        
         # print(ry)
         # print(gimbal_pitch_control)
         gimbal_message = Vector3()
@@ -130,7 +131,8 @@ class chassis_control_node(Node):
             linear_velocity = float(robot_linear_speed_limit) * velocity_control
 
         angular_velocity = -1 * float(robot_angular_speed_limit) * direction_control
-
+        if linear_velocity != 0:
+            angular_velocity *= linear_velocity / abs(linear_velocity)
         self.next_goal = [linear_velocity, angular_velocity]
 
 

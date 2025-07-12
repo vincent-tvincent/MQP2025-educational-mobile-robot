@@ -22,7 +22,7 @@ queue_size = 200
 
 imu_g = 9806.65 # mm/s^2
 data_buffer_size = 50
-lpf_alpha = 0.8
+lpf_alpha = 0.9
 
 class imu_processing_node(Node):
     def __init__(self):
