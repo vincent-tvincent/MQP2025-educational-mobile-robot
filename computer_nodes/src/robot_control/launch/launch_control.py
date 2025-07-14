@@ -73,7 +73,7 @@ def generate_launch_description():
             executable='static_transform_publisher',
             name='static_transform_publisher_lidar',
             arguments=[
-                '0.015', '0', '0.2',      # x y z translation
+                '0', '0', '0.2',      # x y z translation
                 '0', '0', '0',        #yaw pitch roll
                 'base_link',             # parent frame
                 'robot_lidar'         # child frame

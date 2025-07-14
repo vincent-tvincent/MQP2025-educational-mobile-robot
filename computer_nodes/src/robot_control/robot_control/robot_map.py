@@ -35,7 +35,7 @@ intensity_max = 1000
 marker_threshold = 500
 
 cleaning_factor_1 = 0.8
-marker_factor_1 = 2
+marker_factor_1 = 1.5
 
 map_count = int(map_size / resolution)
 class robot_map(Node):
@@ -87,10 +87,10 @@ class robot_map(Node):
             self.clean_map
         )
 
-        self.marker_timer = self.create_timer(
-            marp_marking_interval,
-            self.mark_map
-        )
+        # self.marker_timer = self.create_timer(
+        #     marp_marking_interval,
+        #     self.mark_map
+        # )
 
 
     def handle_odom(self, msg: Odometry):
@@ -127,6 +127,7 @@ class robot_map(Node):
 
     def clean_map(self):
         self.sum_map *= cleaning_factor_1
+        self.mark_map()
 
     def mark_map(self):
         self.sum_map[self.sum_map > marker_threshold] *= marker_factor_1

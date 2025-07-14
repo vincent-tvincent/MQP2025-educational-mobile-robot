@@ -40,7 +40,7 @@ class odometry_generator(Node):
         self.odom_gyro = numpy.zeros(6) #odom able to culculate from gyro
         self.odom_acc = numpy.zeros(6) #odom able to culuculate from acc
         self.odom_twist = numpy.zeros(6) #odom able to calculate from twist
-        self.enable_3d = True 
+        self.enable_3d = False
 
         # fusing imu 
         self.acc_trust = numpy.array([1, 1, 1, acc_angle_trust_x, acc_angle_trust_y, 0])
@@ -180,9 +180,16 @@ class odometry_generator(Node):
             rz = Rotation.from_euler('z', imu_fused[5])
             linear_displacement[0:3] = rx.apply(ry.apply(rz.apply(linear_displacement[0:3])))
         else:
-            vx = numpy.cos(self.odom_twist[5]) * v
-            vy = numpy.sin(self.odom_twist[5]) * v   
-            linear_displacement = numpy.array([vx * self.twist_dt, vy * self.twist_dt, 0, 0, 0, 0])
+
+            # can be simplified, copy just for avoid broken relation between other components
+            linear_displacement[0] = v * self.twist_dt
+            rx = Rotation.from_euler('x', imu_fused[3])
+            ry = Rotation.from_euler('y', imu_fused[4])
+            rz = Rotation.from_euler('z', imu_fused[5])
+            linear_displacement[0:3] = rx.apply(ry.apply(rz.apply(linear_displacement[0:3])))
+            
+            linear_displacement[2] = 0
+
         self.odom_twist += linear_displacement
         self.odom_twist[5] %= 2 * numpy.pi
         # print(new_data)
