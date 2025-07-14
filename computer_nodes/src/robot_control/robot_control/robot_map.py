@@ -21,21 +21,22 @@ queue_size = 200
 map_size = 10
 resolution = 0.01
 
-# m/s 
-angular_speed_limit = 0.1
+
+angular_speed_limit = numpy.pi / 2
 
 map_queue_size = 10
 
 map_cleaning_interval = 1 / 5
+marp_marking_interval = 1 / 2
 
-intensity_sensitivity = 500
+intensity_sensitivity = 1000
 intensity_max = 1000
 
-cleaning_threshold = 900
+marker_threshold = 500
 
+cleaning_factor_1 = 0.8
+marker_factor_1 = 2
 
-cleaning_factor_1 = 0.9
-cleaning_factor_2 = 0.1
 map_count = int(map_size / resolution)
 class robot_map(Node):
     def __init__(self):
@@ -86,13 +87,19 @@ class robot_map(Node):
             self.clean_map
         )
 
+        self.marker_timer = self.create_timer(
+            marp_marking_interval,
+            self.mark_map
+        )
+
 
     def handle_odom(self, msg: Odometry):
         self.recent_odom = msg
 
 
     def draw_map(self, msg: PointCloud2):
-        if self.recent_odom.twist.twist.angular.z <= angular_speed_limit:
+        # self.clean_map()
+        if True:
             next_map  = numpy.zeros((map_count, map_count)) 
 
             # Get the 3D points from the PointCloud2 message
@@ -119,12 +126,10 @@ class robot_map(Node):
 
 
     def clean_map(self):
-        differences = self.sum_map - cleaning_threshold
-        factor_2 = differences[self.sum_map < cleaning_threshold] / intensity_max  * cleaning_factor_2
-        cleaning_factor = cleaning_factor_1 + factor_2
-        cleaning_factor[cleaning_factor < 0] = 0
-        self.sum_map[self.sum_map < cleaning_threshold] *= cleaning_factor
+        self.sum_map *= cleaning_factor_1
 
+    def mark_map(self):
+        self.sum_map[self.sum_map > marker_threshold] *= marker_factor_1
 
     def __generate_output_map(self)-> numpy.ndarray: 
         # print(self.sum_map.max())

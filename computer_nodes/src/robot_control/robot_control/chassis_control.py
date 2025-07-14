@@ -24,7 +24,7 @@ chassis_goal_interval = 1 / 400
 chassis_frame_id = 'base_link'
 
 queue_size = 200
-
+goal_queue_size = 10
 robot_linear_speed_limit = 200
 robot_angular_speed_limit = math.pi * 2
 
@@ -38,7 +38,7 @@ class chassis_control_node(Node):
         self.goal_publisher = self.create_publisher(
             Twist,
             chassis_goal_topic_name,
-            queue_size
+            goal_queue_size
         )
 
         self.commend_publisher = self.create_publisher(

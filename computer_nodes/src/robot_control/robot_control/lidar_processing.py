@@ -20,6 +20,7 @@ lidar_frame_id = 'robot_lidar'
 lidar_pointcloud_topic_name = 'processed_pointcloud'
 
 queue_size = 200
+point_cloud_queue_size = 200
 angle_offset = 0
 enable_3d = False
 
@@ -53,7 +54,7 @@ class lidar_processing(Node):
         self.point_cloud_publisher = self.create_publisher(
             PointCloud2,
             lidar_pointcloud_topic_name,
-            queue_size
+            point_cloud_queue_size
             ) 
 
     def handle_odom(self, msg: Odometry):

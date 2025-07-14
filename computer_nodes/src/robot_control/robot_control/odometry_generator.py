@@ -24,8 +24,8 @@ euler_fused_topic = 'fused_euler'
 
 odometry_generating_interval = 1 / 200
 
-acc_angle_trust_x = 0.005
-acc_angle_trust_y = 0.005
+acc_angle_trust_x = 0.0025
+acc_angle_trust_y = 0.0025
 
 yaw_gyro_trust = 0.5
 yaw_encoder_trust = 1 - yaw_gyro_trust
