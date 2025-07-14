@@ -27,6 +27,8 @@ gimbal_commend_topic_name = 'commend_gimbal'
 chassis_feedback_twist_topic_name = 'feedback_twist_chassis'
 gimbal_feedback_euler_topic_name = 'feedback_euler_gimbal'
 
+port_parameter_name = 'serial_port'
+
 servo_environment_noise = 1
 class actuation_node(Node):
     def __init__(self):
@@ -34,7 +36,9 @@ class actuation_node(Node):
         # robot init
 
         #init port
-        self.port_handler = port_init()
+        self.declare_parameter(port_parameter_name,DEVICENAME)
+        port = self.get_parameter(port_parameter_name).get_parameter_value().string_value
+        self.port_handler = port_init(port)
         port_open(self.port_handler)
         
         #init servos 
