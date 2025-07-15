@@ -23,7 +23,7 @@ queue_size = 200
 point_cloud_queue_size = 200
 angle_offset = 0
 enable_3d = False
-
+lidar_offset_x = 0.016
 class lidar_processing(Node):
     def __init__(self):
         super().__init__(node_name) 
@@ -87,8 +87,8 @@ class lidar_processing(Node):
             ] 
     
         points =numpy.array([numpy.array([
-                    -v * numpy.cos((i * msg.angle_increment + msg.angle_min + yaw)) + x, 
-                    -v * numpy.sin((i * msg.angle_increment + msg.angle_min)+ yaw) + y, 
+                    -v * numpy.cos(i * msg.angle_increment + msg.angle_min + yaw) + x , 
+                    -v * numpy.sin(i * msg.angle_increment + msg.angle_min + yaw) + y , 
                     z,
                     msg.intensities[i] / 255                    
                 ]) 

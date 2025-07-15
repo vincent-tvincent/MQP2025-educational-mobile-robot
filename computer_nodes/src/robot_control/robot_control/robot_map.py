@@ -32,9 +32,8 @@ marp_marking_interval = 1 / 2
 intensity_sensitivity = 1000
 intensity_max = 1000
 
-marker_threshold = 500
-
-cleaning_factor_1 = 0.8
+marker_threshold = 550 #550
+cleaning_factor_1 = 0.8 #0.8
 marker_factor_1 = 1.5
 
 map_count = int(map_size / resolution)
@@ -99,7 +98,8 @@ class robot_map(Node):
 
     def draw_map(self, msg: PointCloud2):
         # self.clean_map()
-        if True:
+        # print(self.recent_odom.twist.twist.angular.z)
+        if abs(self.recent_odom.twist.twist.angular.z < numpy.pi / 4):
             next_map  = numpy.zeros((map_count, map_count)) 
 
             # Get the 3D points from the PointCloud2 message
