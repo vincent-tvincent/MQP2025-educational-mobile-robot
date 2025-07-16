@@ -1,4 +1,5 @@
-
+![bababoi](mobile_robot_cad.png)
+![bababoi](mobile_robot_real.jpeg)
 # where are the 3d models ? 
 they are inside the 3d_models_mobile_robot.zip, 4Mb, with all step and f3d files, all models verified by printing with bambu lab A1 mini 0.2mm layer standard quality, 0.4 mm nozzle, petg basic (out of production, replace with petg hf, be careful with this filliment, test printing first)
 # how to use ROS2 ? 
