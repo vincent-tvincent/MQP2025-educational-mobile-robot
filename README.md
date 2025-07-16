@@ -1,7 +1,7 @@
 ![bababoi](mobile_robot_cad.png)
 ![bababoi](mobile_robot_real.jpeg)
 # where are the 3d models ? 
-they are inside the 3d_models_mobile_robot.zip, 4Mb, with all step and f3d files, all models verified by printing with bambu lab A1 mini 0.2mm layer standard quality, 0.4 mm nozzle, petg basic (out of production, replace with petg hf, be careful with this filliment, test printing first)
+they are inside the 3d_models_mobile_robot.zip, 4Mb, with all step and f3d files, all models verified by printing with bambu lab A1 mini 0.2mm layer standard quality, 0.4 mm nozzle, petg basic (out of production, replace with petg hf, be careful with this filliment, test printing first), while designing your own parts fit on the robot, measure the distance between each screw holes via the measurement tool provided by yoru cad software to making sure no error on measurement caused by not align your ruler well. 
 # how to use ROS2 ? 
 here are notes and links to offical website for learning about ros2 [ros2 notes and links](https://www.notion.so/ROS2-notes-232b34689cf48064b8feec31d549f96f?source=copy_link) 
 ## after you set up the project 
