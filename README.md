@@ -31,3 +31,4 @@ ros2 run sllidar_ros2 sllidar_c1_launch.py serial_port:= your lidars serial port
 7. the recent implementation usually require 10Mb/s unstream and downstream network transmission through your router
 8. if your computer have discrete GPU, run the RVIZ2 on the discrete GPU for achieve a 30fps display(so that it doesn't stuck), there are mutable ways you can do it and easily figure out from quick internet search, and the easiest way is to right click on the "terminal" app and select "run on dedicated GPU" (you have to quit all your opening terminal windows before you are able to reopen them on you discrete GPU)
 9. the camera streaming python script is not a ros2 node yet, it just provide basic image streaming though flusk for verification the functionality of the design, you may run it through python3 not ros2 run
+![bababoi](ros2_topic_relations.drawio.svg)
