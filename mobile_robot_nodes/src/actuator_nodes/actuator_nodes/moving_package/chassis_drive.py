@@ -50,8 +50,8 @@ class chassis_4wdiff:
         left_speed = (speed_matrix[0] - angular_to_linear_velocity) * left_direction
         right_speed = (speed_matrix[0] + angular_to_linear_velocity) * right_direction 
 
-        left_goal = int(left_speed / wheel_radius / speed_unit)
-        right_goal = int(right_speed / wheel_radius / speed_unit)
+        left_goal = int(left_speed / speed_unit)
+        right_goal = int(right_speed / speed_unit)
         return self.wheel_group.set_goals([left_goal, left_goal, right_goal, right_goal]) 
 
     def caliberation():
@@ -60,8 +60,8 @@ class chassis_4wdiff:
     def read_feedback_4wdiff(self) -> dict:
         servo_data = self.wheel_group.get_feedback()
         for i in range(len(servo_data[FEEDBACK_VELOCITY_NAME])):
-            servo_data[FEEDBACK_VELOCITY_NAME][i] = servo_data[FEEDBACK_VELOCITY_NAME][i] * speed_unit * wheel_radius * self.direction[i]
-            servo_data[FEEDBACK_POSITION_NAME][i] = servo_data[FEEDBACK_POSITION_NAME][i] * speed_unit * wheel_radius * self.direction[i]
+            servo_data[FEEDBACK_VELOCITY_NAME][i] = servo_data[FEEDBACK_VELOCITY_NAME][i] * speed_unit * self.direction[i]
+            servo_data[FEEDBACK_POSITION_NAME][i] = servo_data[FEEDBACK_POSITION_NAME][i] * speed_unit * self.direction[i]
         return servo_data
 
     def enable_torque(self):
