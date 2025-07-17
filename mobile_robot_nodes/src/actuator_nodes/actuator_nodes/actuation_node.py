@@ -165,11 +165,11 @@ class actuation_node(Node):
                 rr_wheel_velocity = feedback[FEEDBACK_VELOCITY_NAME][3]
                 
                 
-                l_eq_velocity = ((lf_wheel_velocity + lr_wheel_velocity) / 2 * speed_unit
-                  if abs((lf_wheel_velocity + lr_wheel_velocity) / 2 * speed_unit) >= servo_environment_noise
+                l_eq_velocity = ((lf_wheel_velocity + lr_wheel_velocity) / 2
+                  if abs((lf_wheel_velocity + lr_wheel_velocity) / 2) >= servo_environment_noise
                   else 0.0)
-                r_eq_velocity = ((rf_wheel_velocity + rr_wheel_velocity) / 2 * speed_unit
-                  if abs((rf_wheel_velocity + rr_wheel_velocity) / 2 * speed_unit) >= servo_environment_noise
+                r_eq_velocity = ((rf_wheel_velocity + rr_wheel_velocity) / 2
+                  if abs((rf_wheel_velocity + rr_wheel_velocity) / 2) >= servo_environment_noise
                   else 0.0)
 
                 # print(l_eq_velocity)
