@@ -60,8 +60,8 @@ class chassis_4wdiff:
     def read_feedback_4wdiff(self) -> dict:
         servo_data = self.wheel_group.get_feedback()
         for i in range(len(servo_data[FEEDBACK_VELOCITY_NAME])):
-            servo_data[FEEDBACK_VELOCITY_NAME][i] = servo_data[FEEDBACK_VELOCITY_NAME][i] * self.direction[i]
-            servo_data[FEEDBACK_POSITION_NAME][i] = servo_data[FEEDBACK_POSITION_NAME][i] * self.direction[i]
+            servo_data[FEEDBACK_VELOCITY_NAME][i] = servo_data[FEEDBACK_VELOCITY_NAME][i] * speed_unit * wheel_radius * self.direction[i]
+            servo_data[FEEDBACK_POSITION_NAME][i] = servo_data[FEEDBACK_POSITION_NAME][i] * speed_unit * wheel_radius * self.direction[i]
         return servo_data
 
     def enable_torque(self):
